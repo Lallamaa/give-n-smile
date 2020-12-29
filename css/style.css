@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgb(255, 255, 255);
+}
+.jumbotron-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+.btn-primary {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+.jumbotron .mb-4 {
+    color: white;
+}
+
+/*Pre-register Page*/
+.box {
+    float: left;
+    margin-top: 80px;
+    text-align: center;
+    background-color: rgb(83, 82, 82);
+    margin: 20px;
+    padding: 50px;
+    width: 50%;
+    box-sizing: border-box;
+    max-width: 45%;
+}
+.box p {
+    padding: 20px;
+}
+.reCategory {
+    margin-bottom: -50%;
+    margin-right: -50%;
+}

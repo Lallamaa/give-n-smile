@@ -1,0 +1,78 @@
+<!--Charity Organization Register-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>(name)-Sign Up</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form method="get" action=".php">
+        <legend>Charity Organization Sign Up </legend>
+        <fieldset>
+            <p> Username: <input type="text" name="coName" required maxlength="50" placeholder="(Max 20 characters)"></p>
+            <p> Email: <input type="email" name="coEmail" required placeholder="Enter your email" ></p>
+            <p> Password: <input type="password" name="logPwd" required maxlength="16"  ></p>
+   
+            <p> Website Link: <input type="url" name="coWeb" placeholder="If have any (optional)" ></p>
+            <p> Facebook Link: <input type="url" name="coFb" placeholder="If have any (optional)" ></p>
+            <p> Extra Social Media Link: <select name="xtraLink">
+                                        <option> Instagram </option>
+                                        <option> Snapchat </option>
+                                        <option> LinkedIn </option>
+                                        <option> Twitter </option>
+            </select></p>
+            <p> Describe: <textarea name="coDes" placeholder="Describe yourself"></textarea> </p>
+            <p> Adress: <input type="text" name="coAdd" placeholder="Enter your full address here"></p>
+            <script type="text/javascript" src="script.js"></script>
+            <p> Address Line 1 <input type="text" name="add1" required /></p>
+            <p> Address Line 2 <input type="text" name="add2" required /></p>
+            <p> City/Town <input type="text" name="city" required /></p>
+            <p> State: <select name="state" onchange="Object()">
+                <option> Perlis </option>
+                <option> Kedah </option>
+                <option> Penang </option>
+                <option> Perak </option>
+                <option> Selangor </option>
+                <option> Negeri Sembilan </option>
+                <option> Melaka </option>
+                <option> Johor </option>
+                <option> Pahang </option>
+                <option> Terengganu </option>
+                <option> Kelantan </option>
+                <option> Sabah </option>
+                <option> Sarawak </option>
+            </select></p>
+            <p> Zip/Postal Code <input type="text" name="postCode" required /></p>
+            <p> Phone No.: <input type="number" name="coNo" required maxlength="11" placeholder="Enter your phone no." ></p>
+            <p> Zip/Postal Code <input type="text" name="postCode" required /></p>    
+            </fieldset>
+        </form>
+    </body>
+</html>
+<!--
+<script type="text/javascript">
+    var city_state = Object();
+    city_state['Perlis'] =
+    city_state['Kedah'] = '|Alor Setar||Ayer Hitam|Baling|Bandar Baharu|Bedong|Bukit Kayu Hitam|Changloon|Gurun|Jeniang|Jitra|Karangan|Kepala Batas|Kodiang|Kota Kuala Muda|Kota Sarang Semut|Kuala Kedah|Kuala Ketil|Kuala Nerang|Kuala Pegang|Kulim|Kupang|Langgar|Langkawi|Lunas|Lunas|Merbok|Padang Serai|Pendang|Pokok Sena|Serdang|Sik|Simpang Empat|Sungai Petani|Yan';
+    city_state['Penang'] =
+    city_state['Perak'] = '|Ayer Tawar||Bagan Datoh|Bagan Serai|Bandar Seri Iskandar|Batu Gajah|Batu Kurau|Behrang Stesen|Bidor|Bota|Bruas|Changkat Jering|Changkat Keruing|Chemor|Chenderiang|Chenderong Balai|Chikus|Enggor|Gerik|Gopeng|Hutan Melintang|Intan|Ipoh|Jeram|Kampar|Kampung Gajah|Kampung Kepayang|Kamunting|Kuala Kangsar|Kuala Kurau|Kuala Sepetang|Lambor Kanan|Langkap|Lenggong|Lumut|Malim Nawar|Manong|Matang|Padang Rengas|Pangkor|Pantai Remis|Parit|Parit Buntar|Pengkalan Hulu|Pusing|Rantau Panjang|Sauk|Selama|Selekoh|Seri Manjong|Seri Manjung|Simpang|Simpang Ampat Semanggol|Sitiawan|Slim River|Sungai Siput|Sungai Sumun|Sungkai|Taiping|Tanjong Malim|Tanjong Piandang|Tanjong Rambutan|Tanjong Tualang|Tapah|Tapah Road|Teluk Intan|Temoh|TLDM Lumut|Trolak|Trong|Tronoh|Ulu Bernam|Ulu Kinta';
+    city_state['Selangor'] =
+    city_state['Negeri Sembilan'] =
+    city_state['Melaka'] =
+    city_state['Johor'] =
+    city_state['Pahang'] =
+    city_state['Terengganu'] =
+    city_state['Kelantan'] =
+    city_state['Sabah'] =
+    city_state['Sarawak'] =
+    city_state['Kuala Lumpur'] =
+    city_state['Putrajaya'] =
+    city_state['Labuan'] =
+
+    
+    function print_city_state(oCountrySel, oCity_StateSel);
+
+</script>-->
