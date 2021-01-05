@@ -3,6 +3,9 @@
         width: 50%;
         float: left;
     }
+    .col-lg-12 {
+        width: 100%;
+    }
 }
 @media (max-width: 767px) {
     .col-sm-12, .col-xs-12 {
