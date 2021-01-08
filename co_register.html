@@ -2,31 +2,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>(name)-Sign Up</title>
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <title> Give & Sm:)e | SignUp </title>
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/query.css">
+   <link rel="stylesheet" href="css/style.css">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container">
     <form method="get" action=".php">
-        <legend>Charity Organization Sign Up </legend>
-        <fieldset>
-            <p> Username: <input type="text" name="coName" required maxlength="50" placeholder="(Max 20 characters)"></p>
-            <p> Email: <input type="email" name="coEmail" required placeholder="Enter your email" ></p>
-            <p> Password: <input type="password" name="logPwd" required maxlength="16"  ></p>
-   
-            <p> Website Link: <input type="url" name="coWeb" placeholder="If have any (optional)" ></p>
-            <p> Facebook Link: <input type="url" name="coFb" placeholder="If have any (optional)" ></p>
-            <p> Extra Social Media Link: <select name="xtraLink">
-                                        <option> Instagram </option>
-                                        <option> Snapchat </option>
-                                        <option> LinkedIn </option>
-                                        <option> Twitter </option>
-            </select></p>
-            <p> Describe: <textarea name="coDes" placeholder="Describe yourself"></textarea> </p>
-            <p> Adress: <input type="text" name="coAdd" placeholder="Enter your full address here"></p>
+        <legend class="title text-center">Charity Organization Sign Up </legend>
+        <fieldset class="form-box card card-box">
+            <div class="card-body">
+            <label for="coUsername"> Username </label>
+            <input  class="form-control" 
+                    class="form-text"
+                    type="text" 
+                    name="userName" 
+                    required 
+                    maxlength="50" 
+                    placeholder="(Max 20 characters)">
+            <br>
+            <label for="coEmail"> Email </label>
+            <input  class="form-control" 
+                    class="form-text"
+                    type="email" 
+                    name="userEmail" 
+                    required 
+                    placeholder="Enter your email">
+            <br>
+            <label for="coContact"> Phone No. </label>
+            <input  class="form-control" 
+                    class="form-text"
+                    type="text" 
+                    name="userNo" 
+                    required 
+                    maxlength="11" 
+                    placeholder="Enter your phone no.">
+            <br>
+            <label for="coWebsite"> Website Link </label>
+            <input  class="form-control" 
+                    class="form-text"
+                    type="url" 
+                    name="coWeb" 
+                    placeholder="If have any (optional)">
+            <br>
+            <label for="coFacebook"> Facebook Link </label>
+            <input  class="form-control" 
+                    class="form-text"
+                    type="url" 
+                    name="coFB" 
+                    placeholder="If have any (optional)">
+            <br>
+            <label for="coXtralink"> Extra Social Media Link  </label><span>   </span>
+            <select name="xtraLink" class="btn btn-secondary btn-sm dropdown-toggle">
+                <option class="dropdown-item"> Instagram </option>
+                <option class="dropdown-item"> LinkedIn </option>
+                <option class="dropdown-item"> Twitter </option>
+            <input  class="form-control" 
+                    class="form-text"
+                    type="url" 
+                    name="coXtra" 
+                    placeholder="If have any (optional)">
+            <br>
+            <label for="coDescript"> Describe </label>
+            <textarea   class="form-control" 
+                        class="form-text"
+                        name="coDes" 
+                        placeholder="Describe your organization">
+            </textarea><br>
+            <label for="coAddress"> Address</label>
+            <input  class="form-control" 
+                    class="form-text" 
+                    name="coAdd" 
+                    placeholder="Enter your full address here"></input>
+            <br>
             <script type="text/javascript" src="script.js"></script>
+
             <p> Address Line 1 <input type="text" name="add1" required /></p>
             <p> Address Line 2 <input type="text" name="add2" required /></p>
             <p> City/Town: <input type="text" name="city" required /></p>
@@ -47,10 +107,27 @@
             </select></p>
             <p> Zip/Postal Code: <input type="text" name="postCode" required /></p>
             <p> Phone No.: <input type="number" name="coNo" required maxlength="11" placeholder="Enter your phone no." ></p>
-            </fieldset>
-        </form>
-    </body>
+        </div>
+
+            <label for="coPassword" class="form-label">Password</label>
+            <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="********">
+            <small id="passwordHelpBlock" class="form-text">
+              *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </small><br>
+            <button type="submit" class="btn btn-primary"> SignUp </button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+</body>
 </html>
+
+
+
+
+
+
+
 <!--
 <script type="text/javascript">
     var city_state = Object();

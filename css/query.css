@@ -6,10 +6,21 @@
     .col-lg-12 {
         width: 100%;
     }
+    form {
+        width: 40%;
+        float: none;
+    }
 }
-@media (max-width: 767px) {
+/* @media (min-width: 991px) and (max-width: 767px){
+    
+} */
+@media (min-width: 320) and (max-width: 567px) {
     .col-sm-12, .col-xs-12 {
         width: 100%;
         float: left;
+    }
+    form {
+        width: 50%;
+        float: none;
     }
 }
