@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-        <title> Give & Smile :) </title>
+        <title> Give & Sm:)e </title>
     
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,18 +15,55 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </head>
 <body>
-    <div class="container">
-        <h2 class="my-5"> Please choose a category to Sign Up </h2>
-        <div class="regCategory"> 
-            <div class="box box-camp col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <!--Nav Bar-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><img src="logo.png"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Give & Sm:)e</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="campaign.html">Start Fundraise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#AboutUs">About Us</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="pre-register.html">Sign Up</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+        </nav>
+        <!--End of NavBar-->
+    <div class="container-fliud">
+        <h2 class="my-5 ml-5"> Please choose a category to Sign Up </h2>
+        <div class="container"> 
+            <div class="pre-box box box-camp col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div>Charity Organization</div>
                 <p> Sign up to fundraise for your campaigns and events</p>
-                <button>Register as Organization</button>
+                <a href="co_register.html" class="btn btn-primary">Register as Organization</a></input>
             </div>
-            <div class="box box-fund col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+            <div class="pre-box box box-fund col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                 <div>Personal Account</div>
                 <p>Sign up to donate or fundraise for personal own business</p>
-                <button>Register for Personal Account </button>
+                <a href="us_register.html" class="btn btn-primary">Register for Personal Account </a>
             </div>
         </div>
     </div>
