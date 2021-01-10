@@ -12,6 +12,12 @@ body {
     margin-bottom: 10%;
 }
 
+/* Nav Bar */
+.navbar {
+    background-color: rgb(250, 180, 35);
+    border-radius: 50px;
+    text-align: center;
+}
 
 /*Landing Page*/
 .jumbotron {
@@ -51,9 +57,10 @@ body {
     box-sizing: border-box;
     max-width: 45%;
     text-align: center;
-    background-color: rgb(83, 82, 82);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    background-color: rgb(83, 82, 82);
 }
-.pre-box > div, p{
+.pre-box > div {
     background-color: rgb(83, 82, 82);
 }
 .pre-box > p {
@@ -78,9 +85,7 @@ body {
 .loginInput {
     width: 400px;
 }
-.navbar {
-    background-color: rgb(250, 180, 35);
-}
+
 
 /* User Register Page */
 form {
