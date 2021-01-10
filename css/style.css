@@ -53,12 +53,15 @@ body {
     text-align: center;
     background-color: rgb(83, 82, 82);
 }
-.pre-box > (div, p){
+.pre-box > div, p{
     background-color: rgb(83, 82, 82);
 }
 .pre-box > p {
     padding: 20px;
 }
+/* .pre-box > a {
+    height: 50%;
+} */
 .reCategory {
     margin-bottom: -50%;
     margin-right: -50%;
