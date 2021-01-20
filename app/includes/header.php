@@ -1,0 +1,40 @@
+<header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><img src="logo.png"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Give & Sm:)e</a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="campaign.html">Start Fundraise</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Donate</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#AboutUs">About Us</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="pre-register.html">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.php">Profile</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            </div>
+        </div>
+        </nav>
+        <!--End of NavBar-->
+    </header>
