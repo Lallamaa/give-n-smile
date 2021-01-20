@@ -2,7 +2,7 @@
 
 session_start();
 
-	include("connection.php");
+include("../../app/database/connect.php"); 	
 	include("functions.php");
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -16,7 +16,7 @@ session_start();
 
 			//read from database
 			$query = "select * from users where user_name = '$user_name' limit 1";
-			$result = mysqli_query($con, $query);
+			$result = mysqli_query($conn, $query);
 
 			if($result)
 			{

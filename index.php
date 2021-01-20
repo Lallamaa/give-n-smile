@@ -19,7 +19,7 @@
 </head>
 <body>
 	<!--Header-->
-	<?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+	<?php include("app/includes/header.php"); ?>
 
 	<div id="main">
 		<div class="container-fliud">
