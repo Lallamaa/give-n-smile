@@ -1,26 +1,29 @@
 @media (min-width: 992px) {
-    .col-lg-6, .col-md-6 {
+    .col-lg-6 {
         width: 50%;
         float: left;
     }
     .col-lg-12 {
         width: 100%;
     }
-    form {
+    /* form {
         width: 40%;
         float: none;
+    } */
+}
+@media (min-width: 991px) and (max-width: 767px){
+    .col-md-6 {
+        width: 50%;
+        float: left;
     }
 }
-/* @media (min-width: 991px) and (max-width: 767px){
-    
-} */
 @media (min-width: 320) and (max-width: 567px) {
     .col-sm-12, .col-xs-12 {
         width: 100%;
         float: left;
     }
-    form {
+    /* form {
         width: 50%;
         float: none;
-    }
+    } */
 }

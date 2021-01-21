@@ -1,4 +1,6 @@
 <?php
+  session_start();
+
   $dbhost = 'remotemysql.com';
   $dbuser = 'SFPyG7VYOT';
   $dbpass = 'R40eEhD49P';

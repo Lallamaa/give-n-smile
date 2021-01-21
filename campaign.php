@@ -26,22 +26,22 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="campaign.html">Start Fundraise</a>
+                    <a class="nav-link" href="campaign.html">Start Fundraise</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Donate</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#AboutUs">About Us</a>
+                    <a class="nav-link" href="#AboutUs">About Us</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="pre-register.html">Sign Up</a>
+                    <a class="nav-link" href="pre-register.html">Sign Up</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -66,7 +66,27 @@
                     <a href="browse.html" class="btn btn-primary">Browse more campaigns</a>
                 </div>
             </div>
-          </div>
+        </div>
     </div>
 </body>
 </html>
+
+<?php
+
+if（isset($_GET['error'])) {
+    if($_GET['error'] == 'emptyName') {
+        ?>
+        <small class="alert alert-danger">
+            Name is required
+        </small>
+        <?php
+    } else if($_GET['error'] == 'emptyEmail') {
+        ?>
+        <small class="alert alert-danger">
+            Email is required
+        </small>
+        <?php
+    } 
+}
+
+?>

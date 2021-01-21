@@ -7,10 +7,14 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+
 /* Bootstrap Modify */
 .container {
     margin-bottom: 10%;
 }
+
+/* - End of Bootstrap Modify - */
+
 
 /* Nav Bar */
 .navbar {
@@ -18,8 +22,10 @@ body {
     /* border-radius: 50px; */
     text-align: center;
 }
+/* - End of Nav Bar - */
 
-/*Landing Page*/
+
+/*User Landing Page*/
 .jumbotron {
     height: 500px;
 }
@@ -46,6 +52,8 @@ body {
 .jumbotron .mb-4 {
     color: white;
 }
+/* - End of User Landing Page - */
+
 
 /*Pre-register Page*/
 .pre-box {
@@ -85,18 +93,16 @@ body {
 .loginInput {
     width: 400px;
 }
+/* - End of Pre-register Page -*/
 
 
 /* User Register Page */
-form {
-    display: inline-block;
-}
-.title {
-    margin-bottom: 10%;
-}
+
+/* - End of User Register Page - */
+
 
 /* Charity Organization Register Page */
-
+/* - End of Charity Organization Register Page - */
 
 /* Footer  */
 @media (max-width:991px) {
@@ -124,8 +130,6 @@ form {
     }*/
   } 
 
-
-  
   .footer-site {
     position: relative;
     padding:50px 0;
@@ -199,3 +203,20 @@ form {
     font-size:15px;
     margin-bottom:0;
   }
+/* - End of Footer  */
+
+
+/* Admin Site */
+/* form {
+  display: inline-block;
+}
+.title {
+  margin-bottom: 10%;
+}
+
+.form-control {
+  width: 100%;
+} */
+
+
+/* -End of Admin Site- */

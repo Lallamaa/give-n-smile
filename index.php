@@ -20,7 +20,6 @@
 <body>
 	<!--Header-->
 	<?php include("app/includes/header.php"); ?>
-
 	<div id="main">
 		<div class="container-fliud">
 			<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_2.jpg);">
