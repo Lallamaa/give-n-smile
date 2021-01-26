@@ -1,10 +1,10 @@
 <?php
-  include('./includes/top.inc.php');
+  include('includes/top.inc.php');
   
   if (isset($_GET['type']) && $_GET['type']!='') {
     $type=get_safe_value($_GET['type']);
     if ($type == 'status') {
-      $operation=get_safe_value($conn, $_GET['fund_id']);
+      $operation=get_safe_value($conn, $_GET['event_id']);
       if($operation=='approve') {
         $staus='1';
       } else if ($operation=='reject') {
@@ -12,12 +12,12 @@
       } else {
         $status='-1';
       }
-      $update_status="update fundraise set fund_status='$status' where fund_id='$id'";
+      $update_status="update events set event_status='$status' where event_id='$id'";
       mysqli_query($conn, $update_status);
     }
   }
   
-  $sql="select * from fundraise order by fund_id asc";
+  $sql="select * from events order by event_id asc";
   $res=mysqli_query($conn, $sql);
 ?>
 
@@ -43,21 +43,21 @@
             <?php
             while ($row=mysqli_fetch_assoc($res)) { ?>
             <tr>
-              <td scope="row"><?php echo $row['fund_id']?></td>
-              <td><?php echo $row['fund_name']?></td>
-              <td><?php echo $row['fund_date']?></td>
-              <td><?php echo $row['fund_amount']?></td>
-              <td><?php echo $row['fund_desc']?></td>
-              <td><?php echo $row['fund_image']?></td>
+              <td scope="row"><?php echo $row['event_id']?></td>
+              <td><?php echo $row['event_name']?></td>
+              <td><?php echo $row['event_date']?></td>
+              <td><?php echo $row['event_amount']?></td>
+              <td><?php echo $row['event_desc']?></td>
+              <td><?php echo $row['event_image']?></td>
               <td><?php 
-                if($row['fund_status']==1) {
-                  echo "<span><a href='?type=status&operation=approve&id=".$row['fund_id']. 
+                if($row['event_status']==1) {
+                  echo "<span><a href='?type=status&operation=approve&id=".$row['event_id']. 
                   "'>Approve</a></span>'";
-                } else if ($row['fund_status']==0){
-                  echo "<span><a href='?type=status&operation=reject&id=".$row['fund_id']. 
+                } else if ($row['event_status']==0){
+                  echo "<span><a href='?type=status&operation=reject&id=".$row['event_id']. 
                   "'>Reject</a></span>'";            
                 } else {
-                  echo "<span><a href='?type=status&operation=pending&id=".$row['fund_id']. 
+                  echo "<span><a href='?type=status&operation=pending&id=".$row['event_id']. 
                   "'>Pending</a></span>'"; 
                 }
               ?>

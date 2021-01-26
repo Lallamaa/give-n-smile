@@ -1,5 +1,5 @@
 <?php
-    include('top.inc.php');
+  include('./includes/top.inc.php');
 
     if (isset($_GET['type']) && $_GET['type']!='') {
       $type=get_safe_value($_GET['type']);

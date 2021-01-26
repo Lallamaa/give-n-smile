@@ -6,16 +6,16 @@
     $msg = '';
 
     if (isset($_POST['submit'])) {
-        $admin_name = mysqli_real_escape_string($conn, $_POST['admin_name']);
-        $admin_password = mysqli_real_escape_string($conn, $_POST['admin_password']);
-        $sql = "select * from admin where admin_name='$admin_name' and admin_password='$admin_password'";
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $sql = "select * from admin where ad_name='$name' and ad_password='$password'";
         $res = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($res);
         if ($count>0) {
             $_SESSION['ADMIN_LOGIN']='yes';
-            $_SESSION['ADMIN_USERNAME']=$admin_name;
-            $_SESSION['ADMIN_PASSWORD']=$admin_password;
-            header('location:manage.php');
+            $_SESSION['ADMIN_USERNAME']=$name;
+            $_SESSION['ADMIN_PASSWORD']=$password;
+            header('location:dashboard.php');
             die();
         } else {
             $msg = "Incorrect login details!";
@@ -50,11 +50,11 @@
         <form method="post">            
             <div class="form-group">
                 <label>Username</label>
-                <input name="admin_name" class="form-control" placeholder="Username" type="text" required>
+                <input name="name" class="form-control" placeholder="Username" type="text" required>
             </div> <!-- form-group// -->
             <div class="form-group">
                 <label>Password</label>
-                <input name="admin_password" class="form-control" placeholder="******" type="password" required>
+                <input name="password" class="form-control" placeholder="******" type="password" required>
             </div> <!-- form-group// --> 
             <div class="form-group"> 
             <div class="checkbox">

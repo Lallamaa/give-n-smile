@@ -1,5 +1,5 @@
 <?php
-    include('top.nav.php');
+  include('./includes/top.inc.php');
 ?>
 
   <div class="col-md-10 content">

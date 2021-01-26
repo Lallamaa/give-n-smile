@@ -1,5 +1,5 @@
 <?php
-  include('../app/database/connect.php');
+  include('../../app/database/connect.php');
 
   $categories='';
   $msg='';

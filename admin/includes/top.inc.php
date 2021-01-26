@@ -77,7 +77,7 @@
             <li><a class="glyphicon glyphicon-dashboard" href="ad_donation.php"> Manage Donation </a></li>
             <li><a class="glyphicon glyphicon-dashboard" href="ad_user.php"> User Management </a></li>
             <li><a class="glyphicon glyphicon-dashboard" href="ad_org.php"> Organization Managemnet </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_event.php"> Emergency Event </a></li>
+            <li><a class="glyphicon glyphicon-dashboard" href="ad_emergency.php"> Emergency Event </a></li>
             <li><a class="glyphicon glyphicon-dashboard" href="ad_fb.php"> Feedbacks </a></li>
             <!-- <li><a href="ad_fb.php">Settings</a></li> -->
             <li><a class="glyphicon glyphicon-dashboard" href="logout.php"> Logout </a></li>
