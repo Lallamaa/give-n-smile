@@ -1,3 +1,45 @@
+<?php 
+session_start();
+
+	include('app/database/connect.php'); 	
+	include("functions.php");
+    
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//data was posted
+		$org_name = $_POST['org_name'];
+		$org_password = $_POST['org_password'];
+		$org_email = $_POST['org_email'];
+                $org_category = $_POST['org_category'];
+                $org_weblink = $_POST['org_weblink'];
+                $org_fblink = $_POST['org_fblink'];
+                $org_xtralink = $_POST['org_xtralink'];
+                $org_address = $_POST['org_address'];
+                $org_state = $_POST['org_state'];
+                $org_city = $_POST['org_city'];
+                $org_zipcode = $_POST['org_zipcode'];
+                $org_contact = $_POST['org_contact'];
+
+        if(!empty($org_name) && !is_numeric($org_name) &&!empty($org_password) && !empty($org_email) && !empty($org_category) && 
+        !empty($org_weblink) && !empty($org_fblink) && !empty($org_xtralink) && !empty($org_address) && !empty($org_state) &&
+        !empty($org_city) && !empty($org_zipcode) && !empty($org_contact)) {
+            
+            //save to database
+			$user_name = random_num(20);
+            $query = "INSERT INTO organization (org_name,org_password,org_email,org_category,org_weblink,org_fblink,org_xtralink,
+            org_address,org_state, org_city,org_zipcode,org_contact) VALUES ('$user_id','$org_name','$org_password','$org_email','$org_category','$org_weblink','$org_fblink','$org_xtralink','$org_address','$org_state','$org_city',' $org_zipcode','$org_contact')";
+
+			mysqli_query($conn, $query);
+			header("location: index.php");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+	}
+?>
+
+
 <!--Charity Organization Register-->
 <!DOCTYPE html>
 <html>
@@ -18,45 +60,10 @@
 </head>
 <body>
         <!--Nav Bar-->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><img src="logo.png"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Give & Sm:)e</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="campaign.html">Start Fundraise</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Donate</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#AboutUs">About Us</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="pre-register.html">Sign Up</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            </div>
-        </div>
-        </nav>
-    </header>
+    	<?php include("app/includes/header.php"); ?>
  <!--End of NavBar-->
 <div class="container">
-    <form method="get" action=".php">
+    <form method="POST" action=".php">
         <legend class="title text-center">Charity Organization Sign Up </legend>
         <fieldset class="form-box card card-box">
             <div class="card-body">
@@ -64,38 +71,52 @@
             <input  class="form-control" 
                     class="form-text"
                     type="text" 
-                    name="userName" 
+                    name="org_name" 
+                    id="org_name"
                     required 
                     maxlength="50" 
                     placeholder="(Max 20 characters)">
             <br>
-            <label for="coEmail"> Email </label>
+            <label for="org_password" class="form-label">Password</label>
+            <input  class="form-control"
+                    type="password" 
+                    id="inputPassword5" 
+                    aria-describedby="hint" 
+                    placeholder="********"/>
+            <small id="hint" class="form-text">
+              *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </small>
+            <br>
+            <label for="org_email"> Email </label>
             <input  class="form-control" 
                     class="form-text"
                     type="email" 
-                    name="userEmail" 
+                    name="org_email" 
+                    id="org_email"
                     required 
                     placeholder="Enter your email">
             <br>
-            <label for="coContact"> Phone No. </label>
+            <label for="org_contact"> Phone No. </label>
             <input  class="form-control" 
                     class="form-text"
                     type="text" 
-                    name="userNo" 
+                    name="org_contact"
+                    id="org_contact" 
                     required 
                     maxlength="11" 
                     placeholder="Enter your phone no.">
             <br><hr>
-            <label for="coWebsite"> Website Link </label>
+            <label for="org_weblink"> Website Link </label>
             <input  class="form-control" 
                     class="form-text"
                     type="url" 
-                    name="coWeb" 
+                    name="org_weblink"
+                    id="org_weblink" 
                     placeholder="If have any (optional)">
             <br>
-            <label for="coXtralink"> Extra Social Media Link  </label>
+            <label for="org_xtralink"> Extra Social Media Link  </label>
             <p>
-                <select name="xtraLink" class="btn btn-secondary btn-sm dropdown-toggle">
+                <select name="org_xtralink" id="org_xtralink" class="btn btn-secondary btn-sm dropdown-toggle">
                 <option class="dropdown-item"> Facebook </option>
                 <option class="dropdown-item"> Instagram </option>
                 <option class="dropdown-item"> LinkedIn </option>
@@ -114,40 +135,29 @@
                         placeholder="Describe your organization">
             </textarea>
             <br><hr>
-            <label for="coAddress"> Address</label>
+            <label for="org_address"> Address</label>
             <textarea  class="form-control" 
                     class="form-text" 
                     type="text"
-                    name="coAdd" 
+                    name="org_address"
+                    id="org_address" 
                     placeholder="Enter your full address here">
             </textarea><br>
-            <label for="coAddressL1"> Address Line 1</label>
+            <label for="org_city"> City/Town </label>
             <input  class="form-control" 
                     class="form-text"
                     type="text"
                     required 
-                    name="addL1"/>
+                    name="org_city"
+                    id="org_city"/>
             <br>
-            <label for="coAddressL1"> Address Line 2</label>
-            <input  class="form-control" 
-                    class="form-text"
-                    type="text"
-                    required 
-                    name="addL2"/>
-            <br>
-            <label for="coCity"> City/Town </label>
-            <input  class="form-control" 
-                    class="form-text"
-                    type="text"
-                    required 
-                    name="city"/>
-            <br>
-            <label for="coState"> State </label>
+            <label for="org_state"> State </label>
             <select class="form-control" 
                     class="form-text"
                     type="text"
                     required 
-                    name="state" >                    
+                    name="org_state"
+                    id="org_state" >                    
                 <option> Perlis </option>
                 <option> Kedah </option>
                 <option> Penang </option>
@@ -163,32 +173,26 @@
                 <option> Sarawak </option>
             </select></p>
             <br>
-            <label for="coZip"> Zip/Postal Code </label>
+            <label for="org_zipcode"> Zip/Postal Code </label>
             <input  class="form-control" 
                     class="form-text"
                     type="text"
                     required 
-                    name="zipCode"/>
+                    name="org_zipcode"
+                    id="org_zipcode"
+                    maxlength="5"/>
             <br><hr>
-            <label for="coContact"> Phone No. </label>
+            <label for="org_contact"> Phone No. </label>
             <input  class="form-control" 
                     class="form-text"
                     type="text"
                     required 
-                    name="coTel"
+                    name="org_contact"
                     maxlength="11" 
                     placeholder="Enter your phone no."/>
             <br>
-            <label for="coPassword" class="form-label">Password</label>
-            <input  class="form-control"
-                    type="password" 
-                    id="inputPassword5" 
-                    aria-describedby="passwordHelpBlock" 
-                    placeholder="********"/>
-            <small id="passwordHelpBlock" class="form-text">
-              *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-            </small><br>
-            <button type="submit" class="btn btn-primary"> SignUp </button>
+         
+            <button type="submit" class="btn btn-primary" value="Signup"> SignUp </button>
             </div>
         </fieldset>
     </form>

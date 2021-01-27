@@ -1,3 +1,4 @@
+<?php 	include 'app/database/connect.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
 		</div>
 	</div>
 
-	<?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+	<?php include("app/includes/footer.php"); ?>
 
 </body>
 </html>

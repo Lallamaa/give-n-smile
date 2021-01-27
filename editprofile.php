@@ -1,5 +1,5 @@
 <?php
-	//include('header.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,21 +16,34 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-    <div class="row">
-      <div class="col-4 offset-md-4 form-div">
-        <form action="index.php" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="profileImage"> Profile Image</label>
-            <textarea name="bio" id="bio" class="form-control"></textarea>
-          </div>
-          <div class="form-group">
-            <button type="submit" name="save-user" class="btn btn-primary btn-block">Save Updates</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="container">
+	
+	
+      <form action="" method="POST" enctype="multipart/form-data">
+      <h2>Edit Profile</h2>
+        <div class="form-group col-sm-4 col-sm-4" >
+          <label>User Name</label>
+          <input type="text" name="user_name" class=""/>
+        </div>
+        
+        <div class="form-group col-sm-4 col-sm-4">
+          <label>Password</label>
+          <input type="text" name="password" class=""/>
+        </div>
+        
+        <div class="form-group col-sm-4 col-sm-4">
+          <label>Email</label>
+          <input type="text" name="user_email" class=""/>
+        </div>
+        
+        <div class="form-group col-sm-4 col-sm-4">
+          <label>Contact Number(+60)</label>
+          <input type="number" name="user_phone" class=""/>
+        </div>
+
+      </form>
+
+	</div>
 </body>
 </html>
 

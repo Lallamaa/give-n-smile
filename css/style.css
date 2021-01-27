@@ -6,8 +6,6 @@
 body {
     background-color: rgb(255, 255, 255);
 }
-
-
 /* Bootstrap Modify */
 .container {
     margin-bottom: 10%;
@@ -95,7 +93,6 @@ body {
 }
 /* - End of Pre-register Page -*/
 
-
 /* User Register Page */
 
 /* - End of User Register Page - */
@@ -103,6 +100,70 @@ body {
 
 /* Charity Organization Register Page */
 /* - End of Charity Organization Register Page - */
+
+
+/*login page*/
+.login-form{
+  width: 300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  border-radius: 20px;
+  background: #ffd66b;
+  font-family: Arial, sans-serif;
+}
+.login-form h1, .login-form p{
+  color: #214151;
+}
+.login-form input[type="text"], .login-form input[type="password"]{
+  border:0;
+  background: #e6e6e6;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  border-radius: 24px;
+}
+.login-form input[type="text"]:hover, .login-form input[type="password"]:hover{
+  background: #c6ebc9;
+}
+.login-form #button{
+  border:0;
+  background: #70af85;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.login-form #button:hover{
+  background: #214151;
+}
+.login-form a:hover{
+  color: #70af85;
+}
+/*login page*/
+
+/*profile display page*/
+.profile-form input, .profile-form div{
+  width: 30%;
+  height: 5%;
+  border: 1px;
+  border-radius: 05px;
+  padding: 8px 15px 8px 15px;
+  margin: 30px 0px 15px 0px;
+  box-shadow: 1px 1px 2px 1px rgb(114, 112, 112);
+}
+
 
 /* Footer  */
 @media (max-width:991px) {

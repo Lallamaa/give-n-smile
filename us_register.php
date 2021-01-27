@@ -1,3 +1,32 @@
+<?php 
+session_start();
+
+	include('app/database/connect.php'); 	
+    include('functions.php');
+    
+	if($_SERVER['REQUEST_METHOD'] == "POST")
+	{
+		//something was posted
+		$user_name = $_POST['user_name'];
+		$password = $_POST['password'];
+		$user_email = $_POST['user_email'];
+		$user_phone = $_POST['user_phone'];
+
+		if(!empty($user_name) && !empty($password) && !empty($user_email) && !empty($user_phone) && !is_numeric($user_name)){
+			//save to database
+			$user_id = random_num(20);
+			$query = "INSERT INTO users (user_id,user_name,password,user_email,user_phone) VALUES ('$user_id','$user_name','$password','$user_email','$user_phone')";
+
+			mysqli_query($conn, $query);
+			header("Location: login.php");
+			die;
+		}else
+		{
+			echo "Please enter some valid information!";
+		}
+    }
+
+</html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +35,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title> Give & Sm:)e | SignUp </title>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/query.css">
@@ -16,45 +44,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!--Nav Bar-->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"><img src="logo.png"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">Give & Sm:)e</a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="campaign.html">Start Fundraise</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Donate</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#AboutUs">About Us</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="pre-register.html">Sign Up</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            </div>
-        </div>
-        </nav>
-        <!--End of NavBar-->
+    <!--Header-->
+    <?php include("app/includes/header.php"); ?>
+    
     <div class="container">
-        <form method="get" action=".php">
+        <form method="post" action=".php">
             <legend class="title text-center">User Sign Up </legend>
             <fieldset class="form-box card card-box">
                 <div class="card-body">
@@ -62,16 +56,23 @@
                 <input  class="form-control" 
                         class="form-text"
                         type="text" 
-                        name="userName" 
+                        name="user_name"
+                        id="user_name" 
                         required 
                         maxlength="50" 
                         placeholder="(Max 20 characters)">
                 <br>
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="********">
+                <small id="passwordHelpBlock" class="form-text">
+                *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                </small><br>
                 <label for="inEmail"> Email </label>
                 <input  class="form-control" 
                         class="form-text"
                         type="email" 
-                        name="userEmail" 
+                        name="user_email" 
+                        id="user_email"
                         required 
                         placeholder="Enter your email">
                 <br>
@@ -79,20 +80,17 @@
                 <input  class="form-control" 
                         class="form-text"
                         type="text" 
-                        name="userNo" 
+                        name="user_phone"
+                        id="user_phone"
                         required 
                         maxlength="11" 
                         placeholder="Enter your phone no.">
                 <br>
-                <label for="inputPassword" class="form-label">Password</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" placeholder="********">
-                <small id="passwordHelpBlock" class="form-text">
-                  *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                </small><br>
+               
                 <button type="submit" class="btn btn-primary"> SignUp </button>
-                </div>
+              </div>
             </fieldset>
         </form>
     </div>
+    <?php include("app/includes/footer.php"); ?>
 </body>
-</html>
