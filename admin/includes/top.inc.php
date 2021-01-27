@@ -1,6 +1,7 @@
 <?php
     include('../app/database/connect.php');
     include('../lib/function.php');
+    include('../path.php');
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +46,7 @@
       </form>  <!--End form//-->
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="dashboard.php" target="_blank">Visit Site</a></li>
+        <li><a href="<?php echo BASE_URL ?>/index.php" target="_blank">Visit Site</a></li>
         <li class="dropdown ">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             Account

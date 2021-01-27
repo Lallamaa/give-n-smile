@@ -1,14 +1,19 @@
 <?php 
-session_start();
+    session_start();
 
 	include('app/database/connect.php'); 	
     include('functions.php');
     
+<<<<<<< HEAD
     if(isset($_POST['submit']))
     {
+=======
+
+>>>>>>> f6227e9175765641b88d196de28d2ef13f167cdd
 		//something was posted
-		$user_name = $_POST['user_name'];
+		$name = $_POST['name'];
 		$password = $_POST['password'];
+<<<<<<< HEAD
 		$user_email = $_POST['user_email'];
         $user_phone = $_POST['user_phone'];
         
@@ -21,6 +26,9 @@ session_start();
             die();
     }
         
+=======
+		
+>>>>>>> f6227e9175765641b88d196de28d2ef13f167cdd
     
 ?>
 <!DOCTYPE html>
@@ -52,23 +60,27 @@ session_start();
                 <input  class="form-control" 
                         class="form-text"
                         type="text" 
-                        name="user_name"
-                        id="user_name" 
+                        name="name"
                         required 
                         maxlength="50" 
                         placeholder="(Max 20 characters)">
                 <br>
                 <label for="inputPassword" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="********">
+                <input  type="password" 
+                        name="password" 
+                        class="form-control" 
+                        aria-describedby="passwordHelpBlock" 
+                        placeholder="********">
+                        
                 <small id="passwordHelpBlock" class="form-text">
                 *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                </small><br>
+                </small>
+                <br>
                 <label for="inEmail"> Email </label>
                 <input  class="form-control" 
                         class="form-text"
                         type="email" 
-                        name="user_email" 
-                        id="user_email"
+                        name="email" 
                         required 
                         placeholder="Enter your email">
                 <br>
@@ -76,8 +88,7 @@ session_start();
                 <input  class="form-control" 
                         class="form-text"
                         type="text" 
-                        name="user_phone"
-                        id="user_phone"
+                        name="phone"
                         required 
                         maxlength="11" 
                         placeholder="Enter your phone no.">

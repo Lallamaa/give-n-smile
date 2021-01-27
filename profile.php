@@ -24,9 +24,42 @@
         <div>Email : <?php echo $_SESSION['users']->user_email; ?> </div>
         <div> Contact number : <?php echo $_SESSION['users']->user_phone; ?></div>
 
-		<!---<a href="editprofile.php?user_name="<?php echo $_SESSION['users']->user_name; ?> /> Edit Profile</a>
+<<<<<<< HEAD
+		
+
+=======
+                        if($gotResuslts){
+                            if(mysqli_num_rows($gotResuslts)>0){
+                                while($row = mysqli_fetch_array($gotResuslts)) ?>
+                                
+                                        <div class="form-group">
+                                            <input placeholder="Enter user name" type="text" name="user_name" class="form-control" value="<?php echo $row['user_name']; ?>">
+                                        </div>
+                                        <div class="form-group">
+                                            <input placeholder="Enter password" type="text" name="password" id="password" class="form-control" value="<?php echo $row['password']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <input placeholder="Enter email" type="email" name="user_email" class="form-control" value="<?php echo $row['user_email']; ?>">
+                                        </div>
+										<div class="form-group">
+                                            <input placeholder="Enter contact number"  type="text" name="user_phone" class="form-control" value="<?php echo $row['user_phone']; ?>">
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <input type="submit" name="update"  class="btn btn-info" value="Update">
+                                        </div>
+                                    <?php
+                                }
+                            }
+                        }
+                        
+                    ?>
+                    <!---<a href="editprofile.php?user_name="<?php echo $_SESSION['users']->user_name; ?> /> Edit Profile</a>
 		-->
-	</form>
-</div>
+                </form>
+            </div>
+        </div>
+    </div>
+>>>>>>> f6227e9175765641b88d196de28d2ef13f167cdd
 </body>
 </html>
