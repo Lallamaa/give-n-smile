@@ -50,7 +50,7 @@
                 <a class="nav-link" href="pre-register.html">Sign Up</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Profile</a>
+                    <a class="nav-link" href="profile.php">Profile</a>     <!--TODO: direct to user/org profile base on login-->
                 </li>
             </ul>
             <form class="d-flex">
