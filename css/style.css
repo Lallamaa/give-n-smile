@@ -279,5 +279,9 @@ body {
   width: 100%;
 } */
 
+.dash-content {
+  float: left;
+}
+
 
 /* -End of Admin Site- */
