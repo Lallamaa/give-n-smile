@@ -1,5 +1,5 @@
 <?php
-  include('includes/top.inc.php');
+  include('./includes/top.inc.php');
   // include('add.inc.php');
   
 

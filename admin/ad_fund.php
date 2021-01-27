@@ -24,7 +24,7 @@
   <div class="col-md-10 content">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Dashboard
+        Fundraise Management
       </div>
       <div class="panel-body">
       <table class="table table-striped">

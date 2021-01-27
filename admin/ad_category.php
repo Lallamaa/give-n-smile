@@ -29,7 +29,7 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Categories
+        Categories Management
         <a class="box-link" href="add_category.php"><span class='align-end p-2 glyphicon glyphicon-plus'></span></a>
       </div>
       

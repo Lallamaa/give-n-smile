@@ -29,7 +29,7 @@ $res=mysqli_query($conn, $sql);
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Users
+      Users Management
     </div>
     
     <div class="panel-body">

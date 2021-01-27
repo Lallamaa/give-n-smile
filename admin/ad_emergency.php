@@ -1,5 +1,5 @@
 <?php
-  include('includes/top.inc.php');
+  include('./includes/top.inc.php');
   
   if (isset($_GET['type']) && $_GET['type']!='') {
     $type=get_safe_value($_GET['type']);
@@ -24,10 +24,10 @@
   <div class="col-md-10 content">
     <div class="panel panel-default">
       <div class="panel-heading">
-        Dashboard
+        Emergency Events
       </div>
       <div class="panel-body">
-      <table class="table table-striped">
+      <table class="table table-danger table-striped">
           <thead>
             <tr>
               <th scope="col">ID</th>

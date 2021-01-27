@@ -43,10 +43,10 @@
  
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="card">
     <article class="card-body">
-    <h4 class="card-title mb-4 mt-1">Sign in</h4>
+    <h4 class="card-title mb-4 mt-1 text-center">Sign in</h4>
         <form method="post">            
             <div class="form-group">
                 <label>Username</label>
@@ -66,7 +66,7 @@
             </div> <!-- form-group//-->                                                            
         </form>
     </article>
-    <p class="alert alert-danger" role="alert">
+    <p class="alert" role="alert">
         <?php echo ($msg) ?>
     </p>
     </div> <!-- card.// -->

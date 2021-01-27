@@ -1,3 +1,7 @@
+<?php 
+	include("path.php"); 
+?>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,13 +34,13 @@
 					<p class="mb-4">
 						Hey, check this out.
 					</p>
-					<a href="browse.html" class="btn btn-primary">Browse more campaigns</a>
+					<a href="<?php echo BASE_URL ?>/browse.php" class="btn btn-primary">Browse more campaigns</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<?php include(ROOT_PATH . "/app/includes/footer.php"); ?>
+
 
 </body>
 </html>
