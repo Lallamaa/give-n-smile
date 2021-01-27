@@ -182,15 +182,6 @@ session_start();
                     id="org_zipcode"
                     maxlength="5"/>
             <br><hr>
-            <label for="org_contact"> Phone No. </label>
-            <input  class="form-control" 
-                    class="form-text"
-                    type="text"
-                    required 
-                    name="org_contact"
-                    maxlength="11" 
-                    placeholder="Enter your phone no."/>
-            <br>
          
             <button type="submit" class="btn btn-primary" value="Signup"> SignUp </button>
             </div>

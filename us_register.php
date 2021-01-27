@@ -4,29 +4,25 @@ session_start();
 	include('app/database/connect.php'); 	
     include('functions.php');
     
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
+    if(isset($_POST['submit']))
+    {
 		//something was posted
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
 		$user_email = $_POST['user_email'];
-		$user_phone = $_POST['user_phone'];
-
-		if(!empty($user_name) && !empty($password) && !empty($user_email) && !empty($user_phone) && !is_numeric($user_name)){
+        $user_phone = $_POST['user_phone'];
+        
 			//save to database
 			$user_id = random_num(20);
-			$query = "INSERT INTO users (user_id,user_name,password,user_email,user_phone) VALUES ('$user_id','$user_name','$password','$user_email','$user_phone')";
+			$query = "INSERT INTO users ('user_id','user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_id','$user_name','$password','$user_email','$user_phone', '1');";
 
 			mysqli_query($conn, $query);
-			header("Location: login.php");
-			die;
-		}else
-		{
-			echo "Please enter some valid information!";
-		}
+			header("Location:login.php");
+            die();
     }
-
-</html>
+        
+    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +44,7 @@ session_start();
     <?php include("app/includes/header.php"); ?>
     
     <div class="container">
-        <form method="post" action=".php">
+        <form method="post">
             <legend class="title text-center">User Sign Up </legend>
             <fieldset class="form-box card card-box">
                 <div class="card-body">
@@ -87,7 +83,7 @@ session_start();
                         placeholder="Enter your phone no.">
                 <br>
                
-                <button type="submit" class="btn btn-primary"> SignUp </button>
+                <button type="submit" class="btn btn-primary" name="submit"> Sign Up </button>
               </div>
             </fieldset>
         </form>
