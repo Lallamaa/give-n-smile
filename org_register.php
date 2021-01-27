@@ -181,15 +181,6 @@ session_start();
                     name="org_zipcode"
                     id="org_zipcode"
                     maxlength="5"/>
-            <br><hr>
-            <label for="org_contact"> Phone No. </label>
-            <input  class="form-control" 
-                    class="form-text"
-                    type="text"
-                    required 
-                    name="org_contact"
-                    maxlength="11" 
-                    placeholder="Enter your phone no."/>
             <br>
          
             <button type="submit" class="btn btn-primary" value="Signup"> SignUp </button>
@@ -205,28 +196,3 @@ session_start();
 
 
 
-
-<!--
-<script type="text/javascript">
-    var city_state = Object();
-    city_state['Perlis'] =
-    city_state['Kedah'] = '|Alor Setar||Ayer Hitam|Baling|Bandar Baharu|Bedong|Bukit Kayu Hitam|Changloon|Gurun|Jeniang|Jitra|Karangan|Kepala Batas|Kodiang|Kota Kuala Muda|Kota Sarang Semut|Kuala Kedah|Kuala Ketil|Kuala Nerang|Kuala Pegang|Kulim|Kupang|Langgar|Langkawi|Lunas|Lunas|Merbok|Padang Serai|Pendang|Pokok Sena|Serdang|Sik|Simpang Empat|Sungai Petani|Yan';
-    city_state['Penang'] =
-    city_state['Perak'] = '|Ayer Tawar||Bagan Datoh|Bagan Serai|Bandar Seri Iskandar|Batu Gajah|Batu Kurau|Behrang Stesen|Bidor|Bota|Bruas|Changkat Jering|Changkat Keruing|Chemor|Chenderiang|Chenderong Balai|Chikus|Enggor|Gerik|Gopeng|Hutan Melintang|Intan|Ipoh|Jeram|Kampar|Kampung Gajah|Kampung Kepayang|Kamunting|Kuala Kangsar|Kuala Kurau|Kuala Sepetang|Lambor Kanan|Langkap|Lenggong|Lumut|Malim Nawar|Manong|Matang|Padang Rengas|Pangkor|Pantai Remis|Parit|Parit Buntar|Pengkalan Hulu|Pusing|Rantau Panjang|Sauk|Selama|Selekoh|Seri Manjong|Seri Manjung|Simpang|Simpang Ampat Semanggol|Sitiawan|Slim River|Sungai Siput|Sungai Sumun|Sungkai|Taiping|Tanjong Malim|Tanjong Piandang|Tanjong Rambutan|Tanjong Tualang|Tapah|Tapah Road|Teluk Intan|Temoh|TLDM Lumut|Trolak|Trong|Tronoh|Ulu Bernam|Ulu Kinta';
-    city_state['Selangor'] =
-    city_state['Negeri Sembilan'] =
-    city_state['Melaka'] =
-    city_state['Johor'] =
-    city_state['Pahang'] =
-    city_state['Terengganu'] =
-    city_state['Kelantan'] =
-    city_state['Sabah'] =
-    city_state['Sarawak'] =
-    city_state['Kuala Lumpur'] =
-    city_state['Putrajaya'] =
-    city_state['Labuan'] =
-
-    
-    function print_city_state(oCountrySel, oCity_StateSel);
-
-</script>-->

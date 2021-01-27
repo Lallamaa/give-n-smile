@@ -25,7 +25,7 @@
 
                         if($gotResuslts){
                             if(mysqli_num_rows($gotResuslts)>0){
-                                while($row = mysqli_fetch_array($gotResuslts) ?>
+                                while($row = mysqli_fetch_array($gotResuslts)) ?>
                                 
                                         <div class="form-group">
                                             <input placeholder="Enter user name" type="text" name="user_name" class="form-control" value="<?php echo $row['user_name']; ?>">

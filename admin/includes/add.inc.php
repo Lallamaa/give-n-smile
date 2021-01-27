@@ -4,6 +4,13 @@
   $categories='';
   $msg='';
 
+  function get_safe_value($con,$str){
+    if($str!=''){
+      $str=trim($str);
+      return mysqli_real_escape_string($con,$str);
+    }
+  }
+
   if (isset($_GET['id']) && $_GET['id']!='') {
     $id=get_safe_value($conn, $_GET['id']);
     $res=mysqli_query($conn, "SELECT * from category where id='$id'");
