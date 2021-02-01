@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>Simple Map</title>
@@ -62,4 +62,4 @@
     
  
 <script src="https://maps.googleapis.com/maps/api/js?key=api_key&callback=getData" async defer></script>
-</script>
+</script> -->

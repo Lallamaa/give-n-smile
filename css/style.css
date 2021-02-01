@@ -97,6 +97,26 @@ body {
 
 /* - End of User Register Page - */
 
+/* User Edit Page */
+.form-div{
+  margin-top:40px;
+  border: 1px solid #464242;
+  width: 450px;
+  padding: 30px;
+  position: absolute;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  margin-right:auto;
+  margin-left:auto;
+}
+.img-div:hover .img-placeholder {
+display: block;
+cursor: pointer;
+}
+/* - End of User Edit Page - */
 
 /* Charity Organization Register Page */
 /* - End of Charity Organization Register Page - */
@@ -166,31 +186,6 @@ body {
 
 
 /* Footer  */
-@media (max-width:991px) {
-    .footer-site .feature.social {
-      text-align:center;
-      margin-top:20px;
-    }
-  }
-
-  @media (max-width:767px) {
-    .footer-site .feature.text {
-      margin-bottom:0;
-    }
-    /* .visible-xs {
-        display: none;
-        color: aliceblue;
-    } */
-    .footer-site .feature:not(.social) {
-      text-align:center;
-      padding-bottom:20px;
-    }
-    /* .visible-xs {
-        display: block;
-        background-color: aliceblue;
-    }*/
-  } 
-
   .footer-site {
     position: relative;
     padding:50px 0;
@@ -259,7 +254,7 @@ body {
 
   .footer-site .designed {
     text-align:center;
-    padding-top:24px;
+    /* padding-top:24px; */
     opacity:0.3;
     font-size:15px;
     margin-bottom:0;

@@ -1,8 +1,9 @@
 <?php
-    header('location:admin.php');
-    die();
+    session_start();
+    unset($_SESSION['id']);
+    session_destroy();
+    if(session_destroy()) {
+        header('location:admin.php');
+    }
+    
 ?>
-
-</body>    
-</html>
-

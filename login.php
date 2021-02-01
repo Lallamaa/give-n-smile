@@ -1,43 +1,39 @@
 <?php 
-	include ("app/database/connect.php");
-?>
+	// include(BASE_URL . "lib/path.php"); 
+	include("lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php"); 
 
-<?php
-		if(isset($_REQUEST['login'])){
-		$arr = [];
-		if($_REQUEST['user_name'] =='' || $_REQUEST['password'] == ''){
-		array_push($arr, "Enter username and password fields.");
+	if(isset($_REQUEST['login'])){
+	$arr = [];
+	if($_REQUEST['user_name'] =='' || $_REQUEST['password'] == ''){
+	array_push($arr, "Enter username and password fields.");
+		
+	}else{
+		$user_name = $_REQUEST['user_name'];
+		$password = $_REQUEST['password'];
 			
-		}else{
-			$user_name = $_REQUEST['user_name'];
-			$password = $_REQUEST['password'];
-				
-				//login process
-				$query = "SELECT * FROM users WHERE user_name='$user_name' and password='$password'";
-				$excution = $conn->query($query);
-				
-				$data = $excution->fetch_object(); //fetch data
-				
-				if(isset($data) && count($data) == 1){
-					$_SESSION['users'] = $data;
-					header("location:index.php");
-				}
-				else{
-					echo " wrong username or password! Please retry again";
-				}
+			//login process
+			$query = "SELECT * FROM users WHERE user_name='$user_name' and password='$password'";
+			$excution = $conn->query($query);
 			
+			$data = $excution->fetch_object(); //fetch data
+			
+			if(isset($data) && count($data) == 1){
+				$_SESSION['users'] = $data;
+				header("location:index.php");
 			}
+			else{
+				echo " wrong username or password! Please retry again";
+			}
+		
+		}
+	}
+
+	if(isset($_POST['login'])) {
+		
 	}
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-</head>
-<body>
-	<link rel="stylesheet" href="css/style.css">
-	
 	<div class="login-box">
 		<form method="post" class="login-form">
 			<h1>LOGIN</h1>
@@ -49,5 +45,5 @@
 			<a href="pre-register.html"></br>Click to Sign Up</a></p>
 		</form>
 	</div>
-</body>
-</html>
+
+<?php include(ROOT_PATH . "app/includes/footer.html"); ?>

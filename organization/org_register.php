@@ -1,8 +1,8 @@
 <?php 
         session_start();
 
-	include('app/database/connect.php'); 	
-	include("functions.php");
+	include("../lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php");
     
     if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -39,22 +39,19 @@
 	}
 ?>
 
-<?php include("app/includes/header.php"); ?>
- <!--End of NavBar-->
 <div class="container">
     <form method="POST" action=".php">
         <legend class="title text-center">Charity Organization Sign Up </legend>
         <fieldset class="form-box card card-box">
             <div class="card-body">
-            <label for="coUsername"> Username </label>
+            <label for="coUsername"> Organization Name </label>
             <input  class="form-control" 
                     class="form-text"
                     type="text" 
                     name="org_name" 
                     id="org_name"
                     required 
-                    maxlength="50" 
-                    placeholder="(Max 20 characters)">
+                    maxlength="50" >
             <br>
             <label for="org_password" class="form-label">Password</label>
             <input  class="form-control"
@@ -75,7 +72,7 @@
                     required 
                     placeholder="Enter your email">
             <br>
-            <label for="org_contact"> Phone No. </label>
+        <!--<label for="org_contact"> Phone No. </label>
             <input  class="form-control" 
                     class="form-text"
                     type="text" 
@@ -160,16 +157,14 @@
                     name="org_zipcode"
                     id="org_zipcode"
                     maxlength="5"/>
-            <br>  
+            <br>   -->
             <button type="submit" class="btn btn-primary" value="Signup"> SignUp </button>
             </div>
         </fieldset>
     </form>
 </div>
-<?php include("app/includes/footer.php"); ?>
 
-</body>
-</html>
+<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
 
 
 
