@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-
-<?php 	include 'app/database/connect.php'; ?>
+<?php 	include ('app/database/connect.php'); ?>
 <?php 
 	include("path.php"); 
 ?>
 
-=======
-
->>>>>>> f6227e9175765641b88d196de28d2ef13f167cdd
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,10 +27,6 @@
 	<?php include("app/includes/header.php"); ?>
 	<div id="main">
 		<div class="container-fliud">
-<<<<<<< HEAD
-=======
-			<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_3.jpeg);">
->>>>>>> f6227e9175765641b88d196de28d2ef13f167cdd
 				<div class="content">
 				   <h2 class="mb-4">
 					Jumbotron with background image
@@ -48,12 +39,6 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<?php include("app/includes/footer.php"); ?>
-=======
->>>>>>> f6227e9175765641b88d196de28d2ef13f167cdd
-
-
-
 </body>
 </html>

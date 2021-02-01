@@ -1,16 +1,14 @@
 <?php 
     session_start();
-
-	include('app/database/connect.php'); 	
+    include('app/database/connect.php'); 	
     include('functions.php');
     
     if(isset($_POST['submit']))
     {
 
 		//something was posted
-		$name = $_POST['name'];
+		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
-
 		$user_email = $_POST['user_email'];
         $user_phone = $_POST['user_phone'];
         
@@ -24,8 +22,6 @@
     }
         
 ?>
-
-    
     <!--Header-->
     <?php include("app/includes/header.php"); ?>
     <div class="container">
@@ -37,7 +33,8 @@
                 <input  class="form-control" 
                         class="form-text"
                         type="text" 
-                        name="name"
+                        name="user_name"
+                        id="user_name"
                         required 
                         maxlength="50" 
                         placeholder="(Max 20 characters)">
@@ -45,6 +42,7 @@
                 <label for="inputPassword" class="form-label">Password</label>
                 <input  type="password" 
                         name="password" 
+                        id="password"
                         class="form-control" 
                         aria-describedby="passwordHelpBlock" 
                         placeholder="********">
@@ -57,7 +55,8 @@
                 <input  class="form-control" 
                         class="form-text"
                         type="email" 
-                        name="email" 
+                        name="user_email"
+                        id="user_email" 
                         required 
                         placeholder="Enter your email">
                 <br>
@@ -65,7 +64,8 @@
                 <input  class="form-control" 
                         class="form-text"
                         type="text" 
-                        name="phone"
+                        name="user_phone"
+                        id="user_phone"
                         required 
                         maxlength="11" 
                         placeholder="Enter your phone no.">
