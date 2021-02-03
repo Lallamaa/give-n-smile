@@ -1,5 +1,5 @@
 <?php 
-	// include(BASE_URL . "lib/path.php"); 
+	session_start();
 	include("lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
@@ -42,7 +42,7 @@
 			<input id="button" type="submit" value="Login" name="login">
 
 			</br></br><p>Don't have a account?
-			<a href="pre-register.html"></br>Click to Sign Up</a></p>
+			<a href="pre-register.php"></br>Click to Sign Up</a></p>
 		</form>
 	</div>
 

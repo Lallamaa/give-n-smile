@@ -1,11 +1,9 @@
 <?php
-    include('../app/database/connect.php');
-    include('../lib/function.php');
-    include('../path.php');
+  include(ROOT_PATH . '/lib/function.php');
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
   <!------ Include the above in your HEAD tag ---------->
 
@@ -13,7 +11,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title> Give & Sm:)e | Dashboard </title>
+  <title> Give & Sm:)e | Admin </title>
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"> -->  
@@ -25,7 +23,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>  
-  <script src="script.js"></script> 
+  <script src="<?php echo BASE_URL;?>jvs/script.js"></script> 
 
 </head>
 <body>

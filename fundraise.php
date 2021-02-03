@@ -1,12 +1,12 @@
-<!-- <?php
-	include("app/includes/header.php");
-?> -->
+<?php
+	include("lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php"); 
+?>
 
 <div class="container">
 	<div class="row">
 		<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-			<?php
-				echo <div class="card" style="width: 18rem;">
+				<div class="card" style="width: 18rem;">
 					<img src="..." class="card-img-top" alt="...">
 					<div class="card-body">
 						<h5 class="card-title">Card title</h5>
@@ -21,14 +21,10 @@
 						<a href="#" class="card-link">Another link</a>
 					</div>
 				</div>
-			?>
 		</div>
 	</div>
 </div>
 
 
 
-<!-- <?php include("app/includes/footer.php"); ?> -->
-</body>
-</html>
-
+<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
