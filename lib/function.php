@@ -1,4 +1,5 @@
 <?php
+
   function pr($arr) {
     echo '<pre>';
     print_r($arr);
@@ -42,4 +43,29 @@
     return $text;
   }
 
+  //logout
+  if(isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['user']);
+    header("Location: login.php");
+  }
+
+  // check if user has logged in
+  function isLoggedIn() {
+    if (isset($_SESSION['user'])) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // check if the user is organization
+  function isOrganization() {
+    if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'organization') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
 ?>

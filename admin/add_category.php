@@ -1,5 +1,5 @@
 <?php 
-  include('../lib/path.php');
+  include('../app/lib/path.php');
   include(ROOT_PATH . 'app/database/connect.php');
   include(ROOT_PATH . 'admin/includes/add.inc.php');
   include(ROOT_PATH . 'admin/includes/top.inc.php'); 

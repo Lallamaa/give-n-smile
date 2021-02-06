@@ -1,23 +1,46 @@
 <?php 
 	include("lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
+	//checking if user already login
+	if(!isset($_SESSION['username'])){
+		header('Location: index.php');
+	}
 ?>
 
 <div id="main">
-		<div class="container-fliud">
-			<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_3.jpeg);">
-				<div class="content">
-				   <h2 class="mb-4">
-					Jumbotron with background image
-					</h2>
-					<p class="mb-4">
-						Hey, check this out.
-					</p>
-					<a href="browse.php" class="btn btn-primary">Browse more campaigns</a>
+	<div class="container-fliud">
+		<div class="content">
+			<!-- notification message -->
+			<?php if(isset($_SESSION['siccess'])): ?>
+				<div class="error success">
+					<h3>
+						<?php echo $_SESSION['success'];
+									unset($_SESSION['success']);
+						?>
+					</h3>
 				</div>
+			<?php endif ?>
+			<!-- logged in user information -->
+			<div class="profile-info">
+				<img src="<?php echo BASE_URL;?>image/user_profile.png">
 			</div>
+				<?php if (isset($_SESSION['users'])) :?>
+					<strong><?php echo $_SESSION['users']['username']; ?></strong>
+				<?php endif ?>
+		</div>
+		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_3.jpeg);">
+			<div class="content">
+					<h2 class="mb-4">
+				Jumbotron with background image
+				</h2>
+				<p class="mb-4">
+					Hey, check this out.
+				</p>
+				<a href="browse.php" class="btn btn-primary">Browse more campaigns</a>
+			</div>
+		</div>
 
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -25,13 +48,13 @@
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block w-100" src="image/jumbo_1.jpg" alt="First slide">
+					<img class="d-block w-100" src="app/image/jumbo_1.jpg" alt="First slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="image/jumbo_2.jpg" alt="Second slide">
+					<img class="d-block w-100" src="app/image/jumbo_2.jpg" alt="Second slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="image/jumbo_3.jpeg" alt="Third slide">
+					<img class="d-block w-100" src="app/image/jumbo_3.jpeg" alt="Third slide">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -44,6 +67,19 @@
 			</a>
 		</div>
 
+		<div class="card text-center">
+			<div class="card-header">
+				Featured
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">Start your fundraise now !</h5>
+				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				<a href="#" class="btn btn-primary">Fundraise</a>
+			</div>
+			<div class="card-footer text-muted">
+				2 days ago
+			</div>
+		</div>
 	</div>
 </div>
 

@@ -1,7 +1,7 @@
 <?php
-
-    include('../app/database/connect.php');
-    include('../lib/function.php');
+  include('../app/lib/path.php');
+  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
+  include(ROOT_PATH . 'app/lib/function.php');
 
     $msg = '';
 

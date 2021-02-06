@@ -13,7 +13,7 @@
 			$user_phone = $_POST['user_phone'];
 			
 		//save to database
-		$user_id = random_num(20);
+		$user_id = random_num(10);
 		$query = "INSERT INTO users ('user_id','user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_id','$user_name','$password','$user_email','$user_phone', '1');";
 
 		mysqli_query($conn, $query);

@@ -1,5 +1,7 @@
 <?php
-  include(ROOT_PATH . '/lib/function.php');
+  include('../app/lib/path.php');
+  include(ROOT_PATH . 'app/database/connect.php');
+  include(ROOT_PATH . 'app/lib/function.php');
 ?>
 
 <!DOCTYPE html>

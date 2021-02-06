@@ -3,8 +3,8 @@
 	include("../lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
-  $id=$_SESSION['id'];
-  $query=mysqli_query($db, "SELECT * FROM users where user_id='$id'")or die(mysqli_error());
+  $id=$_SESSION['users'];
+  $query=mysqli_query($conn, "SELECT * FROM users where user_id='$id'")or die(mysqli_error());
   $row=mysqli_fetch_array($query);
 
 ?>

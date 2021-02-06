@@ -1,33 +1,34 @@
 <?php 
 	session_start();
-	include("../lib/path.php"); 
+	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
-	
-	if(isset($_POST['submit']))
-	{
 
-	//something was posted
-	$user_name = $_POST['user_name'];
-	$password = $_POST['password'];
-	$user_email = $_POST['user_email'];
-			$user_phone = $_POST['user_phone'];
+	// if(isset($_POST['register']))
+	// {
+
+	// //something was posted
+	// $user_name = $_POST['user_name'];
+	// $password = $_POST['password'];
+	// $user_email = $_POST['user_email'];
+	// $user_phone = $_POST['user_phone'];
 			
-		//save to database
-		$user_id = random_num(20);
-		$query = "INSERT INTO users ('user_id','user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_id','$user_name','$password','$user_email','$user_phone', '1');";
+	// 	//save to database
+	// 	$user_id = random_num(20);
+	// 	$query = "INSERT INTO users ('user_id','user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_id','$user_name','$password','$user_email','$user_phone', '1');";
 
-		mysqli_query($conn, $query);
-		header("Location:login.php");
-					die();
-	}
-        
+	// 	mysqli_query($conn, $query);
+	// 	header("Location:login.php");
+	// 				die();
+	// }
+	
+  
 ?>    
 <div class="container">
-	<form method="post">
+	<form method="post" action="<?php echo BASE_URL;?>app/lib/reg.inc.php">
 		<legend class="title text-center">User Sign Up </legend>
-		<fieldset class="form-box card card-box">
-			<div class="card-body">
-						<label for="inUsername"> Username </label>
+		<fieldset class="form-box card card-box shadow p-3 mb-5 bg-white rounded">
+			<div class="card-body ">					
+				<label for="inUsername"> Username </label>
 				<input  class="form-control" 
 								class="form-text"
 								type="text" 
@@ -35,19 +36,8 @@
 								id="user_name"
 								required 
 								maxlength="50" 
-								placeholder="(Max 20 characters)">
-				<br>
-				<label for="inputPassword" class="form-label">Password</label>
-				<input  type="password" 
-								name="password" 
-								id="password"
-								class="form-control" 
-								aria-describedby="passwordHelpBlock" 
-								placeholder="********">
-								
-				<small id="passwordHelpBlock" class="form-text">
-				*Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-				</small>
+								placeholder="(Max 20 characters)"
+								value="<?php $username; ?>">
 				<br>
 				<label for="inEmail"> Email </label>
 				<input  class="form-control" 
@@ -56,7 +46,8 @@
 								name="user_email"
 								id="user_email" 
 								required 
-								placeholder="Enter your email">
+								placeholder="Enter your email"
+								value="<?php $email; ?>">
 				<br>
 				<label for="inContact"> Phone No. </label>
 				<input  class="form-control" 
@@ -66,10 +57,38 @@
 								id="user_phone"
 								required 
 								maxlength="11" 
-								placeholder="Enter your phone no.">
+								placeholder="Enter your phone no."
+								value="<?php $phone; ?>">
 				<br>
-				
-				<button type="submit" class="btn btn-primary" name="submit"> Sign Up </button>
+				<label for="inputPassword1" class="form-label">Password</label>
+				<input  type="password" 
+								name="password" 
+								id="password"
+								class="form-control" 
+								aria-describedby="passwordHelpBlock" 
+								required
+								maxlength="20"
+								minlength="8"
+								placeholder="********"
+								value="<?php $prepassword; ?>">				
+				<small id="passwordHelpBlock" class="form-text">
+				*Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+				</small>
+				<br>
+				<label for="inputPassword2" class="form-label">Re-enter Password</label>
+				<input  type="password" 
+								name="confirmpassword" 
+								id="conpassword"
+								class="form-control" 
+								aria-describedby="passwordHelpBlock" 
+								required
+								maxlength="20"
+								minlength="8"
+								placeholder="********"
+								value="<?php $conpassword; ?>">				
+				<br>
+				<input type="hidden" name="usertype" value="user">
+				<button type="submit" class="btn btn-primary" name="registerbtn"> Sign Up </button>
 			</div>
 		</fieldset>
 	</form>
