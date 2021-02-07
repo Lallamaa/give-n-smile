@@ -24,7 +24,8 @@
 		
 		<!---<a href="editprofile.php?user_name="<?php echo $_SESSION['organization']->org_id; ?> /> Edit Profile</a>
 		--->
-	</form>
+  </form>
+</div>
 
 	<div class="container">
   <div class="main-body">

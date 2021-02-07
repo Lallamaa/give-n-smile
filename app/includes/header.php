@@ -1,22 +1,24 @@
 <?php 	
-    include(ROOT_PATH . "app/database/connect.php")
+		include(ROOT_PATH . "app/database/connect.php");
+		include(ROOT_PATH . "app/lib/function.php")
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<title> Give & Sm:)e </title>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/query.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>app/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>app/css/query.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -27,12 +29,12 @@
 </head>
 <body>
 <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light pr-5 pl-5">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo BASE_URL; ?>index.html"><img src="<?php echo BASE_URL; ?>image/logo.png" alt="" width="100" height="50" class="d-inline-block align-top"></a>
+            <a class="navbar-brand" href="<?php echo BASE_URL; ?>index.php"><img src="<?php echo BASE_URL; ?>app/image/logo.png" alt="" width="100" height="50" class="d-inline-block align-top"></a>
             
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -72,6 +74,46 @@
             </form>
             </div>
         </div>
-        </nav>
-        <!--End of NavBar-->
-    </header>
+       
+        <div class="btn-group dropstart">
+            <button class="btn btn-primary-outline dropdown-toggle " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<?php echo BASE_URL; ?>image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
+                <li><a class="nav-link" 
+                        href="<?php echo BASE_URL; ?>
+                                <?php if(isset($_SESSION['user_type'])=='user') { 
+                                         echo 'user/us_profile.php';
+                                        } elseif(isset($_SESSION['user_type'])=='organization') {
+                                            echo 'organization/org_profile.php';
+                                        } else {
+																					echo 'pre-register.php';
+																				}?>
+                              ">Account</a></li>
+								<li><a class="nav-link" 
+                      	href="<?php echo BASE_URL; ?>
+                                <?php if(isset($_SESSION['user_type'])=='user') { 
+                                         echo 'user/us_edit.php';
+                                        } elseif(isset($_SESSION['user_type'])=='organization') {
+																					echo 'organization/org_edit.php';
+																			} else {
+																				echo 'pre-register.php';
+																			}?>
+															">Setting</a></li>                
+								<li><hr class="dropdown-divider"></li>
+                <li><a class="nav-link" name="logout" href="index.php?logout='1"><i class="fa fa-power-off"></i>Logout</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <!--End of NavBar-->
+</header>
+<?php
+// if($_SESSION['teacher'])
+// 	{
+// 		header("Location: hallecturer.php");
+// 	}
+// 	if($_SESSION['student'])
+// 	{
+// 		header("Location: halstudent.php");
+// 	}

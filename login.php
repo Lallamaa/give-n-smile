@@ -1,31 +1,55 @@
 <?php 
-	SESSION_START();
-	include("lib/path.php"); 
-	include(ROOT_PATH . "app/database/connect.php");
+	session_start();
 
-	if(isset($_REQUEST['login'])){
-	$arr = [];
-	if($_REQUEST['user_name'] =='' || $_REQUEST['password'] == ''){
-	array_push($arr, "Enter username and password fields.");
-		
-	}else{
-		$user_name = $_REQUEST['user_name'];
-		$password = $_REQUEST['password'];
+	include("app/lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php"); //this one <<
+
+
+	if(isset($_POST['loginbtn'])) {
+		$email	= $_POST['email'];
+		$password	= $_POST['password'];
+		$error=''; 
+		//user
+		$query1 = mysqli_query($conn, "SELECT * FROM users WHERE user_email='$email' AND password='$password'");
+		if(mysqli_num_rows($query1) == 0)
+		{
+			$error = "Username or Password is invalid";
+		}
+		else
+		{
+			$row1 = mysqli_fetch_assoc($query1);
+			$_SESSION['email']=$row1['user_email'];
+			$_SESSION['users'] = $row1['user_type'];
 			
-			//login process
-			$query = "SELECT * FROM users WHERE user_name='$user_name' and password='$password'";
-			$excution = $conn->query($query);
-			
-			$data = $excution->fetch_object(); //fetch data
-			
-			if(isset($data) && count($data) == 1){
-				$_SESSION['users'] = $data;
-				header("location:index.php");
+			if($_SESSION['users'] == $row1['user_type'])
+			{
+				header("Location: index.php");
 			}
 			else{
 				array_push($arr, "Wrong username or password! Please retry again.");
 			}
+		}
 		
+		//organization
+		$query2 = mysqli_query($conn, "SELECT * FROM organization WHERE org_email='$email' AND org_password='$password'");
+		if(mysqli_num_rows($query2) == 0)
+		{
+			$error = "Username or Password is invalid";
+		}
+		else
+		{
+			$row2 = mysqli_fetch_assoc($query2);
+			$_SESSION['email']=$row2['org_email'];
+			$_SESSION['organization'] = $row2['user_type'];
+			
+			if($_SESSION['organization'] == $row2['user_type'])
+			{
+				header("Location: index.php");
+			}
+			else
+			{
+				$error = "Failed Login";
+			}
 		}
 	}
 
@@ -53,13 +77,15 @@
 					?>
 			
 			<h1>LOGIN</h1>
-			<input id="user_name" type="text" name="user_name"  placeholder="Username" >
-			<input id="password" type="password" name="password"  placeholder="Password" >
-			<input id="button" type="submit" value="Login" name="login">
-
-			</br></br><p>Don't have a account?
-			<a href="pre-register.php"></br>Click to Sign Up</a></p>
+			<input id="email" type="email" name="email" required placeholder="Email" required >
+			<input id="password" type="password" name="password" required placeholder="Password">
+			<button id="button" type="submit" name="loginbtn">Login</button>
+			<?php //echo display_error(); ?>
+			<br/>
+			<p>Don't have a account?
+				<a href="pre-register.php"></br>Click to Sign Up</a>
+			</p>
 		</form>
 	</div>
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php //include(ROOT_PATH . "app/includes/footer.html"); ?>

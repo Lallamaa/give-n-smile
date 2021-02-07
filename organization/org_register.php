@@ -43,7 +43,18 @@
     <form method="POST" action=".php">
         <legend class="title text-center">Charity Organization Sign Up </legend>
         <fieldset class="form-box card card-box">
-            <div class="card-body">
+          <div class="card-body">
+						
+						<div class="dropdown">
+							<button class="btn btn-secondary dropdown-toggle" name="org_category" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+								Category
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<?php 
+									echo '<li><i class="dropdown-item" value='?><?php"">'.category.'</i></li>'
+								
+							</ul>
+						</div><br>
             <label for="coUsername"> Organization Name </label>
             <input  class="form-control" 
                     class="form-text"
@@ -51,8 +62,18 @@
                     name="org_name" 
                     id="org_name"
                     required 
-                    maxlength="50" >
-            <br>
+										maxlength="50" 
+										placeholder="Enter your organization name">
+						<br>
+						<label for="org_email"> Email </label>
+						<input  class="form-control" 
+										class="form-text"
+										type="email" 
+										name="org_email" 
+										id="org_email"
+										required 
+										placeholder="Enter your email">
+						<br>
             <label for="org_password" class="form-label">Password</label>
             <input  class="form-control"
                     type="password" 
@@ -63,15 +84,15 @@
               *Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
             </small>
             <br>
-            <label for="org_email"> Email </label>
-            <input  class="form-control" 
-                    class="form-text"
-                    type="email" 
-                    name="org_email" 
-                    id="org_email"
-                    required 
-                    placeholder="Enter your email">
-            <br>
+            <label for="inputPassword2" class="form-label">Re-enter Password</label>
+							<input  type="password" 
+											name="password_2" 
+											id="password_2"
+											class="form-control" 
+											aria-describedby="passwordHelpBlock" 
+											placeholder="********">
+							<br>
+  
         <!--<label for="org_contact"> Phone No. </label>
             <input  class="form-control" 
                     class="form-text"
