@@ -1,6 +1,54 @@
-<?php 
-    include ('profile-process.php');
+<?php
+    SESSION_START();
+    include("../lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php"); 
+    include(ROOT_PATH . "app/database/connect.php");
+
+    if (isset($_REQUEST['user_id'])) {
+        $query = "SELECT * FROM users WHERE user_id='$_REQUEST[user_id]'";
+        
+        $execution = $conn->query($query);
+    
+        $data = $execution->fetch_object();
+    }
+
+    if(isset($_REQUEST['update']))
+    {
+        //$user_id=$_SESSION['user_id'];
+
+        $user_name=$_REQUEST['user_name'];
+        $password=$_REQUEST['password'];
+        $user_email=$_REQUEST['user_email'];
+        $user_phone=$_REQUEST['user_phone'];
+        $user_img=$_REQUEST['user_img'];
+        
+        $user_img = $_FILES['user_img']['name'];
+        $temp_path = $_FILES['user_img']['tmp_name'];
+
+       $destination_path = 'image/'.uniqid().' '. $user_img;
+
+       if(move_uploaded_file($temp_path, $destination_path)) {
+        $query = " update users SET
+        user_name='$user_name',
+        password='$password',
+        user_email = '$user_email',
+        user_phone = '$user_phone' ,
+        user_img = '$destination_path' where user_id='$_REQUEST[user_id]'";
+
+    }else{ 
+        // if file done upload
+        $query = "update users SET
+        first_name = '$first_name' ,
+        last_name = '$last_name' ,
+        email = '$email' ,
+        user_phone = '$user_phone' ,
+        user_img = '$destination_path' where user_id = '$_REQUEST[user_id]'";
+    }
+    $executionQuery = $conn->query($query);
+    header("location:us_profile.php");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,28 +61,7 @@
     
      <title>Profile Page</title>
 </head>
-<style>
 
-.form-div{
-    margin-top:40px;
-    border: 1px solid #464242;
-    width: 450px;
-    padding: 30px;
-    position: absolute;
-}
-
-.image {
-    opacity: 1;
-    display: block;
-    margin-right:auto;
-    margin-left:auto;
-}
-.img-div:hover .img-placeholder {
-  display: block;
-  cursor: pointer;
-}
-
-</style>
 <body>
     <div class="container-profile">
         <div class="profile-box">
@@ -47,44 +74,87 @@
                     <?php echo $txt; ?>
                 </div>
                     <?php endif; ?>
-
-                <div class="form-group text-center" style="position:center">
-                     <span class="img-div">
-                        <div class="text-center img-placeholder"  onClick="triggerClick()"> </div>
-                        <img src="image/placeholder_img.png" class="image" style="width:60%" onclick="triggerClick()" id="imgDisplay"/>
-                     </span>
-                    <input type="file" name="userImage" onChange="showImage(this)" id="userImage" class="form-control" style="display:none;">
-                    <label for="userImage">Profile Image</label>
-                </div>
-                
                 <div class="form-group">
-                    <label>User Name</label>
-                    <input type="text" name="user_name" class="form-control" require/>
+                <label>User Name</label>
+                    <input type="text" name="user_name" class="form-control" require
+                        <?php
+                            if(isset($data->user_name)) {
+                                //print value
+                                ?> value="<?=$data->user_name;?>"
+                                <?php
+                            } else {
+                                ?>
+                                placeholder="Enter Username"
+                            <?php
+                            }
+                        ?>
+                    />
                 </div>
 
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="text" name="password" class="form-control"/>
+                    <input type="text" name="password" class="form-control"
+                    <?php
+                        if(isset($data->password)) {
+                            //print value
+                            ?> value="<?=$data->password;?>"
+                            <?php
+                        } else {
+                            ?>
+                            placeholder="Enter new password"
+                        <?php
+                        }
+                        ?>
+                    />
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="user_email" class="form-control"/>
+                    <input type="text" name="user_email" class="form-control"
+                    <?php
+                        if(isset($data->user_email)) {
+                            //print value
+                            ?> value="<?=$data->user_email;?>"
+                            <?php
+                        } else {
+                            ?>
+                            placeholder="Enter Email"
+                        <?php
+                        }
+                        ?>
+                    />
                 </div>
                 
                 <div class="form-group">
                     <label>Contact Number(+60)</label>
-                    <input type="text" name="user_phone" class="form-control"/>
+                    <input type="text" name="user_phone" class="form-control"
+                    <?php
+                        if(isset($data->user_phone)) {
+                            //print value
+                            ?> value="<?=$data->user_phone;?>"
+                            <?php
+                        } else {
+                            ?>
+                            placeholder="Enter contact number"
+                        <?php
+                        }
+                    ?>
+                    />
                 </div>
-    
+
                 <div class="form-group">
-                    <button type="submit" name="user-submit" class="btn btn-primary btn-block">Save</button>
+                    <label>Profile Picture</label>
+                    <img src="" alt="" srcset="">
+                    <input type="file" name="user_img" id="user_img" class="form-control"/>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit" name="update" value="UPDATE" class="btn btn-primary btn-block">update</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 </body>
-<script src="profile_script.js"></script>
+<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
 </html>
-

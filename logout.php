@@ -1,9 +1,11 @@
 <?php
-  session_start();
-  unset($_SESSION['id']);
-  session_destroy();
-  if(session_destroy()) {
-    header("Location: index.php");
+  SESSION_START();
+
+  if(isset($_SESSION['users'])){
+    unset($_SESSION['users']);
   }
-  
+
+  SESSION_DESTROY();
+  header("location:index.php");
+
 ?>

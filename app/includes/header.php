@@ -48,12 +48,20 @@
                 <!-- <li class="nav-item">
                 <a class="nav-link" href="<?php echo BASE_URL; ?>#">About Us</a>
                 </li> -->
-                <li class="nav-item">
-                <a class="nav-link" href="<?php echo BASE_URL; ?>login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a>
-                </li>
+               
+
+                 <!---For checking if login then don't show login button on header--->
+            <?php
+                if(isset($_SESSION['users'])){
+            ?>  <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
+                <li class="nav-item"><a class="nav-link" href="muser/us_profile.php" name="profile">Profile</a></li> <?php
+
+                }else{
+                    ?> <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a></li>
+                    <?php
+                } ?>
+             
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>     TODO: direct to user/org profile base on login
                 </li> -->

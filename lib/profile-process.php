@@ -1,9 +1,9 @@
 <?php
   $txt = "";
   $txt_class = "";
-  include ("app/database/connect.php");
+  include ("../app/database/connect.php");
   
-  if (isset($_POST['user-submit'])) {
+  if (isset($_POST['submit'])) {
     
     //database
     $user_name = stripslashes($_POST['user_name']);

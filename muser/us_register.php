@@ -1,42 +1,79 @@
 <?php 
-	session_start();
+	//session_start();
 	include("../lib/path.php"); 
-	include(ROOT_PATH . "app/includes/header.php"); 
+	include("../app/includes/header.php"); 
+	include("../lib/function.php");
+
+	if (isset($_REQUEST['submit'])) {
+        //Check All Field Are Blank Or Not
+        $err = [];
+        if($_REQUEST['user_name']== '' ){
+            array_push($err, "User name field is required");
+        }
+        elseif($_REQUEST['password']== ''){
+            array_push($err, "Password field is required");
+        }
+		elseif($_REQUEST['confirm_pass']!= $_REQUEST['password']) {
+            array_push($err, "Password and confirm password does not match");
+        }
+        elseif($_REQUEST['user_email']== ''){
+            array_push($err, "Email field is required");
+        }
+        //elseif($_REQUEST['user_phone']== ''){
+        //    array_push($err, "Phone field is required");
+        //}
+        else{
+            //Assign to new variables
+            $user_name = $_REQUEST['user_name'];
+            $password = $_REQUEST['password'];
+            $user_email = $_REQUEST['user_email'];
+            
+		
+			if(!empty($user_name) && !empty($password) && !is_numeric($user_name) && !empty($user_email))
+			{
 	
-	if(isset($_POST['submit']))
-	{
-
-	//something was posted
-	$user_name = $_POST['user_name'];
-	$password = $_POST['password'];
-	$user_email = $_POST['user_email'];
-			$user_phone = $_POST['user_phone'];
-			
-		//save to database
-		$user_id = random_num(20);
-		$query = "INSERT INTO users ('user_id','user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_id','$user_name','$password','$user_email','$user_phone', '1');";
-
-		mysqli_query($conn, $query);
-		header("Location:login.php");
-					die();
+				//save to database
+				$user_id = random_num(11);
+				$query = "insert into users (user_id,user_name,password,user_email) values ('$user_id','$user_name','$password','$user_email')";
+	
+				mysqli_query($conn, $query);
+	
+				//header("Location:login.php");
+				die;
+			}
+		}
 	}
-        
 ?>    
+
 <div class="container">
-	<form method="post">
-		<legend class="title text-center">User Sign Up </legend>
+	<form method="post" enctype="multipart/form-data">
+    	<legend class="title text-center">User Sign Up</legend>
+		<div class="col-l-4 col-l-offset-4">
+            <?php if(isset($err) && count($err) >0) {
+                foreach($err as $error){
+                    ?>
+                        <div class="alert alert-danger">
+                        <span>
+                            <?=$error?>
+                        </span>       
+                        </div>
+                    <?php 
+                    }
+                }
+            ?>
+        </div>
 		<fieldset class="form-box card card-box">
 			<div class="card-body">
-						<label for="inUsername"> Username </label>
+				<label for="inUsername"> Username </label>
 				<input  class="form-control" 
 								class="form-text"
 								type="text" 
 								name="user_name"
-								id="user_name"
-								required 
+								id="user_name" 
 								maxlength="50" 
 								placeholder="(Max 20 characters)">
 				<br>
+				
 				<label for="inputPassword" class="form-label">Password</label>
 				<input  type="password" 
 								name="password" 
@@ -49,27 +86,29 @@
 				*Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 				</small>
 				<br>
+				
+				<label for="inputPassword" class="form-label">Confirm Password</label>
+				<input  type="password" 
+								name="confirm_pass" 
+								id="confirm_pass"
+								class="form-control" 
+								aria-describedby="passwordHelpBlock" 
+								placeholder="********">
+								
+				<small id="passwordHelpBlock" class="form-text">
+				*Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+				</small>
+				<br>
+				
 				<label for="inEmail"> Email </label>
 				<input  class="form-control" 
 								class="form-text"
 								type="email" 
 								name="user_email"
-								id="user_email" 
-								required 
+								id="user_email"  
 								placeholder="Enter your email">
 				<br>
-				<label for="inContact"> Phone No. </label>
-				<input  class="form-control" 
-								class="form-text"
-								type="text" 
-								name="user_phone"
-								id="user_phone"
-								required 
-								maxlength="11" 
-								placeholder="Enter your phone no.">
-				<br>
-				
-				<button type="submit" class="btn btn-primary" name="submit"> Sign Up </button>
+				<button type="submit" class="btn btn-primary" name="submit" value="submit"> Sign Up </button>
 			</div>
 		</fieldset>
 	</form>

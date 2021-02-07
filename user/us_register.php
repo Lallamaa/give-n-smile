@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	include("../lib/path.php"); 
+	include(ROOT_PATH . "app/database/connect.php");
 	include(ROOT_PATH . "app/includes/header.php"); 
 	
 	if(isset($_POST['submit']))
@@ -10,18 +11,19 @@
 	$user_name = $_POST['user_name'];
 	$password = $_POST['password'];
 	$user_email = $_POST['user_email'];
-			$user_phone = $_POST['user_phone'];
+	$user_phone = $_POST['user_phone'];
 			
 		//save to database
-		$user_id = random_num(20);
-		$query = "INSERT INTO users ('user_id','user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_id','$user_name','$password','$user_email','$user_phone', '1');";
+		$sql = "INSERT INTO users ('user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_name','$password','$user_email','$user_phone', '1')";
 
-		mysqli_query($conn, $query);
-		header("Location:login.php");
-					die();
+		if (mysqli_query($conn, $sql)){
+			echo "You have register successfully! ";
+		}else{
+			echo "Error: " .$sql ." ". mysql_error($conn);
+		}
+		mysql_close($conn);
 	}
-        
-?>    
+?>     
 <div class="container">
 	<form method="post">
 		<legend class="title text-center">User Sign Up </legend>

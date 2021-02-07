@@ -1,5 +1,4 @@
 <?php
-
   $dbhost = 'remotemysql.com';
   $dbuser = 'SFPyG7VYOT';
   $dbpass = 'R40eEhD49P';
@@ -12,3 +11,10 @@ $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 //} else {
 //  echo "Databse connection successful";
 //}
+
+if(!$conn){
+  die('Could not connect mysql: ' .mysql_error());
+}
+
+//SESSION_START();
+?>

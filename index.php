@@ -1,6 +1,8 @@
 <?php 
+	SESSION_START();
 	include("lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
+	
 ?>
 
 <div id="main">
@@ -13,6 +15,7 @@
 					<p class="mb-4">
 						Hey, check this out.
 					</p>
+					<p>Welcome to homepage</p>
 					<a href="browse.php" class="btn btn-primary">Browse more campaigns</a>
 				</div>
 			</div>
@@ -46,5 +49,8 @@
 
 	</div>
 </div>
+
+
+
 
 <?php include(ROOT_PATH . "app/includes/footer.html"); ?>

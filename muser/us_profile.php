@@ -1,6 +1,8 @@
 <?php 
+  SESSION_START();
 	include("../lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
+
 ?>
 <div class="container">
       <div class="main-body">  
@@ -9,13 +11,9 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                  <img src="<?php echo $_SESSION['users']->user_img; ?>" class="rounded-circle" width="150" alt="">
                     <div class="mt-3">
-                      <h4>John Doe</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                      <button class="btn btn-primary">Follow</button>
-                      <button class="btn btn-outline-primary">Message</button>
+                      <h4><?php echo $_SESSION['users']->user_name; ?></h4>
                     </div>
                   </div>
                 </div>
@@ -50,10 +48,10 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Welcome Back! </h6>
+                      <h5 class="mb-0">Welcome Back!</h5>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                    <?php echo $_SESSION['users']->user_name; ?>
                     </div>
                   </div>
                 </div>
@@ -62,9 +60,19 @@
                 <div class="col-sm-12 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      
+                    <form method="POST" action="muser/us_editprofile.php">
+                      <h6 class="d-flex align-items-center mb-3">
+                        <i class="material-icons text-info mr-2">User Name</i><?php echo $_SESSION['users']->user_name; ?></h6> 
+                      <h6 class="d-flex align-items-center mb-3">
+                        <i class="material-icons text-info mr-2">User ID</i><?php echo $_SESSION['users']->user_id; ?></h6>
+                      <h6 class="d-flex align-items-center mb-3">
+                        <i class="material-icons text-info mr-2">Password</i><?php echo $_SESSION['users']->password; ?></h6>
+                      <h6 class="d-flex align-items-center mb-3">
+                        <i class="material-icons text-info mr-2">Email</i><?php echo $_SESSION['users']->user_email; ?></h6>
+                      <h6 class="d-flex align-items-center mb-3"> 
+                        <i class="material-icons text-info mr-2">Contact No. (+60)</i><?php echo $_SESSION['users']->user_phone; ?></h6>
+                      <a href="us_editprofile.php" text-align="right"></br>Click to Update Profile</a>
+                    </form>
                     </div>
                   </div>
                 </div>                  

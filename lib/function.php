@@ -42,4 +42,27 @@
     return $text;
   }
 
+  //org_profile
+  function session_value($val){
+    if($val=="org_id"){
+      $res=$_SESSION['org_id'];
+    }elseif($val=="org_name"){
+      $res=$_SESSION['org_name'];
+    }elseif($val=="login"){
+      $res=$_SESSION['login_org'];
+    }
+    return $res;
+  }
+  function user_check($page){
+    if($page=="home"){
+      if(length(session_value("login"))!='1'){
+        header("location:  index.php");
+      }
+    }if($page==""){
+      $ss=length(session_value("login"));
+      if(length(session_value("login"))=='1'){
+        header("location:  index.php?remark_login=failed");
+      }
+    }
+
 ?>

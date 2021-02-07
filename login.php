@@ -1,7 +1,7 @@
 <?php 
-	session_start();
+	SESSION_START();
 	include("lib/path.php"); 
-	include(ROOT_PATH . "app/includes/header.php"); 
+	include(ROOT_PATH . "app/database/connect.php");
 
 	if(isset($_REQUEST['login'])){
 	$arr = [];
@@ -23,22 +23,38 @@
 				header("location:index.php");
 			}
 			else{
-				echo " wrong username or password! Please retry again";
+				array_push($arr, "Wrong username or password! Please retry again.");
 			}
 		
 		}
 	}
 
-	if(isset($_POST['login'])) {
-		
-	}
+	include(ROOT_PATH . "app/includes/header.php"); 
+
 ?>
 
 	<div class="login-box">
 		<form method="post" class="login-form">
+		
+			<!---Display validation message---->
+				<?php
+					if(isset($arr) && count($arr) > 0){
+						foreach($arr as $error){
+							?>
+						<div class="alert alert-danger " >
+							<span>	
+								<?php
+								echo $error;
+							} ?>
+							</span>
+						</div>
+					<?php
+						}
+					?>
+			
 			<h1>LOGIN</h1>
-			<input id="user_name" type="text" name="user_name"  placeholder="Username" require>
-			<input id="password" type="password" name="password"  placeholder="Password" require>
+			<input id="user_name" type="text" name="user_name"  placeholder="Username" >
+			<input id="password" type="password" name="password"  placeholder="Password" >
 			<input id="button" type="submit" value="Login" name="login">
 
 			</br></br><p>Don't have a account?

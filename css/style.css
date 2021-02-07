@@ -176,10 +176,9 @@ cursor: pointer;
 .login-form{
   width: 300px;
   padding: 40px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  position: relative;
+  left: 40%;
+  transform: translate(0,10%);
   text-align: center;
   border-radius: 20px;
   background: #ffd66b;
@@ -237,12 +236,12 @@ cursor: pointer;
 
 /* Footer  */
   .footer-site {
-    position: relative;
-    padding:50px 0;
-    margin-top:380px;
+    padding:60px 0;
+    margin-top:200px;
     color:rgb(250, 180, 35);
     background-color:#282d32;
-    
+    height: 400px;
+
   }
 
   .footer-site h3 {
@@ -276,7 +275,7 @@ cursor: pointer;
   }
 
   .footer-site .feature.text p {
-    opacity:0.6;
+    opacity:0.5;
     margin-bottom:0;
   }
 
@@ -291,7 +290,7 @@ cursor: pointer;
     line-height:36px;
     display:inline-block;
     text-align:center;
-    border-radius:50%;
+    border-radius:30%;
     box-shadow:0 0 0 1px rgba(255, 253, 253, 0.767);
     margin:0 8px;
     color:rgb(250, 189, 67);
@@ -304,7 +303,7 @@ cursor: pointer;
 
   .footer-site .designed {
     text-align:center;
-    /* padding-top:24px; */
+    padding-top:24px;
     opacity:0.3;
     font-size:15px;
     margin-bottom:0;
