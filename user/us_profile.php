@@ -1,5 +1,5 @@
 <?php 
-	include("../lib/path.php"); 
+	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 ?>
 <div class="container">

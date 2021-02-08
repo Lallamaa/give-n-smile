@@ -1,6 +1,6 @@
 <?php 
   session_start();
-	include("../lib/path.php"); 
+	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
   $id=$_SESSION['users'];
@@ -18,7 +18,7 @@
         <div> Contact number : <?php echo $_SESSION['users']->user_phone; ?></div>
     </form>             
         
-        <div class="container">
+<div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
