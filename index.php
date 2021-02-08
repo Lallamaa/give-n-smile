@@ -1,33 +1,15 @@
 <?php 
-	SESSION_START();
-	include("lib/path.php"); 
+	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
-	
+	//checking if user already login
+	// if(!isset($_SESSION['username'])){
+	// 	header('Location: index.php');
+	// }
 ?>
 
 <div id="main">
-		<div class="container-fliud">
-			<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_3.jpeg);">
-				<div class="content">
-				   <h2 class="mb-4">
-					Jumbotron with background image
-					</h2>
-					<p class="mb-4">
-						Hey, check this out.
-					</p>
-					<p>Welcome to homepage</p>
-					<a href="browse.php" class="btn btn-primary">Browse more campaigns</a>
-				</div>
-			<?php endif ?>
-			<!-- logged in user information -->
-			<div class="profile-info">
-				<img src="<?php echo BASE_URL;?>image/user_profile.png">
-			</div>
-				<?php if (isset($_SESSION['users'])) :?>
-					<strong><?php echo $_SESSION['users']['username']; ?></strong>
-				<?php endif ?>
-		</div>
-		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_3.jpeg);">
+	<div class="container-fliud">
+		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(app/image/jumbo_3.jpeg);">
 			<div class="content">
 					<h2 class="mb-4">
 				Jumbotron with background image
@@ -73,12 +55,13 @@
 			<div class="card-body">
 				<h5 class="card-title">Start your fundraise now !</h5>
 				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary">Fundraise</a>
+				<a href="<?php echo BASE_URL;?>fundraise.php" class="btn btn-primary">Fundraise</a>
 			</div>
 			<div class="card-footer text-muted">
 				2 days ago
 			</div>
 		</div>
+
 	</div>
 </div>
 

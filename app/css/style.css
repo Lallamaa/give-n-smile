@@ -189,7 +189,7 @@ cursor: pointer;
 .login-form h1, .login-form p{
   color: #214151;
 }
-.login-form input[type="text"], .login-form input[type="password"]{
+.login-form input[type="text"], .login-form input[type="email"], .login-form input[type="password"]{
   border:0;
   background: #e6e6e6;
   display: block;
@@ -200,7 +200,7 @@ cursor: pointer;
   outline: none;
   border-radius: 24px;
 }
-.login-form input[type="text"]:hover, .login-form input[type="password"]:hover{
+.login-form input[type="text"]:hover, .login-form input[type="email"]:hover, .login-form input[type="password"]:hover{
   background: #c6ebc9;
 }
 .login-form #button{
@@ -331,3 +331,7 @@ cursor: pointer;
 
 
 /* -End of Admin Site- */
+
+.s-slide {
+  object-fit: cover;
+}

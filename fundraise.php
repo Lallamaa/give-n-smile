@@ -1,12 +1,13 @@
 <?php
-	include("lib/path.php"); 
+	session_start();
+	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
-	include(ROOT_PATH . "lib/function.php");
+	include(ROOT_PATH . "app/lib/function.php");
 
-	if (!isOrganization()) {
-		$_SESSION['fund'] = "You must login first";
-		header('Location: login.php');
-	}
+	// if (!isOrganization()) {
+	// 	$_SESSION['fund'] = "You must login first";
+	// 	header('Location: login.php');
+	// }
 
 
 ?>
@@ -20,7 +21,14 @@
 			<div class="card-body">
 				<h5 class="card-title">Start your fundraise now!</h5>
 				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary" name="fund">Fundraise</a>
+				<a href="user/create_fund.php" class="btn btn-primary" name="fund">Fundraise</a>
+				<?php 
+					// if ($_SESSION['usertype']=='user') {
+					// 	echo '<a href="user/create_fund.php" class="btn btn-primary" name="fund">Fundraise</a>';
+					// } else {
+					// 	echo '<a href="organization/create_camp.php" class="btn btn-primary" name="fund">Create Campaign</a>';
+					// }
+				?>
 			</div>
 			<div class="card-footer text-muted">
 				2 days ago

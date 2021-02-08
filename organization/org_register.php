@@ -1,7 +1,7 @@
 <?php 
-        session_start();
+   session_start();
 
-	include("../lib/path.php"); 
+	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
     
     if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -10,15 +10,15 @@
 		$org_name = $_POST['org_name'];
 		$org_password = $_POST['org_password'];
 		$org_email = $_POST['org_email'];
-                $org_category = $_POST['org_category'];
-                $org_weblink = $_POST['org_weblink'];
-                $org_fblink = $_POST['org_fblink'];
-                $org_xtralink = $_POST['org_xtralink'];
-                $org_address = $_POST['org_address'];
-                $org_state = $_POST['org_state'];
-                $org_city = $_POST['org_city'];
-                $org_zipcode = $_POST['org_zipcode'];
-                $org_contact = $_POST['org_contact'];
+		$org_category = $_POST['org_category'];
+		$org_weblink = $_POST['org_weblink'];
+		$org_fblink = $_POST['org_fblink'];
+		$org_xtralink = $_POST['org_xtralink'];
+		$org_address = $_POST['org_address'];
+		$org_state = $_POST['org_state'];
+		$org_city = $_POST['org_city'];
+		$org_zipcode = $_POST['org_zipcode'];
+		$org_contact = $_POST['org_contact'];
 
         if(!empty($org_name) && !is_numeric($org_name) &&!empty($org_password) && !empty($org_email) && !empty($org_category) && 
         !empty($org_weblink) && !empty($org_fblink) && !empty($org_xtralink) && !empty($org_address) && !empty($org_state) &&

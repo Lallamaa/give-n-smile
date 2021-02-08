@@ -14,7 +14,6 @@ function login() {
 
   // attempt login if no error on form
   if (count($errors)==0) {
-    $password = md5($password);
 
     $query = "SELECT * FROM users WHERE user_name"
   }

@@ -1,7 +1,6 @@
 <?php
-  include('../lib/path.php');
-  include(ROOT_PATH . 'app/database/connect.php');
-  include('./includes/top.inc.php');
+  include('../app/lib/path.php');
+  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
 
     if (isset($_GET['type']) && $_GET['type']!='') {
       $type=get_safe_value($_GET['type']);
