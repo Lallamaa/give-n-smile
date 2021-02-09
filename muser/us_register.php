@@ -1,8 +1,8 @@
 <?php 
-	//session_start();
-	include("../lib/path.php"); 
-	include("../app/includes/header.php"); 
-	include("../lib/function.php");
+	session_start();
+	include("../app/lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php");
+	include(ROOT_PATH . "app/lib/function.php");
 
 	if (isset($_REQUEST['submit'])) {
         //Check All Field Are Blank Or Not
@@ -38,7 +38,7 @@
 	
 				mysqli_query($conn, $query);
 	
-				//header("Location:login.php");
+				// header("Location:login.php");
 				die;
 			}
 		}

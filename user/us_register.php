@@ -3,25 +3,39 @@
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
-	//something was posted
-	$user_name = $_POST['user_name'];
-	$password = $_POST['password'];
-	$user_email = $_POST['user_email'];
-	$user_phone = $_POST['user_phone'];
-			
-		//save to database
-		$sql = "INSERT INTO users ('user_name','password','user_email','user_phone', 'user_status') VALUES ('$user_name','$password','$user_email','$user_phone', '1')";
+	$error = "";
 
-		if (mysqli_query($conn, $sql)){
-			echo "You have register successfully! ";
-		}else{
-			echo "Error: " .$sql ." ". mysql_error($conn);
-		}
-		mysql_close($conn);
+	if(isset($_POST['register']))
+	{
+
+	//something was posted
+  $username = $_POST['user_name'];
+  $email = $_POST['user_email'];
+  $phone = $_POST['user_phone'];
+  $prepassword = $_POST['password'];
+  $conpassword = $_POST['confirmpassword'];
+	$usertype = $_POST['usertype'];
+	$image = $_POST['image'];
+
+
+	if($prepassword !== $conpassword) {
+		$error = "Passwords does not match";
+	} else {
+		$password = password_hash($prepassword, PASSWORD_DEFAULT);
 	}
-?>     
+		//save to database
+		$query = "INSERT INTO users (`user_name`, `password`, user_email,user_phone, user_status, user_img) 
+							VALUES ('$username','$password','$email','$phone', '1', 'avatar.png')";
+
+		mysqli_query($conn, $query);
+		header("Location:login.php");
+		die();
+	}
+	
+  
+?>    
 <div class="container">
-	<form method="post" action="<?php echo BASE_URL;?>app/lib/reg.inc.php">
+	<form method="post">
 		<legend class="title text-center">User Sign Up </legend>
 		<fieldset class="form-box card card-box shadow p-3 mb-5 bg-white rounded">
 			<div class="card-body ">					
@@ -30,7 +44,6 @@
 								class="form-text"
 								type="text" 
 								name="user_name"
-								id="user_name"
 								required 
 								maxlength="50" 
 								placeholder="(Max 20 characters)"
@@ -41,7 +54,6 @@
 								class="form-text"
 								type="email" 
 								name="user_email"
-								id="user_email" 
 								required 
 								placeholder="Enter your email"
 								value="<?php $email; ?>">
@@ -51,7 +63,6 @@
 								class="form-text"
 								type="text" 
 								name="user_phone"
-								id="user_phone"
 								required 
 								maxlength="11" 
 								placeholder="Enter your phone no."
@@ -60,7 +71,6 @@
 				<label for="inputPassword1" class="form-label">Password</label>
 				<input  type="password" 
 								name="password" 
-								id="password"
 								class="form-control" 
 								aria-describedby="passwordHelpBlock" 
 								required
@@ -75,7 +85,6 @@
 				<label for="inputPassword2" class="form-label">Re-enter Password</label>
 				<input  type="password" 
 								name="confirmpassword" 
-								id="conpassword"
 								class="form-control" 
 								aria-describedby="passwordHelpBlock" 
 								required
@@ -85,6 +94,8 @@
 								value="<?php $conpassword; ?>">				
 				<br>
 				<input type="hidden" name="usertype" value="user">
+				<input type="hidden" name="image" value="avatar.png">
+
 				<button type="submit" class="btn btn-primary" name="registerbtn"> Sign Up </button>
 			</div>
 		</fieldset>

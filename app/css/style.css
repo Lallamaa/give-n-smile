@@ -509,18 +509,18 @@ font-family: Arial, sans-serif;
 color: #214151;
 }
 .login-form input[type="text"], .login-form input[type="email"], .login-form input[type="password"]{
-border:0;
-background: #e6e6e6;
-display: block;
-margin: 20px auto;
-text-align: center;
-padding: 14px 10px;
-width: 200px;
-outline: none;
-border-radius: 24px;
+  border:0;
+  background: #e6e6e6;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  border-radius: 24px;
 }
 .login-form input[type="text"]:hover, .login-form input[type="email"]:hover, .login-form input[type="password"]:hover{
-background: #c6ebc9;
+  background: #c6ebc9;
 }
 .login-form #button{
 border:0;
@@ -899,5 +899,5 @@ float: left;
 /* -End of Admin Site- */
 
 .s-slide {
-object-fit: cover;
+  object-fit: cover;
 }

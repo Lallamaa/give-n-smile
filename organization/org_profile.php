@@ -1,6 +1,8 @@
-<?php 
-	include("../lib/path.php"); 
-	include(ROOT_PATH . "app/includes/header.php");
+<?php   
+  session_start();
+  include("../app/lib/path.php"); 
+  include(ROOT_PATH . "app/includes/header.php");
+  include(ROOT_PATH . "app/lib/function.php");
 ?>
 
 <?php

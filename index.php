@@ -1,14 +1,15 @@
 <?php 
-	SESSION_START();
-	include('../lib/path.php'); 
-	include(ROOT_PATH . 'app/includes/header.php'); 
-
-	
+	include("app/lib/path.php"); 
+	include(ROOT_PATH . "app/includes/header.php"); 
+	//checking if user already login
+	// if(!isset($_SESSION['username'])){
+	// 	header('Location: index.php');
+	// }
 ?>
 
 <div id="main">
-		
-		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(image/jumbo_3.jpg);">
+	<div class="container-fliud">
+		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(app/image/jumbo_3.jpeg);">
 			<div class="content">
 					<h2 class="mb-4">Make a donation</h2>
 				<p class="mb-4">
@@ -51,13 +52,14 @@
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">Start your fundraise now !</h5>
-				<p class="card-text">Your support is hugely demanded for us to be able to continuously offer the supports to all the charity organization here.</p>
-				<a href="#" class="btn btn-primary">Fundraise</a>
+				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+				<a href="<?php echo BASE_URL;?>fundraise.php" class="btn btn-primary">Fundraise</a>
 			</div>
 			<div class="card-footer text-muted">
 				2 days ago
 			</div>
 		</div>
+
 	</div>
 </div>
 <?php include(ROOT_PATH . "app/includes/footer.html"); ?>
