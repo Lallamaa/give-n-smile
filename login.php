@@ -1,14 +1,14 @@
 <?php 
-	session_start();
+	//session_start();
 
-	include("app/lib/path.php"); 
-	include(ROOT_PATH . "app/includes/header.php"); //this one <<
+	include('../lib/path.php'); 
+	include('app/includes/header.php'); //this one <<
 
-
+	$error=''; 
 	if(isset($_POST['loginbtn'])) {
 		$email	= $_POST['email'];
 		$password	= $_POST['password'];
-		$error=''; 
+		
 		//user
 		$query1 = mysqli_query($conn, "SELECT * FROM users WHERE user_email='$email' AND password='$password'");
 		if(mysqli_num_rows($query1) == 0)
@@ -24,9 +24,10 @@
 			if($_SESSION['users'] == $row1['user_type'])
 			{
 				header("Location: index.php");
+				//<script> location.replace("index.php"); </script>
 			}
 			else{
-				array_push($arr, "Wrong username or password! Please retry again.");
+				$error = "Wrong username or password! Please retry again.";
 			}
 		}
 		
@@ -45,6 +46,7 @@
 			if($_SESSION['organization'] == $row2['user_type'])
 			{
 				header("Location: index.php");
+				//<script> location.replace("index.php"); </script>
 			}
 			else
 			{
@@ -53,7 +55,7 @@
 		}
 	}
 
-	include(ROOT_PATH . "app/includes/header.php"); 
+	//include(ROOT_PATH . "app/includes/header.php"); 
 
 ?>
 
@@ -78,9 +80,10 @@
 			
 			<h1>LOGIN</h1>
 			<input id="email" type="email" name="email" required placeholder="Email" required >
+			
 			<input id="password" type="password" name="password" required placeholder="Password">
 			<button id="button" type="submit" name="loginbtn">Login</button>
-			<?php //echo display_error(); ?>
+			<?php echo $error; ?>
 			<br/>
 			<p>Don't have a account?
 				<a href="pre-register.php"></br>Click to Sign Up</a>
@@ -88,4 +91,4 @@
 		</form>
 	</div>
 
-<?php //include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.html"); ?>

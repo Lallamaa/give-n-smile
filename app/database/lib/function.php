@@ -54,6 +54,7 @@
     }
     return $res;
   }
+
   function user_check($page){
     if($page=="home"){
       if(length(session_value("login"))!='1'){
@@ -65,5 +66,6 @@
         header("location:  index.php?remark_login=failed");
       }
     }
+  }
 
 ?>
