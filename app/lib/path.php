@@ -9,11 +9,12 @@
   // //   define('BASE_URL', "https://$_SERVER[HTTP_HOST]");
   // // }
 
+  // if ($_SERVER['SERVER_NAME'] == 'localhost') {  
+  //     define("BASE_URL","/fyp/");
+  //     define("ROOT_PATH",$_SERVER["DOCUMENT_ROOT"] . "/fyp/");
+  // }
+  // else
   if ($_SERVER['SERVER_NAME'] == 'localhost') {  
-      define("BASE_URL","/fyp/");
-      define("ROOT_PATH",$_SERVER["DOCUMENT_ROOT"] . "/fyp/");
-  }
-  elseif ($_SERVER['SERVER_NAME'] == '127.0.0.1') {  
     define("BASE_URL","/give-n-smile/");
     define("ROOT_PATH",$_SERVER["DOCUMENT_ROOT"] . "/give-n-smile/");
 }

@@ -12,7 +12,7 @@
 	<title> Give & Sm:)e </title>
 
   <!-- Bootstrap CSS -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+ <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> --> 
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -127,8 +127,44 @@ function deleteINsession(){
             <?php
                 if(isset($_SESSION['users'])){
             ?>  <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
-                <li class="nav-item"><a class="nav-link" href="muser/us_profile.php" name="profile">Profile</a></li> <?php
+                <li class="nav-item"><a class="nav-link" href="user/us_profile.php" name="profile">Profile</a></li> 
+                
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                    <ul class="dropdown-menu dropdown-cart" role="menu">
+                        <?php 
+                        //   if(!empty($_SESSION['cart'])) {
 
+                        //     foreach($_SESSION['cart'] as $key => $value) {
+                        //         $outputCart = '';
+                        //         $outputCart .= '
+                        //         <li>
+                        //         <span class="item">
+                        //             <span class="item-left">
+                        //                 <img src="'.$value[e_image].'" alt="" />
+                        //                 <span class="item-info">
+                        //                     <span>'.$value[e_name].'/span>
+                        //                     <span>RM '.number_format($value[e_amount], 2).'</span>
+                        //                 </span>
+                        //                 </span>
+                        //                 <span class="item-right">
+                        //                     <button class="btn btn-xs btn-danger pull-right delete">x</button>
+                        //                 </span>
+                        //             </span>
+                        //         </li>'
+                        //     }
+                        // }
+                        ?>         
+                        <li class="divider"></li>
+                        <li><a class="text-center" href="<?= BASE_URL; ?>payment.php">View Cart</a></li>
+                    </ul>
+                    </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+
+                <?php
                 }else{
                     ?> <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
                     <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a></li>
@@ -145,43 +181,6 @@ function deleteINsession(){
             </form> -->
             </div>
         </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-     
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span></a>
-          <ul class="dropdown-menu dropdown-cart" role="menu">
-              <?php 
-            //   if(!empty($_SESSION['cart'])) {
-
-            //     foreach($_SESSION['cart'] as $key => $value) {
-            //         $outputCart = '';
-            //         $outputCart .= '
-            //         <li>
-            //         <span class="item">
-            //             <span class="item-left">
-            //                 <img src="'.$value[e_image].'" alt="" />
-            //                 <span class="item-info">
-            //                     <span>'.$value[e_name].'/span>
-            //                     <span>RM '.number_format($value[e_amount], 2).'</span>
-            //                 </span>
-            //                 </span>
-            //                 <span class="item-right">
-            //                     <button class="btn btn-xs btn-danger pull-right delete">x</button>
-            //                 </span>
-            //             </span>
-            //         </li>'
-            //     }
-            // }
-            ?>         
-              <li class="divider"></li>
-              <li><a class="text-center" href="<?= BASE_URL; ?>payment.php">View Cart</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
        
         <div class="btn-group dropstart">
             <button class="btn btn-primary-outline dropdown-toggle " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -202,28 +201,7 @@ function deleteINsession(){
 
 						 }
 						
-						?>               
-                <li><a class="nav-link" 
-                        href="<?php echo BASE_URL; ?>
-                                <?php if(isset($_SESSION['user_type'])=='user') { 
-                                         echo 'user/us_profile.php';
-                                        } elseif(isset($_SESSION['user_type'])=='organization') {
-                                            echo 'organization/org_profile.php';
-                                        } else {
-											    echo 'pre-register.php';
-											}?>
-                              ">Account</a></li>
-								<li><a class="nav-link" 
-                      	href="<?php echo BASE_URL; ?>
-                                <?php if(isset($_SESSION['user_type'])=='user') { 
-                                         echo 'user/us_edit.php';
-                                        } elseif(isset($_SESSION['user_type'])=='organization') {
-											    echo 'organization/org_edit.php';
-                                        } else {
-												echo 'pre-register.php';
-										}?>">Setting</a></li>                
-								<li><hr class="dropdown-divider"></li>
-                <li><a class="nav-link" name="logout" href="index.php?logout='1"><i class="fa fa-power-off"></i>Logout</a></li>
+						?>                          
             </ul>
         </div>
 

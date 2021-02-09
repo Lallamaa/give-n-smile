@@ -2,7 +2,6 @@
 	session_start();
 	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
-	include(ROOT_PATH . "app/lib/function.php");
 
 	// if (!isOrganization()) {
 	// 	$_SESSION['fund'] = "You must login first";
