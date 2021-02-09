@@ -203,6 +203,27 @@ function deleteINsession(){
 						 }
 						
 						?>               
+                <li><a class="nav-link" 
+                        href="<?php echo BASE_URL; ?>
+                                <?php if(isset($_SESSION['user_type'])=='user') { 
+                                         echo 'user/us_profile.php';
+                                        } elseif(isset($_SESSION['user_type'])=='organization') {
+                                            echo 'organization/org_profile.php';
+                                        } else {
+											    echo 'pre-register.php';
+											}?>
+                              ">Account</a></li>
+								<li><a class="nav-link" 
+                      	href="<?php echo BASE_URL; ?>
+                                <?php if(isset($_SESSION['user_type'])=='user') { 
+                                         echo 'user/us_edit.php';
+                                        } elseif(isset($_SESSION['user_type'])=='organization') {
+											    echo 'organization/org_edit.php';
+                                        } else {
+												echo 'pre-register.php';
+										}?>">Setting</a></li>                
+								<li><hr class="dropdown-divider"></li>
+                <li><a class="nav-link" name="logout" href="index.php?logout='1"><i class="fa fa-power-off"></i>Logout</a></li>
             </ul>
         </div>
 

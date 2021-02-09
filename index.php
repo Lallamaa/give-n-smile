@@ -11,11 +11,9 @@
 	<div class="container-fliud">
 		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(app/image/jumbo_3.jpeg);">
 			<div class="content">
-					<h2 class="mb-4">
-				Jumbotron with background image
-				</h2>
+					<h2 class="mb-4">Make a donation</h2>
 				<p class="mb-4">
-					Hey, check this out.
+					By changing the life of those who need help
 				</p>
 				<a href="browse.php" class="btn btn-primary">Browse more campaigns</a>
 			</div>
@@ -35,7 +33,7 @@
 					<img class="d-block w-100" src="app/image/jumbo_2.jpg" alt="Second slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="app/image/jumbo_3.jpeg" alt="Third slide">
+					<img class="d-block w-100" src="app/image/jumbo_4.jpg" alt="Third slide">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -64,8 +62,4 @@
 
 	</div>
 </div>
-
-
-
-
 <?php include(ROOT_PATH . "app/includes/footer.html"); ?>

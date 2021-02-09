@@ -126,9 +126,10 @@
 			
 			<h1>LOGIN</h1>
 			<input id="email" type="email" name="email" required placeholder="Email" required >
+			
 			<input id="password" type="password" name="password" required placeholder="Password">
 			<button id="button" type="submit" name="loginbtn">Login</button>
-			<?php //echo display_error(); ?>
+			<?php echo $error; ?>
 			<br/>
 			<p>Don't have a account?
 				<a href="pre-register.php"></br>Click to Sign Up</a>
@@ -136,4 +137,4 @@
 		</form>
 	</div>
 
-<?php //include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.html"); ?>

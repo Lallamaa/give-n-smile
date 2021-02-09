@@ -1,10 +1,10 @@
 <?php 
-	include("app/lib/path.php"); 
-	include(ROOT_PATH . "app/includes/header.php"); 
+	include('app/lib/path.php'); 
+	include(ROOT_PATH . 'app/includes/header.php'); 
 ?>
 
     <div class="container-fliud">
-        <h2 class="my-5 ml-5"> Please choose a category to Sign Up </h2>
+        <h2 class="my-5 ml-5">Please choose a category to Sign Up </h2>
         <div class="container"> 
             <div class="pre-box box box-camp col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div>Charity Organization</div>
@@ -19,4 +19,4 @@
         </div>
     </div>
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . 'app/includes/footer.html'); ?>
