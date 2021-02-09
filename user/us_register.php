@@ -25,7 +25,7 @@
 	}
 		//save to database
 		$query = "INSERT INTO users (`user_name`, `password`, user_email,user_phone, user_status, user_img) 
-							VALUES ('$username','$password','$email','$phone', '1', 'avatar.png')";
+							VALUES ('$username','$password','$email','$phone', '1', '$image')";
 
 		mysqli_query($conn, $query);
 		header("Location:login.php");

@@ -37,6 +37,9 @@
 			echo "Please enter some valid information!";
 		}
 	}
+
+	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
+	$category = mysqli_query($conn, $queryy);
 ?>
 
 <div class="container">
@@ -46,14 +49,14 @@
           <div class="card-body">
 						
 						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" name="org_category" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-								Category
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<?php 
-									echo '<li><i class="dropdown-item" value='?><?php"">'.category.'</i></li>'
-								
-							</ul>
+								<select class="form-control search-slt btn-secondary dropdown-toggle" id="exampleFormControlSelect1">
+									<option>Select Category</option>
+									<?php while($row = mysqli_fetch_array($category)) 
+										{
+											echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
+										} ?>
+
+							</select>
 						</div><br>
             <label for="coUsername"> Organization Name </label>
             <input  class="form-control" 

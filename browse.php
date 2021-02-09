@@ -10,146 +10,23 @@
 
 	$state = '';
 	$city = '';
-	$category = '';
 
-	$query1 = "SELECT `state` FROM `state_city` GROUP BY `state` ORDER BY `state` ASC";
-	$result1 = mysqli_query($conn, $query1);
-	while($row1 = mysqli_fetch_array($result1))
+	$query = "SELECT `state` FROM `state_city` GROUP BY `state` ORDER BY `state` ASC";
+	$result = mysqli_query($conn, $query);
+	while($row = mysqli_fetch_array($result))
 	{
-	$state.= '<option value="'.$row1["state"].'">'.$row1["state"].'</option>';
+	$state.= '<option value="<?= $row["state"]; ?>"><?= $row["state"]; ?></option>';
 	}
-	// $query2 = "SELECT `state`, `city` FROM `state_city` WHERE `state`='$state' GROUP BY `state` ORDER BY `city` ASC";
-	// $result2 = mysqli_query($conn, $query2);
-	// while($row2 = mysqli_fetch_array($result2))
-	// {
-	// $city.= '<option value="'.$row2["city"].'">'.$row2["city"].'</option>';
-	// }
-	// $query3 = "SELECT `cat_name` FROM `category` GROUP BY `cat_name` ASC";
-	// $result3 = mysqli_query($conn, $query3);
-	// while($row3 = mysqli_fetch_array($result3))
-	// {
-	// 	$category.= '<option value="'.$row1["cat_name"].'">'.$row1["cat_name"].'</option>';
-	// }
+
+	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
+	$category = mysqli_query($conn, $queryy);
+
+	$sql = "SELECT * FROM events";
+	$result = mysqli_query($conn, $sql);
+	
 	
 ?>
 
-<style>.tile-progress {
-background-color: #303641;
-color: #fff;
-}
-.tile-progress {
-background: #00a65b;
-color: #fff;
-margin-bottom: 20px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-border-radius: 5px;
--webkit-background-clip: padding-box;
--moz-background-clip: padding;
-background-clip: padding-box;
--webkit-border-radius: 3px;
--moz-border-radius: 3px;
-border-radius: 3px;
-}
-.tile-progress .tile-header {
-padding: 15px 20px;
-padding-bottom: 40px;
-}
-.tile-progress .tile-progressbar {
-height: 2px;
-background: rgba(0,0,0,0.18);
-margin: 0;
-}
-.tile-progress .tile-progressbar span {
-background: #fff;
-}
-.tile-progress .tile-progressbar span {
-display: block;
-background: #fff;
-width: 0;
-height: 100%;
--webkit-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
--moz-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
--o-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
-transition: all 1.5s cubic-bezier(0.230,1.000,0.320,1.000);
-}
-.tile-progress .tile-footer {
-padding: 20px;
-text-align: right;
-background: rgba(0,0,0,0.1);
--webkit-border-radius: 0 0 3px 3px;
--webkit-background-clip: padding-box;
--moz-border-radius: 0 0 3px 3px;
--moz-background-clip: padding;
-border-radius: 0 0 3px 3px;
-background-clip: padding-box;
--webkit-border-radius: 0 0 3px 3px;
--moz-border-radius: 0 0 3px 3px;
-border-radius: 0 0 3px 3px;
-}
-.tile-progress.tile-red {
-background-color: #f56954;
-color: #fff;
-}
-.tile-progress {
-background-color: #303641;
-color: #fff;
-}
-.tile-progress.tile-blue {
-background-color: #0073b7;
-color: #fff;
-}
-.tile-progress.tile-aqua {
-background-color: #00c0ef;
-color: #fff;
-}
-.tile-progress.tile-green {
-background-color: #00a65a;
-color: #fff;
-}
-.tile-progress.tile-cyan {
-background-color: #00b29e;
-color: #fff;
-}
-.tile-progress.tile-purple {
-background-color: #ba79cb;
-color: #fff;
-}
-.tile-progress.tile-pink {
-background-color: #ec3b83;
-color: #fff;
-}
-.progress.active .progress-bar {
-    -webkit-transition: none !important;
-    transition: none !important;
-}
-/*search box css start here*/
-.search-sec{
-    background: #1A4668;padding: 2rem;
-}
-.search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
-.wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-     height: calc(3rem + 2px) !important;
-     border-radius:0;
-}
-
-
-</style>
 <script>
 	$(".progress-bar").animate({
     width: "50%"
@@ -312,7 +189,7 @@ color: #fff;
                             </select> 
                         </div>
                          <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+                            <select class="form-control search-slt" id="action">
                                 <option>Select Drop City</option>
 																<?php echo $city; ?>
                             </select>
@@ -320,7 +197,10 @@ color: #fff;
                           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="exampleFormControlSelect1">
                                 <option>Select Category</option>
-																<?php echo $category; ?>
+																<?php while($row = mysqli_fetch_array($category)) 
+																	{
+																		echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
+																	} ?>
 
                             </select>
                         </div>
@@ -336,7 +216,9 @@ color: #fff;
 	<div class="card">
 		<div class="card-body">
 			<div class="row">
-				<?php echo '
+				<?php 
+					while($row = mysqli_fetch_array($result)) {
+				?>
 					<div class="col-sm-6 col-lg-4 mb-4">
 						<div class="card-body">
 							<div class="candidate-list candidate-grid">
@@ -344,13 +226,13 @@ color: #fff;
 								<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 									<div class="carousel-inner">
 										<div class="carousel-item active">
-										<img class="img-fluid d-block w-100" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+										<img class="img-fluid d-block w-100" src="app/image/<?= $row['event_img']; ?>" alt="" style="width:200; height:200;">
 										</div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="">
+										<img class="img-fluid d-block w-100" src="app/image/<?= $row['event_img']; ?>" alt="" style="width:200; height:200;">
 										</div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+										<img class="img-fluid d-block w-100" src="app/image/<?= $row['event_img']; ?>" alt="" style="width:200; height:200;">
 										</div>
 									</div>
 									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -365,37 +247,45 @@ color: #fff;
 									<div class="tile-progress tile-primary active progress">									
 										<div class="tile-progressbar progress-bar">
 											<span data-fill="90%" style="width: 90%;"></span>
-										</div>										
+										</div>
+										<div class="text-right">RM <?= number_format($row['event_amount'], 2); ?></div>										
 									</div>
 								
 								<div class="candidate-list-details">
 									<div class="candidate-list-info">
 										<div class="candidate-list-title">
-											<h5 class="card-title">Campaign Title</h5>
-											<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+											<h5 class="card-title"><?= $row['event_name']; ?></h5>
+											<p class="card-text"><?= substr($row['event_desc'], 0, 200); ?> "...".'</p>
 										</div>
 									</div>
 									<div><br>
-										<div class="card-title"><a href="org_profile.php">Organization Name</a></div>
-										<div class="card-subtitle text-muted"><i class="fas fa-map-marker-alt pr-1"></i><small>Area Name</small></div>
+										<div class="card-title"><a href="org_profile.php"><?=$row['event_organizer']; ?></a></div>
+										<div class="card-subtitle text-muted"><i class="fas fa-map-marker-alt pr-1"></i><small><?= $row['event_area']; ?></small></div>
 										<div class="card-body">
 											<a href="payment.php" class="btn btn-outline-warning">Donate</a>
 											<a href="details.php" class="btn btn-outline-warning">View</a>
+											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?= $row['event_name']; ?>">
+							
+											<button class="btn btn-outline-warning add" data-id="<?= $row['event_id']; ?>"><img src="<?php echo BASE_URL;?>app/image/cart.png"/></button>
+							
 										</div>
 										<div class="candidate-list-favourite-time">
 											<a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a>
-											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i>1M ago</span>
+											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_date']; ?></span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div> 					
-					';
-				?>
+					</div> 			
+				</div>
+			<?php
+				}
+			?>
+			</div>
 		</div>
 	</div>
-</div>
+
 
 				
 		<div class="row">
@@ -420,26 +310,26 @@ color: #fff;
 <?php include(ROOT_PATH . "app/includes/footer.html"); ?>
 
 <script>
-$(document).ready(function(){
- $('.action').change(function(){
-  if($(this).val() != '')
-  {
-   var action = $(this).attr("id");
-   var query = $(this).val();
-   var result = '';
-   if(action == "state")
-   {
-    result = 'city';
-   }
-   $.ajax({
-    url:"app/includes/state_city.php",
-    method:"POST",
-    data:{action:action, query:query},
-    success:function(data){
-     $('#'+result).html(data);
-    }
-   })
-  }
- });
-});
+// $(document).ready(function(){
+//  $('action').change(function(){
+//   if($(this).val() != '')
+//   {
+//    var action = $(this).attr("id");
+//    var query = $(this).val();
+//    var result = '';
+//    if(action == "state")
+//    {
+//     result = 'city';
+//    }
+//    $.ajax({
+//     url:"app/includes/state_city.php",
+//     method:"POST",
+//     data:{action:action, query:query},
+//     success:function(data){
+//      $('#'+result).html(data);
+//     }
+//    })
+//   }
+//  });
+// });
 </script>
