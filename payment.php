@@ -67,7 +67,7 @@
               <div class="card-body">
                 <div>
                   <div class="col-md-5 col-sm-12">
-                    <img src="app/image/pic_4.png" alt="" width="150" height="150" >
+                    <img src="app/image/pic_4.png" alt="" width="50" height="50" >
                   </div>
                   <div class="col-md-7 col-sm-12">
                     <div>Sample Campaign Title From Give & Smile Official</div>

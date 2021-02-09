@@ -79,14 +79,6 @@
 
 
   <div class="container">
-           
-   
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="payment-details">
-        <div class="payment-title">
-          Donate to Sample Campaign Title
-        </div>
-
         <div class="stepwizard col-md-offset-3">
           <div class="stepwizard-row setup-panel">
             <div class="stepwizard-step">
@@ -102,7 +94,7 @@
               <p>Step 3</p>
             </div>
           </div>
-        </div>
+        
           
         <form role="form" action="" method="post">
           <div class="row setup-content" id="step-1">
@@ -111,7 +103,7 @@
                 <h3> Step 1</h3>
                 <div class="form-group">
                   <label class="control-label">Campaign Name</label>
-                  <input  maxlength="255" type="text" class="form-control" placeholder="Enter Campaign Name"  />
+                  <input  maxlength="255" type="text" class="form-control" placeholder="Enter Campaign Name" value="<?php $name; ?>"/>
                 </div>
                 <div class="dropdown">
                 <label class="control-label">Select Category</label>
@@ -127,13 +119,13 @@
                 <div class="form-group">
                   <div>Campaign Date</div>
                   <label class="control-label">Start</label>
-                  <input type="date" required="required" id="dateIn" placeholder="yyyy-mm-dd"/><br>
+                  <input type="date" required="required" id="dateIn" placeholder="yyyy-mm-dd" value="<?php $start; ?>"/><br>
                   <label class="control-label">End</label>
-                  <input type="date" required="required" id="dateOut" placeholder="yyyy-mm-dd" />
+                  <input type="date" required="required" id="dateOut" placeholder="yyyy-mm-dd" value="<?php $end; ?>"/>
                 </div>
                 <div class="form-group">
                   <label class="control-label">Description</label>
-                  <textarea required="required" class="form-control" placeholder="Describe your campsign details here.." ></textarea>
+                  <textarea required="required" class="form-control" placeholder="Describe your campsign details here.." value="<?php $desc; ?>"></textarea>
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
@@ -145,15 +137,15 @@
                 <h3> Step 2</h3>
                 <div class="form-group">
                   <label class="control-label">Total Amount Expected to Raise</label><br>
-                  <input type="number" required="required" class="form-control" placeholder="Enter Total Amount (RM)" value="25" />
+                  <input type="number" required="required" class="form-control" placeholder="Enter Total Amount (RM)" value="<?php $amount; ?>"/>
                 </div>
                 <div class="form-group">
                   <label class="control-label">Area of Campaign (optional)</label>
-                  <input maxlength="200" type="text" class="form-control" placeholder="Enter Area of Campaign"  />
+                  <input maxlength="200" type="text" class="form-control" placeholder="Enter Area of Campaign" value="<?php $area; ?>" />
                 </div>
                 <div class="form-group">
                   <label class="control-label">Description Images</label>
-                  <input type="file" class="form-control" require/>
+                  <input type="file" class="form-control" require value="<?php $image; ?>"/>
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
@@ -163,7 +155,7 @@
             <div class="col-xs-6 col-md-offset-3">
               <div class="col-md-12">
                 <h3> Step 3</h3>
-                <button class="btn btn-success btn-lg pull-right" type="create">Submit</button>
+                <button class="btn btn-success btn-lg pull-right" type="submit" name="create">Submit</button>
               </div>
             </div>
           </div>

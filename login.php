@@ -127,7 +127,6 @@
 			
 			<input id="password" type="password" name="password" required placeholder="Password">
 			<button id="button" type="submit" name="loginbtn">Login</button>
-			<!---<?php echo $error; ?>--->
 			<br/>
 			<p>Don't have a account?
 				<a href="pre-register.php"></br>Click to Sign Up</a>

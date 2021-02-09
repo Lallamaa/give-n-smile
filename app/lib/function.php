@@ -67,8 +67,4 @@
       }
     }
   }
-<<<<<<< HEAD:app/database/lib/function.php
-
-=======
->>>>>>> b495dab596205a1c39fe93e75664f8f79ea8494b:app/lib/function.php
 ?>
