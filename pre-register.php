@@ -14,7 +14,7 @@
             <div class="pre-box box box-fund col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                 <div>Personal Account</div>
                 <p>Sign up to donate or fundraise for personal own business</p>
-                <a href="muser/us_register.php" class="btn btn-primary">Register for Personal Account </a>
+                <a href="user/us_register.php" class="btn btn-primary">Register for Personal Account </a>
             </div>
         </div>
     </div>

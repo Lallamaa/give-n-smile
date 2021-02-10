@@ -127,7 +127,6 @@ function deleteINsession(){
             <?php
                 if(isset($_SESSION['users'])){
             ?>  <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
-<<<<<<< Updated upstream
                 <li class="nav-item"><a class="nav-link" href="user/us_profile.php" name="profile">Profile</a></li> 
                 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -166,10 +165,6 @@ function deleteINsession(){
             </div><!-- /.navbar-collapse -->
 
                 <?php
-=======
-                <li class="nav-item"><a class="nav-link" href="user/us_profile.php" name="profile">Profile</a></li> <?php
-
->>>>>>> Stashed changes
                 }else{
                     ?> <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
                     <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a></li>

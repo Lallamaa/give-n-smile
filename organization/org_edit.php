@@ -1,4 +1,5 @@
 <?php 
+  SESSION_START();
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
 ?>
@@ -6,22 +7,6 @@
 <div align="center">
 
     <h2>Your Profile</h2>
-    <form action="" method="post" class="profile-form">
-        <div>User ID :  <?php echo $_SESSION['organization']->org_id; ?></div> 
-        <div>User Name : <?php echo $_SESSION['organization']->org_name; ?></div>
-        <div>Password : <?php echo $_SESSION['organization']->org_password; ?></div>
-		<div>Category : <?php echo $_SESSION['organization']->org_category; ?></div>
-        <div>Email : <?php echo $_SESSION['organization']->org_email; ?> </div>
-        <div>Website link : <?php echo $_SESSION['organization']->org_weblink; ?> </div>
-		<div>Extra Social Media Link : <?php echo $_SESSION['organization']->org_xtralink; ?> </div>
-		<div>Facebook Link : <?php echo $_SESSION['organization']->org_fblink; ?> </div>
-		<div>Describe : <?php echo $_SESSION['organization']->user_phone; ?></div>
-		<div>Address : <?php echo $_SESSION['organization']->org_address; ?> </div>
-		<div>City/Town : <?php echo $_SESSION['organization']->org_city; ?> </div>
-		<div>State : <?php echo $_SESSION['organization']->org_state; ?> </div>
-		<div>Zip/Postal Code : <?php echo $_SESSION['organization']->org_contact; ?> </div>
-		<div>Phone no. : <?php echo $_SESSION['organization']->org_email; ?> </div>
-		
 		<!---<a href="editprofile.php?user_name="<?php echo $_SESSION['organization']->org_id; ?> /> Edit Profile</a>
 		--->
   </form>
@@ -38,8 +23,8 @@
               <div class="mt-3">
                 <form method="POST" action="" enctype="multipart/form-data">
                   <div>
-                    <label for="floatingInputGrid">Organization Name</label>
-                    <input type="text" class="form-control" required value="Yeeshuen">
+                    <label for="floatingInputGrid"><?php echo $_SESSION['organization']->org_name; ?></label>
+                    <input type="text" class="form-control" required value="">
                   </div>
                   <div>
                     <label for="floatingInputGrid">Bio</label>
@@ -59,7 +44,7 @@
                 <div class="row g-2">
                   <div class="col-md col-sm-3" >
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingInputGrid" required value="mdo@example.com">
+                      <input type="text" class="form-control" id="floatingInputGrid" required value=" ">
                       <label for="floatingInputGrid">Organization Name</label>
                     </div>
                     <div class="form-floating">
@@ -141,3 +126,5 @@
 </div>
 
 <?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+</body>
+</html>

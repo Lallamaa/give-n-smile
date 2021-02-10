@@ -3,33 +3,90 @@
 
 	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
-	// include(ROOT_PATH . "lib/reg.inc.php");
+	//include(ROOT_PATH . "user/includes/us_reg.inc.php");
  
+		$msg='';
+		//user-site
+		if(isset($_POST['loginbtn'])){
+			$user_email = $_POST['user_email'];
+			$password = $_POST['password'];
+				
+			//filter variable for security
+			$user_email = strip_tags(mysqli_real_escape_string($conn, trim($user_email)));
+			$password = strip_tags(mysqli_real_escape_string($conn, trim($password)));
 
-	if(isset($_REQUEST['loginbtn'])){
-		$arr = [];
-		if($_REQUEST['user_email'] =='' || $_REQUEST['password'] == ''){
-		array_push($arr, "Enter email and password fields.");
-			
-		}else{
-			$user_email = $_REQUEST['user_email'];
-			$password = $_REQUEST['password'];
-				
-				//login process
-				$query = "SELECT * FROM users WHERE user_email='$user_email' and password='$password'";
+				//query
+				$query = "SELECT * FROM users WHERE user_email='".$user_email."'";
+				$tbl = mysqli_query($conn, $query);
 				$excution = $conn->query($query);
-				
-				$data = $excution->fetch_object(); //fetch data
-				
-				if(isset($data) && count($data) == 1){
-					$_SESSION['users'] = $data;
-					header("location:index.php");
-				}
-				else{
-					echo "wrong username or password! Please retry again";
+				$data = $excution->fetch_object();
+
+				if(mysqli_num_rows($tbl)>0){	//verify password now after verify email
+					$row = mysqli_fetch_array($tbl);
+					$password_hash = $row['password'];
+					if(password_verify($password, $password_hash)){
+						$msg = "Login successfully!";
+						$_SESSION['users'] = $data;
+						header("location:index.php");   //having problem on redirecting to index(automatically)
+					}
+					else{
+						$msg = "Login Failed! Wrong email or password.";
+					}
 				}
 			}
-	}
+
+
+			// //org-site
+			// if(isset($_POST['loginbtn'])){
+			// 	$org_email = $_POST['user_email'];
+			// 	$org_pass = $_POST['org_pass'];
+					
+			// 	//filter variable for security
+			// 	$org_email = strip_tags(mysqli_real_escape_string($conn, trim($org_email)));
+			// 	$org_pass = strip_tags(mysqli_real_escape_string($conn, trim($org_pass)));
+	
+			// 		//query
+			// 		$query2 = "SELECT * FROM organization WHERE org_email='".$user_email."'";
+			// 		$tbl2 = mysqli_query($conn, $query2);
+					
+			// 		$excution = $conn->query($query2);
+			// 		$data = $excution->fetch_object();
+	
+			// 		if(mysqli_num_rows($tbl2)>0){	//verify password now after verify email
+			// 			$row2 = mysqli_fetch_array($tbl2);
+			// 			$password_hash = $row2['org_pass'];
+			// 			if(password_verify($org_pass, $password_hash)){
+			// 				$msg = "Login successfully!";
+			// 				$_SESSION['organization'] = $data;
+			// 				header("location:index.php");   //having problem on redirecting to index(automatically)
+			// 			}
+			// 			else{
+			// 				$msg = "Login Failed! Wrong email or password.";
+			// 			}
+			// 		}
+			// 	}
+
+
+				//$excution = $conn->query($query);
+				
+				//$data = $excution->fetch_object(); //fetch data
+				
+				//if(password_verify($password, $users['password'])){
+				//	echo "Loggin successfully!";
+				//}else{
+				//	echo "Wrong username or password! Please retry again";
+				//}
+				//if(isset($data) && count($data) == 1){
+				//	$_SESSION['users'] = $data;
+				//	header("location:index.php");
+				//}
+				//else{
+				//	echo "wrong username or password! Please retry again";
+				//}
+			
+	
+
+
 
 
 	// if(isset($_SESSION['admin_sid']) || isset($_SESSION['customer_sid']))
@@ -121,11 +178,16 @@
 					<?php
 						}
 					?>
-			
+			<?php
+			if(!empty($msg))
+			{
+				echo '<p class="alert alert-info">' .$msg. '</p>';
+			}
+			?>
 			<h1>LOGIN</h1>
-			<input id="user_email" type="email" name="user_email" required placeholder="Email" required >
+			<input id="user_email" type="email" name="user_email"  placeholder="Email">
 			
-			<input id="password" type="password" name="password" required placeholder="Password">
+			<input id="password" type="password" name="password"  placeholder="Password">
 			<button id="button" type="submit" name="loginbtn">Login</button>
 			<br/>
 			<p>Don't have a account?
