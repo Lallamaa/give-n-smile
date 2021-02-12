@@ -4,7 +4,7 @@
 	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 	//include(ROOT_PATH . "user/includes/us_reg.inc.php");
- 
+
 ?>
 
 	<div class="login-box">
