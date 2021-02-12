@@ -1,6 +1,6 @@
 <?php
     SESSION_START();
-    include("../lib/path.php"); 
+    include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
     include(ROOT_PATH . "app/database/connect.php");
 

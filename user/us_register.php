@@ -80,7 +80,7 @@
 						echo $_SESSION['ERRORS']['passworderror'];
 
 				?>
-                </sub>
+        	</sub>
 				<br>
 				<input type="hidden" name="usertype" value="user">
 				<input type="hidden" name="userstatus" value="1">

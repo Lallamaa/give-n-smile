@@ -15,12 +15,11 @@
 	<div class="row">
 		<div class="card text-center">
 			<div class="card-header">
-				Featured
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">Start your fundraise now!</h5>
 				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="user/create_fund.php" class="btn btn-primary" name="fund">Fundraise</a>
+				<a href="create_event.php" class="btn btn-primary" name="fund">Fundraise</a>
 				<?php 
 					// if ($_SESSION['usertype']=='user') {
 					// 	echo '<a href="user/create_fund.php" class="btn btn-primary" name="fund">Fundraise</a>';
@@ -30,7 +29,7 @@
 				?>
 			</div>
 			<div class="card-footer text-muted">
-				2 days ago
+				
 			</div>
 		</div>
 	</div>

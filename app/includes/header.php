@@ -12,30 +12,27 @@
 	<title> Give & Sm:)e </title>
 
   <!-- Bootstrap CSS -->
- <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> --> 
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>app/css/style.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>app/css/query.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>app/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>>app/css/query.css">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-<script src="<?= BASE_URL; ?>app/jvs/script.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <script src="<?php echo BASE_URL;?>>app/jvs/script.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -132,31 +129,34 @@ function deleteINsession(){
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
+                    <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg></a>
                     <ul class="dropdown-menu dropdown-cart" role="menu">
                         <?php 
-                        //   if(!empty($_SESSION['cart'])) {
+                        if(!empty($_SESSION['cart'])) {
 
-                        //     foreach($_SESSION['cart'] as $key => $value) {
-                        //         $outputCart = '';
-                        //         $outputCart .= '
-                        //         <li>
-                        //         <span class="item">
-                        //             <span class="item-left">
-                        //                 <img src="'.$value[e_image].'" alt="" />
-                        //                 <span class="item-info">
-                        //                     <span>'.$value[e_name].'/span>
-                        //                     <span>RM '.number_format($value[e_amount], 2).'</span>
-                        //                 </span>
-                        //                 </span>
-                        //                 <span class="item-right">
-                        //                     <button class="btn btn-xs btn-danger pull-right delete">x</button>
-                        //                 </span>
-                        //             </span>
-                        //         </li>'
-                        //     }
-                        // }
-                        ?>         
+                            foreach($_SESSION['cart'] as $key => $value) {
+                                $outputCart = '';
+                                $outputCart .= '
+                                <li>
+                                <span class="item">
+                                    <span class="item-left">
+                                        <img src="'.$value[e_image].'" alt="" />
+                                        <span class="item-info">
+                                            <span>'.$value[e_name].'/span>
+                                            <span>RM '.number_format($value[e_amount], 2).'</span>
+                                        </span>
+                                        </span>
+                                        <span class="item-right">
+                                            <button class="btn btn-xs btn-danger pull-right delete">x</button>
+                                        </span>
+                                    </span>
+                                </li>';
+                            }
+                        }
+                        ?>
                         <li class="divider"></li>
                         <li><a class="text-center" href="<?= BASE_URL; ?>payment.php">View Cart</a></li>
                     </ul>
@@ -191,13 +191,13 @@ function deleteINsession(){
 							echo  '<li><a class="nav-link" href="'. BASE_URL . 'user/us_profile.php">Account</a></li>
 										 <li><a class="nav-link" href="'. BASE_URL . 'user/us_edit.php">Setting</a></li>
 										 <li><hr class="dropdown-divider"></li>
-										 <li><a class="nav-link" name="logout" href="index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>';
+										 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>';
 
-						 } else if(isset($_SESSION['organization'])) {	
+						 } else if(isset($_SESSION['users'])) {	
 							echo  '<li><a class="nav-link" href="'. BASE_URL . 'organization/org_profile.php">Account</a></li>
 										 <li><a class="nav-link" href="'. BASE_URL . 'organization/org_edit.php">Setting</a></li>
 										 <li><hr class="dropdown-divider"></li>
-										 <li><a class="nav-link" name="logout" href="index.php?logout=”1"><i class="fa fa-power-off"></i>Logout</a></li>';
+										 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout="1"><i class="fa fa-power-off"></i>Logout</a></li>';
 
 						 }
 						

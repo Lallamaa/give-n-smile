@@ -3,21 +3,14 @@
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
-  $id=$_SESSION['users'];
-  $query=mysqli_query($conn, "SELECT * FROM users where user_id='$id'")or die(mysqli_error());
-  $row=mysqli_fetch_array($query);
+  // $id=$_SESSION['users'];
+  // $sql = "SELECT * FROM users where user_id='$id";
+  // $query=mysqli_query($conn, $sql);
+  // // or die(mysqli_error());
+  // $row=mysqli_fetch_array($query);
 
 ?>
-<div align="center">
-    <h2>Your Profile</h2>
-    <form method="post" class="profile-form">
-        <div>User ID :  <?php echo $_SESSION['users']->user_id; ?></div> 
-        <div>User Name : <?php echo $_SESSION['users']->user_name; ?></div>
-        <div>Password : <?php echo $_SESSION['users']->password; ?></div>
-        <div>Email : <?php echo $_SESSION['users']->user_email; ?> </div>
-        <div> Contact number : <?php echo $_SESSION['users']->user_phone; ?></div>
-    </form>             
-        
+         
 <div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
@@ -134,20 +127,20 @@
 <?php include(ROOT_PATH . "app/includes/footer.html"); ?>
 
 <?php
-  if(isset($_POST['submit'])){
-    $fullname = $_POST['fname'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
-    $address = $_POST['address'];
-  $query = "UPDATE users SET full_name = '$fullname',
-                  gender = '$gender', age = $age, address = '$address'
-                  WHERE user_id = '$id'";
-                $result = mysqli_query($db, $query) or die(mysqli_error($db));
-                ?>
-                 <script type="text/javascript">
-        alert("Update Successfull.");
-        window.location = "index.php";
-    </script>
-    <?php
-         }               
+  // if(isset($_POST['submit'])){
+  //   $fullname = $_POST['fname'];
+  //   $gender = $_POST['gender'];
+  //   $age = $_POST['age'];
+  //   $address = $_POST['address'];
+  // $query = "UPDATE users SET full_name = '$fullname',
+  //                 gender = '$gender', age = $age, address = '$address'
+  //                 WHERE user_id = '$id'";
+  //               $result = mysqli_query($db, $query) or die(mysqli_error($db));
+  //               ?>
+  //                <script type="text/javascript">
+  //       alert("Update Successfull.");
+  //       window.location = "index.php";
+  //   </script>
+  //   <?php
+  //        }               
 ?>  

@@ -1,0 +1,50 @@
+
+<!------footer site------->
+<div class="footer-site">
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-3 feature">
+					<h3>Services</h3>
+					<ul>
+						<!-----<li><a href="#"></a></li>----->
+						<li><a href="#">Start a Fundraise</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+				<!-- <hr class="hidden-lg"> -->
+				<div class="col-sm-6 col-md-3 feature">
+					<h3>About</h3>
+					<ul>
+						<li><a href="#">Our Partners</a></li>
+						<li><a href="#">Our Team</a></li>
+						<li><a href="#">Support Our Work</a></li>
+						<li><a href="#">Mission and Goals</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 feature text">
+					<h3>Give & Sm:)e</h3>
+					<p>We're non-profit organization. Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+				</div>
+				<div class="col feature social justify-content-center">
+					<a href="#"><i class="icon ion-social-facebook"></i></a>
+					<a href="#"><i class="icon ion-social-twitter"></i></a>
+					<a href="#"><i class="icon ion-social-instagram"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+<!------end footer site------>
+</body>
+</html>	
+
+
+<?php
+
+if (isset($_SESSION['ERRORS']))
+    $_SESSION['ERRORS'] = NULL;
+if (isset($_SESSION['STATUS']))
+    $_SESSION['STATUS'] = NULL;
+
+?>

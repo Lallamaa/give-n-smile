@@ -1,4 +1,6 @@
 <?php 
+	session_start();
+
 	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
@@ -15,20 +17,19 @@
 	$result = mysqli_query($conn, $query);
 	while($row = mysqli_fetch_array($result))
 	{
-	$state.= '<option value="<?= $row["state"]; ?>"><?= $row["state"]; ?></option>';
+	$state.= '<option value="'. $row["state"].'">'.$row["state"].'</option>';
 	}
 
 	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 	$category = mysqli_query($conn, $queryy);
 
 	$sql = "SELECT * FROM events";
-	$result = mysqli_query($conn, $sql);
-	
+	$event = mysqli_query($conn, $sql);
 	
 ?>
 
 <script>
-	$(".progress-bar").animate({
+$(".progress-bar").animate({
     width: "50%"
 }, 2500);
 </script>
@@ -212,7 +213,7 @@
             </div>
         </form>
     </div>
-</section>
+	</section>
 	<div class="card">
 		<div class="card-body">
 			<div class="row">

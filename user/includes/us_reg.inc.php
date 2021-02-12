@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+require '../../app/lib/path.php';
 require '../../app/includes/auth_functions.php';
 require '../../app/includes/datacheck.php';
 require '../../app/includes/security_functions.php';
@@ -104,7 +104,7 @@ if (isset($_POST['registerbtn'])) {
             mysqli_stmt_store_result($stmt);
 
             $_SESSION['STATUS']['loginstatus'] = 'Account Created, please Login';
-            header("Location: ../../login.php");
+            header('Location:'. ROOT_PATH .'login.php');
             exit();
         }
     }
@@ -114,6 +114,6 @@ if (isset($_POST['registerbtn'])) {
 } 
 else {
 
-    header("Location: ../us_register.php");
+    header("Location: ../../us_register.php");
     exit();
 }
