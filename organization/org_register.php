@@ -128,7 +128,7 @@
 	</form>
 </div>
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>
   
         <!--<label for="org_contact"> Phone No. </label>
             <input  class="form-control" 

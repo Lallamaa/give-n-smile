@@ -3,7 +3,7 @@
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
-  // $id=$_SESSION['users'];
+  // $id=$_SESSION['loggedIn'];
   // $sql = "SELECT * FROM users where user_id='$id";
   // $query=mysqli_query($conn, $sql);
   // // or die(mysqli_error());
@@ -124,7 +124,7 @@
   </div>
 </div>
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>
 
 <?php
   // if(isset($_POST['submit'])){

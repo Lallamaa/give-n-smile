@@ -11,12 +11,12 @@
 $queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 $category = mysqli_query($conn, $queryy);
 
-$id = $_SESSION['users']->user_id; 
+$id = $_SESSION['loggedIn']->user_id; 
 
 
-if(isset($_SESSION['users'])== '') {
+if(isset($_SESSION['loggedIn'])== '') {
 echo "Youre Logged In!";
-echo $_SESSION['users']->user_name;
+echo $_SESSION['loggedIn']->user_name;
 echo $id;
 
 } else {
@@ -104,7 +104,7 @@ echo $id;
               </div>
               <input type="hidden" class="form-control" name="user" value="<?php $id ?>"/>
               
-              <script>console.log(<?php echo $_SESSION['users']->user_id; ?>); </script>
+              <script>console.log(<?php echo $_SESSION['loggedIn']->user_id; ?>); </script>
 
             </div>
           </div>
@@ -125,7 +125,7 @@ echo $id;
 
 </div>
 
-<?php include(ROOT_PATH . 'app/includes/footer.html'); ?>
+<?php include(ROOT_PATH . 'app/includes/footer.php'); ?>
 
 <script>
   $("#dateIn").flatpickr();

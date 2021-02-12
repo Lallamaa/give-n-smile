@@ -28,7 +28,7 @@
 				$password_hash = $row['password'];
 				if(password_verify($password, $password_hash)){
 					$msg = "Login successfully!";
-					$_SESSION['users'] = $data;
+					$_SESSION['loggedIn'] = $data;
 				}
 				else{
 					$msg = "Login Failed! Wrong email or password.";
@@ -101,9 +101,9 @@
 	//  	{
 	//  		$row1 = mysqli_fetch_assoc($query1);
 	//  		$_SESSION['username']=$row1['user_username'];
-	//  		$_SESSION['users'] = $row1['user_type'];
+	//  		$_SESSION['loggedIn'] = $row1['user_type'];
 			
-	//  		if($_SESSION['users'] == $row1['user_type'])
+	//  		if($_SESSION['loggedIn'] == $row1['user_type'])
 	//  		{
 	//  			header("Location: index.php");
 	//  		}
@@ -138,9 +138,9 @@
 
 ?>
 <?php 
-//  if(isset($_SESSION['users'])) {
+//  if(isset($_SESSION['loggedIn'])) {
 //   echo "Youre Logged In!";
-//   echo  $_SESSION['users']->org_id;
+//   echo  $_SESSION['loggedIn']->org_id;
   
 //   } else {
 //     echo "Please log in to your account";

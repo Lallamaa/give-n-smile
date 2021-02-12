@@ -12,7 +12,7 @@
             <div class="d-flex flex-column align-items-center text-center">
               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
               <div class="mt-3">
-                <h4><?php echo $_SESSION['users']->user_name; ?></h4>
+                <h4><?php echo $_SESSION['loggedIn']->user_name; ?></h4>
                 <p class="text-muted font-size-sm">Your Bio <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               
               </div>
@@ -28,7 +28,7 @@
                 <h6 class="mb-0">Welcome Back!</h6>
               </div>
               <div class="col-sm-6 text-secondary">
-              <?php echo $_SESSION['users']->user_name; ?>
+              <?php echo $_SESSION['loggedIn']->user_name; ?>
               </div>
             </div>       
           </div>
@@ -89,4 +89,4 @@
   </div>
 </div>
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>

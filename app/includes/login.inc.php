@@ -25,7 +25,7 @@
 					$password_hash = $row['password'];
 					if(password_verify($password, $password_hash)){
 						$msg = "Login successfully!";
-						$_SESSION['users'] = $data;
+						$_SESSION['loggedIn'] = $data;
 						header("location: ../../index.php");   //having problem on redirecting to index(automatically)
 					}
 					else{

@@ -308,7 +308,7 @@ $(".progress-bar").animate({
 </div>
 
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>
 
 <script>
 // $(document).ready(function(){

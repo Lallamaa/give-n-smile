@@ -1,7 +1,7 @@
 <?php
 if(isset($_SESSION['loggedIn'])) {
   echo "You're logged in!";
-  if(isset($_SESSION['users'])) {
+  if(isset($_SESSION['loggedIn'])) {
     header('Location: users/create_fund.php');
     exit();
   } 

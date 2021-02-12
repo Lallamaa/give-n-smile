@@ -171,6 +171,6 @@
   </div>
 </div>    
 
-<?php include(ROOT_PATH . 'app/includes/footer.html'); ?>
+<?php include(ROOT_PATH . 'app/includes/footer.php'); ?>
 
 

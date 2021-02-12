@@ -3,7 +3,7 @@ session_start();
 require '../database/connect.php';
 
 if (isset($_POST['create-btn'])) {
-  if (isset($_SESSION['users'])) {
+  if (isset($_SESSION['loggedIn'])) {
 
     $name = $_POST['name'];
     $start = $_POST['start'];
