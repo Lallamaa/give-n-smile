@@ -10,7 +10,7 @@
 
 <div id="main">
 	<div class="container-fliud">
-		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(app/image/jumbo_3.jpg);">
+		<div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(app/image/jumbotron/jumbo_3.jpg);">
 			<div class="content">
 					<h2 class="mb-4">Make a donation</h2>
 				<p class="mb-4">
@@ -28,22 +28,22 @@
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block w-100" src="app/image/jumbo_1.jpg" alt="First slide">
+					<img class="d-block w-100" src="app/image/jumbotron/jumbo_1.jpg" alt="First slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="app/image/jumbo_2.jpg" alt="Second slide">
+					<img class="d-block w-100" src="app/image/jumbotron/jumbo_2.jpg" alt="Second slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="app/image/jumbo_6.jpg" alt="Third slide">
+					<img class="d-block w-100" src="app/image/jumbotron/jumbo_6.jpg" alt="Third slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="app/image/jumbo_5.jpg" alt="Third slide">
+					<img class="d-block w-100" src="app/image/jumbotron/jumbo_5.jpg" alt="Third slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="app/image/jumbo_7.jpg" alt="Third slide">
+					<img class="d-block w-100" src="app/image/jumbotron/jumbo_7.jpg" alt="Third slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="app/image/jumbo_8.jpg" alt="Third slide">
+					<img class="d-block w-100" src="app/image/jumbotron/jumbo_8.jpg" alt="Third slide">
 				</div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

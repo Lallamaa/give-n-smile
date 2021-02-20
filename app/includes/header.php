@@ -182,8 +182,9 @@ function deleteINsession(){
             </div>
         </div>
        
-        <div class="btn-group dropstart">
-            <button class="btn btn-primary-outline dropdown-toggle " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <!-- Make this btn-group for dropdownMenuButton2 at header2.php By V-->
+        <div class="btn-group"> 
+            <button class="btn btn-primary-outline dropdown-toggle mr-5" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
             </button>
             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">

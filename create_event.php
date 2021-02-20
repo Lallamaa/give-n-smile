@@ -14,7 +14,7 @@ $category = mysqli_query($conn, $queryy);
 $id = $_SESSION['loggedIn']->user_id; 
 
 
-if(isset($_SESSION['loggedIn'])== '') {
+if(isset($_SESSION['loggedIn'])) {
 echo "Youre Logged In!";
 echo $_SESSION['loggedIn']->user_name;
 echo $id;
@@ -48,7 +48,7 @@ echo $id;
           </div>
         </div>
         <!-- action="app/includes/create.inc.php" -->
-        <form role="form" action="app/includes/create.inc.php" method="post">
+        <form role="form" id="event-form" action="app/includes/create.inc.php" method="post">
           <div class="row setup-content" id="step-1">
             <div class="col-xs-6 col-md-offset-3">
               <div class="col-md-12">
@@ -98,13 +98,11 @@ echo $id;
                 </div>
                 <div class="form-group">
                   <label class="control-label">Description Images</label>
-                  <input type="file" class="form-control" require  name="image"/>
+                  <input type="file" class="form-control" id="image" require  name="image[]" multiple accept=".jpg, .jpeg, .png, .gif"/>
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
-              <input type="hidden" class="form-control" name="user" value="<?php $id ?>"/>
-              
-              <script>console.log(<?php echo $_SESSION['loggedIn']->user_id; ?>); </script>
+              <input type="hidden" class="form-control" name="user" value="<?php echo $_SESSION['loggedIn']->user_id; ?>"/>
 
             </div>
           </div>
@@ -112,7 +110,7 @@ echo $id;
             <div class="col-xs-6 col-md-offset-3">
               <div class="col-md-12">
                 <h3> Step 3</h3>
-                <button class="btn btn-success btn-lg pull-right" type="submit" name="create-btn">Submit</button>
+                <button class="btn btn-success btn-lg pull-right" id="create" type="submit" name="create-btn">Submit</button>
               </div>
             </div>
           </div>
@@ -174,4 +172,37 @@ echo $id;
 
   $('div.setup-panel div a.btn-primary').trigger('click');
 });
+
+//Insert Multi Images
+$(document).ready(function(){
+ 
+    $('#event-form').on('submit', function(event){
+        event.preventDefault();
+        var image_name = $('#image').val();
+        if(image_name == '')
+        {
+            alert("Please Select Image");
+            return false;
+        }
+        else
+        {
+            $.ajax({
+                url:"app/image/insert.php",
+                method:"POST",
+                data: new FormData(this),
+                contentType:false,
+                cache:false,
+                processData:false,
+                success:function(data)
+                {
+                    $('#image').val('');
+                    load_images();
+                }
+            });
+        }
+    });
+ 
+});  
+
+
 </script>

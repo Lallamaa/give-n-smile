@@ -25,6 +25,10 @@
 
 	$sql = "SELECT * FROM events";
 	$event = mysqli_query($conn, $sql);
+/* 	$events = mysqli_fetch_assoc($event);
+	while($events) {
+		echo $event['event_img'];
+	} */
 	
 ?>
 
@@ -52,21 +56,21 @@ $(".progress-bar").animate({
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-bs-interval="10000">
-					<img src="app/image/jumbo_1.jpg" class="d-block w-100" alt="..." height="500" width="100%">
+					<img src="app/image/jumbotron/jumbo_1.jpg" class="d-block w-100" alt="..." height="500" width="100%">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>First slide label</h5>
 						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 					</div>
 				</div>
 				<div class="carousel-item" data-bs-interval="2000">
-					<img src="app/image/jumbo_2.jpeg" class="d-block w-100" alt="..." height="500" width="100%">
+					<img src="app/image/jumbotron/jumbo_2.jpeg" class="d-block w-100" alt="..." height="500" width="100%">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Second slide label</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="app/image/jumbo_3.jpg" class="d-block w-100" alt="..." height="500" width="100%">
+					<img src="app/image/jumbotron/jumbo_3.jpg" class="d-block w-100" alt="..." height="500" width="100%">
 					<div class="carousel-caption d-none d-md-block">
 						<h5>Third slide label</h5>
 						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -87,95 +91,6 @@ $(".progress-bar").animate({
 
 <div class="container">
 	<div class="row">
-		<!--<div class="col-lg-3">
-			<div class="sidebar">
-				<div class="widget border-0">
-					<div class="search">
-						<input class="form-control" type="text" placeholder="Search Keywords">
-					</div>
-				</div>
-				<div class="widget border-0">
-					<div class="locations">
-						<input class="form-control" type="text" placeholder="All Locations">
-					</div>
-				</div><br>
-				 <div class="card">
-					<div class="card-body">
-						<div class="widget">
-							<div class="widget-title widget-collapse">
-									<h6>Date Posted</h6>
-									<a class="ml-auto" data-toggle="collapse" href="#dateposted" role="button" aria-expanded="false" aria-controls="dateposted"> <i class="fas fa-chevron-down"></i> </a>
-							</div>
-							<div class="collapse show" id="dateposted">
-								<div class="widget-content">
-									<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="dateposted1">
-											<label class="custom-control-label" for="dateposted1">Last hour</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="dateposted2">
-											<label class="custom-control-label" for="dateposted2">Last 24 hour</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="dateposted3">
-											<label class="custom-control-label" for="dateposted3">Last 7 days</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="dateposted4">
-											<label class="custom-control-label" for="dateposted4">Last 14 days</label>
-									</div>
-									<div class="custom-control custom-checkbox">
-											<input type="checkbox" class="custom-control-input" id="dateposted5">
-											<label class="custom-control-label" for="dateposted5">Last 30 days</label>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-						<div class="widget">
-							<div class="widget-title widget-collapse">
-								<h6>Categories</h6>
-								<a class="ml-auto" data-toggle="collapse" href="#specialism" role="button" aria-expanded="false" aria-controls="specialism"> <i class="fas fa-chevron-down"></i> </a>
-							</div>
-							<div class="collapse show" id="specialism">
-								<div class="widget-content">
-									<?php //echo '
-										// <div class="custom-control custom-checkbox">
-										// 	<input type="checkbox" class="custom-control-input" id="specialism1">
-										// 	<label class="custom-control-label" for="specialism1">IT Contractor</label>
-										// </div>'
-									?>
-								</div>
-							</div>
-						</div>
-						<div class="widget border-0">
-							<div class="widget-add">
-								<img class="img-fluid" src="images/add-banner.png" alt=""></div>
-						</div>
-					</div>
-</div></div></div>
-<div class="col-lg-9">
-	<div class="row mb-4">
-		<div class="col-12">
-			<h6 class="mb-0">Showing 1-30 of <span class="text-primary"><?php //echo $total_event?> Events</span></h6>
-		</div>
-	</div>
-	<div class="job-filter mb-4 d-sm-flex align-items-center">
-		<div class="job-shortby ml-sm-auto d-flex align-items-center">
-			<form class="form-inline">
-				<div class="form-group mb-0">
-					<label class="justify-content-start mr-2">Sort by :</label>
-					<div class="short-by">
-						<select class="form-control basic-select select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
-							<option data-select2-id="3">Newest</option>
-							<option>Oldest</option>
-						</select>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div> -->
-
 	<section class="search-sec">
     <div class="container">
         <form action="#" method="post" novalidate="novalidate">
@@ -218,22 +133,22 @@ $(".progress-bar").animate({
 		<div class="card-body">
 			<div class="row">
 				<?php 
-					while($row = mysqli_fetch_array($result)) {
+					while($row = mysqli_fetch_assoc($event)) {
 				?>
 					<div class="col-sm-6 col-lg-4 mb-4">
 						<div class="card-body">
 							<div class="candidate-list candidate-grid">
 								<div class="candidate-list-image">
 								<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-									<div class="carousel-inner">
+									<div class="carousel-inner browse-image" style=" width:100%; height: 250px !important;">
 										<div class="carousel-item active">
-										<img class="img-fluid d-block w-100" src="app/image/<?= $row['event_img']; ?>" alt="" style="width:200; height:200;">
+										<img class="img-fluid d-block w-100 rounded" src="app/image/event/<?= $row['event_img']; ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
 										</div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100" src="app/image/<?= $row['event_img']; ?>" alt="" style="width:200; height:200;">
+										<img class="img-fluid d-block w-100 rounded" src="app/image/event/<?= $row['event_img']; ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
 										</div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100" src="app/image/<?= $row['event_img']; ?>" alt="" style="width:200; height:200;">
+										<img class="img-fluid d-block w-100 rounded" src="app/image/event/<?= $row['event_img']; ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
 										</div>
 									</div>
 									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -267,12 +182,13 @@ $(".progress-bar").animate({
 											<a href="details.php" class="btn btn-outline-warning">View</a>
 											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?= $row['event_name']; ?>">
 							
-											<button class="btn btn-outline-warning add" data-id="<?= $row['event_id']; ?>"><img src="<?php echo BASE_URL;?>app/image/cart.png"/></button>
+											<button class="btn btn-outline-warning add" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25"/></button>
 							
 										</div>
 										<div class="candidate-list-favourite-time">
 											<a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a>
-											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_date']; ?></span>
+											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_start']; ?></span>
+											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_end']; ?></span>
 										</div>
 									</div>
 								</div>
@@ -311,26 +227,26 @@ $(".progress-bar").animate({
 <?php include(ROOT_PATH . "app/includes/footer.php"); ?>
 
 <script>
-// $(document).ready(function(){
-//  $('action').change(function(){
-//   if($(this).val() != '')
-//   {
-//    var action = $(this).attr("id");
-//    var query = $(this).val();
-//    var result = '';
-//    if(action == "state")
-//    {
-//     result = 'city';
-//    }
-//    $.ajax({
-//     url:"app/includes/state_city.php",
-//     method:"POST",
-//     data:{action:action, query:query},
-//     success:function(data){
-//      $('#'+result).html(data);
-//     }
-//    })
-//   }
-//  });
-// });
+$(document).ready(function(){
+ $('action').change(function(){
+  if($(this).val() != '')
+  {
+   var action = $(this).attr("id");
+   var query = $(this).val();
+   var result = '';
+   if(action == "state")
+   {
+    result = 'city';
+   }
+   $.ajax({
+    url:"app/includes/state_city.php",
+    method:"POST",
+    data:{action:action, query:query},
+    success:function(data){
+     $('#'+result).html(data);
+    }
+   })
+  }
+ });
+});
 </script>

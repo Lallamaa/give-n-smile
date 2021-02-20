@@ -57,7 +57,7 @@
 						//if(password_verify($org_pass, $password_hash)){
 						if($row2['org_password'] == $org_pass){
 							$msg = "Login successfully!";
-							$_SESSION['uesrs'] = $data;
+							$_SESSION['loggedIn'] = $data;
 							header("location: ../../index.php");   //having problem on redirecting to index(automatically)
 						}
 						else{
