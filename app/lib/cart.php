@@ -55,3 +55,32 @@ if(!empty($_SESSION['cart'])){
 
 echo json_encode($outputTable);
 
+// Shopping Cart Function
+class Cart
+{
+private $con;
+private $productid;
+
+function __construct(){
+    $this->con = new PDO('mysql:host=localhost;dbname=#', '#', '#');
+}
+
+public function getProductDataById($passedId){
+
+    $this->productid = $passedId;
+
+    $statement = $this->con->prepare("SELECT productname, productdescription, productimage, price FROM producten WHERE productid = :productid");
+    $statement->execute(array("productId" => $this->productid));
+    $data = $statement->fetch();
+
+    return($data);
+}
+public function getAllproducts(){
+
+    $statement = $this->con->prepare("SELECT productid, productname, productdescription, productimage, price FROM producten");
+    $statement->execute();
+    $data = $statement->fetchAll();
+
+    return($data);
+}
+}

@@ -137,17 +137,16 @@ function deleteINsession(){
                         <?php 
                         if(!empty($_SESSION['cart'])) {
 
-                            foreach($_SESSION['cart'] as $key => $value) {
-                                $outputCart = '';
-                                $outputCart .= '
+                            $outputCart = '';
+                            $outputCart .= '
                                 <li>
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="'.$value[e_image].'" alt="" />
-                                        <span class="item-info">
-                                            <span>'.$value[e_name].'/span>
-                                            <span>RM '.number_format($value[e_amount], 2).'</span>
-                                        </span>
+                                    <span class="item">
+                                        ass="item-left">
+                                            <img src="'.$value['e_image'].'" alt="" />
+                                            <span class="item-info">
+                                                <span>'.$value['e_name'].'/span>
+                                                <span>RM '.number_format($value['e_amount'], 2).'</span>
+                                            </span>
                                         </span>
                                         <span class="item-right">
                                             <button class="btn btn-xs btn-danger pull-right delete">x</button>
@@ -165,11 +164,11 @@ function deleteINsession(){
             </div><!-- /.navbar-collapse -->
 
                 <?php
-                }else{
+                /*}else{
                     ?> <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
                     <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a></li>
                     <?php
-                } ?>
+                } */?>
              
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>     TODO: direct to user/org profile base on login

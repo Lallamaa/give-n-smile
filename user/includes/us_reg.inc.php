@@ -104,7 +104,7 @@ if (isset($_POST['registerbtn'])) {
             mysqli_stmt_store_result($stmt);
 
             $_SESSION['STATUS']['loginstatus'] = 'Account Created, please Login';
-            header('Location:'. ROOT_PATH .'login.php');
+            header('Location: ../../login.php');
             exit();
         }
     }

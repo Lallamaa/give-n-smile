@@ -136,7 +136,7 @@
   //                 gender = '$gender', age = $age, address = '$address'
   //                 WHERE user_id = '$id'";
   //               $result = mysqli_query($db, $query) or die(mysqli_error($db));
-  //               ?>
+  //               
   //                <script type="text/javascript">
   //       alert("Update Successfull.");
   //       window.location = "index.php";
