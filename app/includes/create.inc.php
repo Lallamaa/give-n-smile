@@ -24,17 +24,34 @@ if (isset($_POST['create-btn'])) {
     $type = 'fundraise';
 
     $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
-    $allowed_image_extension = array('jpg', 'jpeg', 'png', 'gif');
 
-    if (($_FILES["image"]["size"] > 1000000)) { //if error, file more than 1MB
+    $allowed_image_extension = array('jpg', 'jpeg', 'png', 'gif');
+    // echo '<script src="app/jvs/app.js"></script>';
+    // $file = $_GET['CLOUDINARY_URL'];
+
+
+    if (($_FILES["image"]["size"] > 5000000)) { //if error, file more than 1MB
       echo '<div class="container style=background-color: ;">
               <div class="alert alert-danger words" role="alert">
                   Opps, looks like your file is more than 1MB, make sure your file is 1MB or less to submit.
               </div>
-          </div>';
-      ?> <a href="upload-new"><button class="btn btn-light btn-md rounded-pill add-backbtn">Retry</button></a> <?php
-          die();
-  } else{
+          </div>
+        <a href="../../create_events.php"><button class="btn btn-light btn-md rounded-pill add-backbtn">Retry</button></a> ';
+
+    // $file = $_FILES[image][tmp_name];
+    // $image_file = addslashes(file_get_contents($_FILES['image']['tmp_name']))
+    //   if(count($_FILES["image"]["tmp_name"]) > 0)
+    //   {
+    //     for($count = 0; $count < count($_FILES["image"]["tmp_name"]); $count++)
+    //     {
+    //     $image_file = addslashes(file_get_contents($_FILES["image"]["tmp_name"][$count]));
+    //     $query = "INSERT INTO events(event_img) VALUES ('$image_file')";
+    //     $statement = $conn->prepare($query);
+    //     $statement->execute();
+    //     }
+    //   }
+        
+    } 
 
         if (empty($name) || empty($start) || empty($end) || empty($amount) || empty($ecategory)) {
 
@@ -43,23 +60,26 @@ if (isset($_POST['create-btn'])) {
           exit();
         
         } else {
-
           $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_img, event_status, event_type, category, event_organizer, event_area)
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-          move_uploaded_file($_FILES['image']['tmp_name'][$i], 'app/image/event/'.$file);
+          // $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_status, event_type, category, event_organizer, event_area)
+                  // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+          //move_uploaded_file($_FILES['image']['tmp_name'][$i], 'app/image/event/'.$file);
 
           //'$name', '$start', '$end', '$amount', '$desc', '$image', '-1', 'fundraise', '$ecategory', '$user', '$area'
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-              header("Location: ../us_register.php?SQLerror");
+              header("Location: ../../create_event.php?SQLerror");
               exit();
           } 
           else {
-              mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $file, $status, $type, $ecategory, $user, $area);
-              mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $file, $status, $type, $ecategory, $user, $area);
+            // mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $status, $type, $ecategory, $user, $area);
+            mysqli_stmt_execute($stmt);
               mysqli_stmt_store_result($stmt);
-
+              
               $_SESSION['STATUS']['eventstatus'] = 'Campaign Created';
               header('Location: ../../index.php?createsuccess');
               exit();
@@ -76,7 +96,7 @@ if (isset($_POST['create-btn'])) {
 
     }
   }
-}
+
 
 
       // if(mysqli_query($conn, $query)){ //if success, file less than 1MB

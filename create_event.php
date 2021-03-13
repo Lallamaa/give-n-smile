@@ -1,32 +1,35 @@
 <?php 
   session_start();
+
+  // echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.11.3/cloudinary-core.min.js">';
   include('app/lib/path.php');
   include(ROOT_PATH . 'app/includes/header.php');  
-  
+
 ?> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 <?php 
+
 
 $queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 $category = mysqli_query($conn, $queryy);
 
-$id = $_SESSION['loggedIn']->user_id; 
-
-
 if(isset($_SESSION['loggedIn'])) {
-echo "Youre Logged In!"; 
-echo $_SESSION['loggedIn']->user_name;
-echo $id;
+  $id = $_SESSION['loggedIn']->user_id; 
+  echo "Youre Logged In!"; 
+  echo $_SESSION['loggedIn']->user_name;
+  echo $id;
 
 } else {
   echo "Please log in to your account";
-  header('Location: login.php?errorlogin');
-  exit();
+  // header('Location: login.php?errorlogin');
+  // exit();
 }
 ?>
 
-<div class="container">   
+<div class="container">     
       <div class="create-campaign">
         <div class="campaign-title">
           <h1 class="text-centere">Create A New Campaign</h1>
@@ -97,9 +100,19 @@ echo $id;
                   <input maxlength="200" type="text" class="form-control" placeholder="Enter Area of Campaign" name="area"/>
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Description Images</label>
-                  <input type="file" class="form-control" require  name="image" accept=".jpg, .jpeg, .png, .gif"/>
+                  <label class="control-label">Description Images</label><br>
+                  <input type="file" id="file-upload" class="form-control" require  name="image" accept=".jpg, .jpeg, .png, .gif"/>
+                  <!-- <img src="app/image/default.jpg" id="img-preview" style="width:200px; height:200px;">
+
+                  <input type="button" class="btn btn-primary nextBtn btn-lg pull-right" name="add-image-btn" value="ADD"></input>
+
+                  <div id="image-list"></div> -->
                 </div>
+                <?php
+
+                ?>
+              </div>
+              <div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
               <input type="hidden" class="form-control" name="user" value="<?php echo $_SESSION['loggedIn']->user_id; ?>"/>
@@ -120,10 +133,12 @@ echo $id;
   </div>
 </div>    
 
-
 </div>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 
 <?php include(ROOT_PATH . 'app/includes/footer.php'); ?>
+
+<!-- <script src="app/jvs/app.js"></script> -->
 
 <script>  
 // flatpickr import
@@ -174,6 +189,33 @@ $(document).ready(function () {
 
   $('div.setup-panel div a.btn-primary').trigger('click');
 
+  // $('#event-form').on('submit', function(event){
+  //     event.preventDefault();
+  //     var image_name = $('#image').val();
+  //     if(image_name == '')
+  //     {
+  //         alert("Please Select Image");
+  //         return false;
+  //     }
+  //     else
+  //     {
+  //         $.ajax({
+  //             url:"../lib/insert_images.php",
+  //             method:"POST",
+  //             data: new FormData(this),
+  //             contentType:false,
+  //             cache:false,
+  //             processData:false,
+  //             success:function(data)
+  //             {
+  //                 $('#image').val('');
+  //                 load_images();
+  //             }
+  //         });
+  //     }
+  // });
+  
 });  
+
 
 </script>

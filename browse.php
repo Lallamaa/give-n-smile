@@ -156,7 +156,9 @@ $(".progress-bar").animate({
 										<!-- <img src="data:image/png;base64,<?php //echo base64_encode(file_get_contents("IMAGE URL HERE")) ?>"> -->
 										<!-- <span class="prod-img"><p>Product Image:</p></span><p><?php //echo '<img src="data:image/jpeg;base64, '.base64_decode($row['file']).'"/>'?></p> -->
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100 rounded" src="data:image/png;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+										<img class="img-fluid d-block w-100 rounded" src="data:image/jpeg;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+										<!-- <img src="data:image/jpeg;base64,'.base64_encode($row['images'] ).'" class="img-thumbnail" /> -->
+
 										</div>
 										<div class="carousel-item">
 										<img class="img-fluid d-block w-100 rounded" src="data:image/png;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">

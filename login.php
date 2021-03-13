@@ -5,6 +5,9 @@
 	include(ROOT_PATH . "app/includes/header.php"); 
 	//include(ROOT_PATH . "user/includes/us_reg.inc.php");
 
+	if(isset($_GET['errorlogin'])){
+		echo "<script>alert('Please login to your account');</script>";
+	}
 ?>
 
 	<div class="login-box">
