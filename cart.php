@@ -3,9 +3,6 @@
   include('app/lib/path.php');
   include(ROOT_PATH . 'app/includes/header.php');
 
-
-// <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-// <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 // <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 // <!------ Include the above in your HEAD tag ---------->
 ?>
@@ -70,15 +67,14 @@
                     <img src="app/image/pic_4.png" alt="" width="50" height="50" >
                   </div>
                   <div class="col-md-7 col-sm-12">
-                    <div>Sample Campaign Title From Give & Smile Official</div>
-                    <div class="input-amount">
+                    <div class="cart-obj-name"><input type="hidden" value=""></div>
+                    <div class="cart-obj-amount">
                       <div>Donate:</div>
                       <span>RM </span>
                       <input type="number" name="amount" value="25">
                     </div>                             
                   </div>
-                </div>     
-                                
+                </div>                                     
               </div>
             </div>
           </div>

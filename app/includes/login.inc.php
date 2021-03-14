@@ -39,7 +39,23 @@
 				}
 				echo "<script>alert('Login Failed! Wrong email or password.');</script>";
 			}
+		}
 
+// //org-site
+// if(isset($_POST['loginbtn'])){
+// 	$org_email = $_POST['email'];
+// 	$org_pass = $_POST['password'];
+		
+// 	//filter variable for security
+// 	$org_email = strip_tags(mysqli_real_escape_string($conn, trim($org_email)));
+// 	$org_pass = strip_tags(mysqli_real_escape_string($conn, trim($org_pass)));
+
+// 		//query
+// 		$query2 = "SELECT * FROM organization WHERE org_email='".$org_email."'";
+// 		$tbl2 = mysqli_query($conn, $query2);
+		
+// 		$excution = $conn->query($query2);
+// 		$data = $excution->fetch_object();
 
 			//org-site
 			if(isset($_POST['loginbtn'])){
