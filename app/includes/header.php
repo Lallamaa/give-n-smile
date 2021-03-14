@@ -190,7 +190,7 @@ function deleteINsession(){
             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
 						<?php if(isset($_SESSION['loggedIn'])) {		                
 							echo  '<li><a class="nav-link" href="'. BASE_URL . 'user/us_profile.php">Account</a></li>
-										 <li><a class="nav-link" href="'. BASE_URL . 'user/us_edit.php">Setting</a></li>
+										 <li><a class="nav-link" href="'. BASE_URL . 'muser/us_editprofile.php">Setting</a></li>
 										 <li><hr class="dropdown-divider"></li>
 										 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>';
 

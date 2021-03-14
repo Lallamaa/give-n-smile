@@ -72,7 +72,7 @@
                         <i class="material-icons text-info mr-2">Email</i><?php echo $_SESSION['users']->user_email; ?></h6>
                       <h6 class="d-flex align-items-center mb-3"> 
                         <i class="material-icons text-info mr-2">Contact No. (+60)</i><?php echo $_SESSION['users']->user_phone; ?></h6>
-                      <a href="us_editprofile.php" text-align="right"></br>Click to Update Profile</a>
+                      <a href="us_editprofile.php" text-align="right"></br>Update Profile</a>
                     </form>
                     </div>
                   </div>

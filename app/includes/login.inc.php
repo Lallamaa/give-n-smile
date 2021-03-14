@@ -20,12 +20,19 @@
 				$excution = $conn->query($query);
 				$data = $excution->fetch_object();
 
+				
 				if(mysqli_num_rows($tbl)>0){	//verify password now after verify email
+		
 					$row = mysqli_fetch_array($tbl);
 					$password_hash = $row['password'];
 					if(password_verify($password, $password_hash)){
+						
 						$msg = "Login successfully!";
 						$_SESSION['loggedIn'] = $data;
+						$_SESSION['user_id'] = $row['user_id'];
+						$_SESSION['user_name'] = $row['user_name'];
+						
+						
 						header("location: ../../index.php");   //having problem on redirecting to index(automatically)
 					}
 					else{

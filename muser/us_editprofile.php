@@ -3,50 +3,82 @@
     include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
     include(ROOT_PATH . "app/database/connect.php");
+    $user_id=$_SESSION['user_id'];
 
-    if (isset($_REQUEST['user_id'])) {
-        $query = "SELECT * FROM users WHERE user_id='$_REQUEST[user_id]'";
-        
-        $execution = $conn->query($query);
-    
+    if (isset($_POST['user_id'])) {
+        $query = "SELECT * FROM users WHERE user_id='$_POST[user_id]'";
+        $execution = $conn->$query($query);
         $data = $execution->fetch_object();
     }
 
-    if(isset($_REQUEST['update']))
+    if(isset($_POST['update']))
     {
-        //$user_id=$_SESSION['user_id'];
-
-        $user_name=$_REQUEST['user_name'];
-        $password=$_REQUEST['password'];
-        $user_email=$_REQUEST['user_email'];
-        $user_phone=$_REQUEST['user_phone'];
-        $user_img=$_REQUEST['user_img'];
+        $user_name=$_POST['user_name'];
+        $password=$_POST['password'];
+        $user_email=$_POST['user_email'];
+        $user_phone=$_POST['user_phone'];
+        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
         
-        $user_img = $_FILES['user_img']['name'];
-        $temp_path = $_FILES['user_img']['tmp_name'];
 
-       $destination_path = 'image/'.uniqid().' '. $user_img;
+        $filedir = "app/image/profile/";
+        $pathName = basename($_FILES["user_img"]["name"]);
+        $targetFilePath = $filedir.$pathName;
+        $pathType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-       if(move_uploaded_file($temp_path, $destination_path)) {
-        $query = " update users SET
-        user_name='$user_name',
-        password='$password',
-        user_email = '$user_email',
-        user_phone = '$user_phone' ,
-        user_img = '$destination_path' where user_id='$_REQUEST[user_id]'";
+        if(!empty($_FILES["user_img"]["name"])){
+            
+                $fileType = array('jpg', 'png', 'jpeg', 'gif');
+                if(in_array($pathType, $fileType)){
+                    if(move_uploaded_file($_FILES["user_img"]["name"], $targetFilePath)){
 
-    }else{ 
-        // if file done upload
-        $query = "update users SET
-        first_name = '$first_name' ,
-        last_name = '$last_name' ,
-        email = '$email' ,
-        user_phone = '$user_phone' ,
-        user_img = '$destination_path' where user_id = '$_REQUEST[user_id]'";
+                        //upload image
+                        $query = mysqli_query($conn,"update users SET user_name='$user_name', password='$hashedPwd', user_email='$user_email', user_phone='$user_phone', user_img='".pathName."' where user_id='$user_id'");
+                        if($query){
+                            echo "<script>alert('Your profile has been update successfully!');</script>";
+                        }
+                        else{
+                            $php_errormsg['user_img'] = "Failed to upload profile picture, please try again.";
+                        }
+                    }
+                }
+            }
+        
+
+        $_SESSION['user_name'] = $user_name;
+        
+        
+        
     }
-    $executionQuery = $conn->query($query);
-    header("location:us_profile.php");
-}
+            
+        /*$password=$_POST['password'];*/
+    //     $user_email=$_POST['user_email'];
+    //     $user_phone=$_POST['user_phone'];
+    //     $user_img=$_POST['user_img'];
+        
+    //     $user_img = $_FILES['user_img']['name'];
+    //     $temp_path = $_FILES['user_img']['tmp_name'];
+
+    //    $destination_path = 'image/'.uniqid().' '. $user_img;
+
+    //    if(move_uploaded_file($temp_path, $destination_path)) {
+    //     $query = " update users SET
+    //     user_name='$user_name',
+    //     user_email = '$user_email',
+    //     user_phone = '$user_phone' ,
+    //     user_img = '$destination_path' where user_id='$_POST[user_id]'";
+
+    // }else{ 
+    //     // if file done upload
+    //     $query = "update users SET
+    //     first_name = '$first_name' ,
+    //     last_name = '$last_name' ,
+    //     email = '$email' ,
+    //     user_phone = '$user_phone' ,
+    //     user_img = '$destination_path' where user_id = '$_POST[user_id]'";
+    // }
+    // $executionQuery = $conn->query($query);
+    // header("location:us_profile.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -58,15 +90,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel class="stylesheet" href="style.css">
-    
-     <title>Profile Page</title>
+    <title>Profile Page</title>
 </head>
 
 <body>
+<?php
+    $sql = mysqli_query($conn,"SELECT * FROM users WHERE user_id='$user_id'");
+    $result = mysqli_fetch_assoc($sql);
+
+    ?>
     <div class="container-profile">
         <div class="profile-box">
             <div class="form-div col-4 offset-md-4 ">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="us_editprofile.php" method="post" enctype="multipart/form-data">
                 <h3 class="text-center mb-3 mt-3">Edit Profile</h3>
                 <?php
                     if(!empty($txt)): ?>
@@ -77,75 +113,38 @@
                 <div class="form-group">
                 <label>User Name</label>
                     <input type="text" name="user_name" class="form-control" require
-                        <?php
-                            if(isset($data->user_name)) {
-                                //print value
-                                ?> value="<?=$data->user_name;?>"
-                                <?php
-                            } else {
-                                ?>
+                            value="<?php echo $result['user_name'];?>"
                                 placeholder="Enter Username"
-                            <?php
-                            }
-                        ?>
                     />
                 </div>
 
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="text" name="password" class="form-control"
-                    <?php
-                        if(isset($data->password)) {
-                            //print value
-                            ?> value="<?=$data->password;?>"
-                            <?php
-                        } else {
-                            ?>
-                            placeholder="Enter new password"
-                        <?php
-                        }
-                        ?>
+                    <input type="password" name="password" class="form-control"
+                            placeholder="Enter a new password"
                     />
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" name="user_email" class="form-control"
-                    <?php
-                        if(isset($data->user_email)) {
-                            //print value
-                            ?> value="<?=$data->user_email;?>"
-                            <?php
-                        } else {
-                            ?>
+                     value="<?php echo $result['user_email'];?>"
                             placeholder="Enter Email"
-                        <?php
-                        }
-                        ?>
                     />
                 </div>
                 
                 <div class="form-group">
                     <label>Contact Number(+60)</label>
                     <input type="text" name="user_phone" class="form-control"
-                    <?php
-                        if(isset($data->user_phone)) {
-                            //print value
-                            ?> value="<?=$data->user_phone;?>"
-                            <?php
-                        } else {
-                            ?>
+                        value="<?php echo $result['user_phone'];?>"
                             placeholder="Enter contact number"
-                        <?php
-                        }
-                    ?>
                     />
                 </div>
 
                 <div class="form-group">
                     <label>Profile Picture</label>
                     <img src="" alt="" srcset="">
-                    <input type="file" name="user_img" id="user_img" class="form-control"/>
+                    <input type="file" name="user_img" id="user_img" class="form-control" />
                 </div>
                 <br>
                 <div class="form-group">
@@ -156,5 +155,5 @@
     </div>
 </div>
 </body>
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>
 </html>

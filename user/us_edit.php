@@ -22,7 +22,7 @@
               <div class="mt-3">
                 <form method="POST" action="" enctype="multipart/form-data">
                   <div>
-                    <label for="floatingInputGrid">Organization Name</label>
+                    <label for="floatingInputGrid">User Name</label>
                     <input type="text" class="form-control" required value="Yeeshuen">
                   </div>
                   <div>
@@ -44,7 +44,7 @@
                   <div class="col-md col-sm-3" >
                     <div class="form-floating">
                       <input type="text" class="form-control" id="floatingInputGrid" required value="mdo@example.com">
-                      <label for="floatingInputGrid">Organization Name</label>
+                      <label for="floatingInputGrid">User Name</label>
                     </div>
                     <div class="form-floating">
                       <input type="email" class="form-control" id="floatingInputGrid" value="mdo@example.com">

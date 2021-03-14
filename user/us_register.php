@@ -5,7 +5,7 @@
 ?>
 
 <div class="container">
-	<form class="form-auth" action="includes/us_reg.inc.php" method="post" enctype="multipart/form-data">
+	<form class="form-auth" action="user/includes/us_reg.inc.php" method="post" enctype="multipart/form-data">
 		
 		<legend class="title text-center">User Sign Up </legend>
 		<fieldset class="form-box card card-box shadow p-3 mb-5 bg-white rounded">

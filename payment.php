@@ -134,8 +134,12 @@
                   <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email" />
                 </div>
                 <div class="form-group">
+                  <label class="control-label">Phone Number(+60)</label>
+                  <input maxlength="9" type="text" required="required" class="form-control" placeholder="Enter phone number" />
+                </div>
+                <div class="form-group">
                   <label class="control-label">Address</label>
-                  <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
+                  <textarea required="required" class="form-control" placeholder="Enter address" ></textarea>
                 </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
@@ -146,13 +150,27 @@
               <div class="col-md-12">
                 <h3> Step 2</h3>
                 <div class="form-group">
-                  <label class="control-label">Company Name</label>
-                  <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                  <label class="control-label">Card Holder's Name</label>
+                  <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter card holder's name" />
                 </div>
                 <div class="form-group">
-                  <label class="control-label">Company Address</label>
-                  <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                  <label class="control-label">Card Number</label>
+                  <input maxlength="12" type="text" required="required" class="form-control" placeholder="Enter Card Number"  />
                 </div>
+                <div class='form-row'>
+              <div class='col-xs-4 form-group cvc required'>
+                <label class='control-label'>CVC</label>
+                <input autocomplete='off' class='form-control card-cvc' placeholder="ex. 167" size="3" maxlength="3" type="text">
+              </div>
+              <div class='col-xs-4 form-group expiration required'>
+                <label class='control-label'>Expiration</label>
+                <input class='form-control card-expiry-month' placeholder='MM' maxlength="2" size="2" type="text">
+              </div>
+              <div class='col-xs-4 form-group expiration required'>
+                <label class='control-label'> </label>
+                <input class='form-control card-expiry-year' placeholder='YY' maxlength="2" size="2" type='text'>
+              </div>
+            </div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
             </div>

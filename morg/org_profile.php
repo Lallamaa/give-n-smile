@@ -1,5 +1,7 @@
 <?php 
-	include("../lib/path.php"); 
+
+  SESSION_START();
+	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
 ?>
 

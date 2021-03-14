@@ -1,6 +1,56 @@
 <?php 
-	include("../lib/path.php"); 
+  SESSION_START();
+	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
+  include(ROOT_PATH . "app/database/connect.php");
+  $org_id=$_SESSION['org_id'];
+
+  if (isset($_POST['org_id'])) {
+    $query = "SELECT * FROM organization WHERE org_id='$_POST[org_id]'";
+    $execution = $conn->$query($query);
+    $data = $execution->fetch_object();
+
+    if(isset($_POST['update']))
+    {
+        $org_name=$_POST['org_name'];
+        //$password=$_POST['password'];
+        $org_email=$_POST['user_email'];
+        $org_contact=$_POST['user_phone'];
+        $hashedPwd = password_hash($org_pass, PASSWORD_DEFAULT);
+        
+
+        $filedir = "app/image/profile/";
+        $pathName = basename($_FILES["org_img"]["name"]);
+        $targetFilePath = $filedir.$pathName;
+        $pathType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+        if(!empty($_FILES["org_img"]["name"])){
+            
+                $fileType = array('jpg', 'png', 'jpeg', 'gif');
+                if(in_array($pathType, $fileType)){
+                    if(move_uploaded_file($_FILES["org_img"]["name"], $targetFilePath)){
+
+                        //upload image
+                        $query = mysqli_query($conn,"update organization SET org_name='$org_name', org_pass='$hashedPwd', org_email='$org_email', org_contact='$org_contact', org_img='".pathName."' where org_id='$org_id'");
+                        if($query){
+                            echo "<script>alert('Your profile has been update successfully!');</script>";
+                        }
+                        else{
+                            $php_errormsg['org_img'] = "Failed to upload profile picture, please try again.";
+                        }
+                    }
+                }
+            }
+        
+
+        $_SESSION['org_name'] = $org_name;
+        
+        
+        
+    }
+
+}
+
 ?>
 
 <div align="center">
@@ -22,8 +72,8 @@
               <div class="mt-3">
                 <form method="POST" action="" enctype="multipart/form-data">
                   <div>
-                    <label for="floatingInputGrid">Organization Name</label>
-                    <input type="text" class="form-control" required value="Yeeshuen">
+                    <label for="floatingInputGrid"><?php echo $_SESSION['organization']->org_name; ?></label>
+                    <input type="text" class="form-control" required value="">
                   </div>
                   <div>
                     <label for="floatingInputGrid">Bio</label>
@@ -43,7 +93,7 @@
                 <div class="row g-2">
                   <div class="col-md col-sm-3" >
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingInputGrid" required value="mdo@example.com">
+                      <input type="text" class="form-control" id="floatingInputGrid" required value=" ">
                       <label for="floatingInputGrid">Organization Name</label>
                     </div>
                     <div class="form-floating">
@@ -113,7 +163,7 @@
                     </div>
                 </div><br>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button class="btn btn-primary me-md-2" type="button">Update</button>
+                  <button class="btn btn-primary me-md-2" type="button" name="update" value="UPDATE">Update</button>
                 </div>
               </form>
             </div>
@@ -124,4 +174,6 @@
   </div>
 </div>
 
-<?php include(ROOT_PATH . "app/includes/footer.html"); ?>
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>
+</body>
+</html>
