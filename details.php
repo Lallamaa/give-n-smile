@@ -83,9 +83,32 @@
       <div class="card">
         <div class="card-body">
           <div class="donor-dp">
-            DISPLAY DONOR HISTORY
+            DONOR HISTORY
           </div>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          <div class="tab-pane fade show active" style="font-size:14px;">
+            <table class="table" cellspacing="0" >
+              <thead>
+                <tr>
+                  <th>Donor</th>
+                   <th>Amount Donoation</th>
+                </tr>                                                       
+               </thead>
+               <tbody>
+                <tr>
+                  <td>Doe</td>
+                  <td>RM20</td>
+                </tr>
+                <tr>                        
+                  <td>Moe</td>
+                  <td>RM50</td>
+                </tr>
+                <tr>
+                  <td>Dooley</td>
+                  <td>RM100</td>
+                </tr>
+                </tbody>
+                </table>
+           </div>                     
         </div>
       </div>
     </div>
@@ -106,7 +129,64 @@
                     COMMENTS
               </div>
               <div class="event-content">
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              <div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a style="font-size:14px;">Bhaumik Patel</a>
+                                    <div class="mic-info">
+                                        <a style="font-size:12px;" >on 11 Feb 2021</a> 
+                                    </div>
+                                </div>
+                                <div class="comment-text" style="font-size:14px;">
+                                    Awesome design!
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a style="font-size:14px;">Chong He</a>
+                                    <div class="mic-info">
+                                        <a style="font-size:12px;" >on 9 Jan 2021</a> 
+                                    </div>
+                                </div>
+                                <div class="comment-text" style="font-size:14px;">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a style="font-size:14px;">Jacob Lim</a>
+                                    <div class="mic-info">
+                                        <a style="font-size:12px;" >on 23 Feb 2021</a> 
+                                    </div>
+                                </div>
+                                <div class="comment-text" style="font-size:14px;">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="# " class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+            </div>
+        </div>
+    </div>
+</div>
               </div>
             </div>
           </div>
