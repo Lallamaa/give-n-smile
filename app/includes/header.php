@@ -143,34 +143,45 @@
                 <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
             </button>
             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-				<li><a class="nav-link" href="'. BASE_URL . 'user/us_profile.php">Account</a></li>
-                <li><a class="nav-link" href="'. BASE_URL . 'muser/us_editprofile.php">Setting</a></li>
+                <li><a class="nav-link" href="<?= BASE_URL; ?>user/us_profile.php">Account</a></li>
+                <li><a class="nav-link" href="<?= BASE_URL; ?>muser/us_editprofile.php">Setting</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>
             </ul>
         </div>
                     
         <?php
-            } else{
-        ?>    
+            } 
+            else if(isset($_SESSION['org_loggedIn'])){
+                ?>
+                    <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
+                </ul>
+                    <div class="btn-group"> 
+                        <button class="btn btn-primary-outline mr-5" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="nav-link" href="<?= BASE_URL; ?>organization/org_profile.php">Account</a></li>
+                            <li><a class="nav-link" href="<?= BASE_URL; ?>organization/org_edit.php">Setting</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+        <?php } else { ?>
+            
                 <li><a class="nav-link ml-auto" href="<?php echo BASE_URL; ?>login.php">Log In</a> </li>
                 <li><a class="nav-link ml-auto" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a> </li>
 
             </ul>
         <?php } ?>
-             
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="profile.php">Profile</a>     TODO: direct to user/org profile base on login
-                </li> -->
 
-            <!-- <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> -->
-            </div>
-        </div>
-       
+
+        <!---For checking if login then don't show login button on header--->
+            
         
+    
 
         </div><!-- /.navbar-collapse -->
 

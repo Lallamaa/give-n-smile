@@ -41,7 +41,7 @@
                 <div data-aos="fade-down" data-aos-duration="1500" class="d-flex flex-column text-center align-items-center pre-register-item col-lg-3 col-md-4">
                     <h3>Personal Account</h3>
                     <p>Sign up to donate or fundraise for personal own business</p>
-                    <a href="muser/us_register.php" class="btn btn-primary">Register for Personal Account </a>
+                    <a href="user/us_register.php" class="btn btn-primary">Register for Personal Account </a>
                 </div>
             </div>
         </div>

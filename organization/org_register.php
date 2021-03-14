@@ -13,7 +13,7 @@
 <div class="container">
 	<form class="form-auth" action="includes/org_reg.inc.php" method="post" enctype="multipart/form-data">
 		
-		<legend class="title text-center">Charity Organization Sign Up </legend>
+		<legend class="title text-center">Charity Organization Sign Up</legend>
 		<fieldset class="form-box card card-box shadow p-3 mb-5 bg-white rounded">
 			<?php
 				if (isset($_SESSION['STATUS']['signupstatus']))
@@ -49,19 +49,18 @@
 					?>
 				</sub>
 				<br>
-				<label> Organization Category </label>
+				<!-- <label> Organization Category </label>
 				<div class="col-lg-3 col-md-3 col-sm-12 p-0">
 					<select class="form-control search-slt" id="exampleFormControlSelect1" name="org_category">
 						<option>Select Category</option>
 														<?php while($row = mysqli_fetch_array($category)) 
 															{
-																echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
+																echo '<option value="'.$row['cat_event'].'">'.$row['cat_event'].'</option>';
 															} 
 														?>
-
 					</select>
 				</div>
-				<br>
+				<br> -->
 				<label class="form-label">Password</label>
 				<input  type="password" 
 								name="org_pass" 
@@ -93,6 +92,7 @@
                 </sub>
 				<br>
 				<input type="hidden" name="user_type" value="organization">
+				<input type="hidden" name="org_img" value="avatar.png">
 
 				<button type="submit" class="btn btn-primary" name="registerbtn"> Sign Up </button>
 			</div>
