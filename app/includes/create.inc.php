@@ -20,6 +20,7 @@ if (isset($_POST['create-btn'])) {
     $area = $_POST['area'];
     $ecategory = $_POST['category'];
     $user = $_POST['user'];
+    $userID = $_POST['userID'];
     $status = '-1';
     $type = 'fundraise';
 
@@ -60,22 +61,21 @@ if (isset($_POST['create-btn'])) {
           exit();
         
         } else {
-          $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_img, event_status, event_type, category, event_organizer, event_area)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+          $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_img, event_status, event_type, category, organizer_name, organizer_id, event_area)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
           // $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_status, event_type, category, event_organizer, event_area)
                   // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
           //move_uploaded_file($_FILES['image']['tmp_name'][$i], 'app/image/event/'.$file);
 
-          //'$name', '$start', '$end', '$amount', '$desc', '$image', '-1', 'fundraise', '$ecategory', '$user', '$area'
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
               header("Location: ../../create_event.php?SQLerror");
               exit();
           } 
           else {
-            mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $file, $status, $type, $ecategory, $user, $area);
+            mysqli_stmt_bind_param($stmt, "ssssssssssss", $name, $start, $end, $amount, $desc, $file, $status, $type, $ecategory, $user, $userID, $area);
             // mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $status, $type, $ecategory, $user, $area);
             mysqli_stmt_execute($stmt);
               mysqli_stmt_store_result($stmt);

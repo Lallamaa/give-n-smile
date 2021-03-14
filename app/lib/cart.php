@@ -1,5 +1,6 @@
 <?php
 session_start();
+require '../database/connect.php';
 
 if(isset($_POST['cart_id'])){
 
@@ -24,8 +25,7 @@ if(isset($_POST['cart_id'])){
           );
           $_SESSION['cart'][]  = $itemArray;
       }
-233  }
-
+    }
 }
 
 
@@ -43,13 +43,32 @@ if($_POST['action'] == 'remove'){
 if(!empty($_SESSION['cart'])){
     $outputTable = '';
     $total = 0;
-    $outputTable .= "<table class='table table-bordered'><thead><tr><td>Name</td><td>Price</td><td>Quantity</td><td>Action</td> </tr></thead>";
+    $outputTable .= "<table class='table table-bordered'>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Quantity</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>";
+
     foreach($_SESSION['cart'] as $key => $value){
-        $outputTable .= "<tr><td>".$value['e_name']."</td><td>".($value['e_amount']) ."</td><td>"."</td><td><button id=".$value['e_id']." class='btn btn-danger delete'>Delete</button></td></tr>";  
+        $outputTable .= "<tr>
+                            <td>".$value['e_name']."</td>
+                            <td>".($value['e_amount']) ."</td>
+                            <td>"."</td>
+                            <td>
+                                <button id=".$value['e_id']." class='btn btn-danger delete'>Delete</button>
+                            </td>
+                        </tr>";  
+
         $total = $total + ($value['p_price']);
     }
     $outputTable .= "</table>";
-    $outputTable .= "<div class='text-center'><b>Total: ".$total."</b></div>";
+    $outputTable .= "<div class='text-center'>
+                        <b>Total: ".$total."</b>
+                    </div>";
 
 }
 
@@ -61,15 +80,11 @@ class Cart
 private $con;
 private $productid;
 
-function __construct(){
-    $this->con = new PDO('mysql:host=localhost;dbname=#', '#', '#');
-}
-
 public function getProductDataById($passedId){
 
     $this->productid = $passedId;
 
-    $statement = $this->con->prepare("SELECT productname, productdescription, productimage, price FROM producten WHERE productid = :productid");
+    $statement = $this->conn->prepare("SELECT productname, productdescription, productimage, price FROM producten WHERE productid = :productid");
     $statement->execute(array("productId" => $this->productid));
     $data = $statement->fetch();
 
@@ -77,7 +92,7 @@ public function getProductDataById($passedId){
 }
 public function getAllproducts(){
 
-    $statement = $this->con->prepare("SELECT productid, productname, productdescription, productimage, price FROM producten");
+    $statement = $this->conn->prepare("SELECT productid, productname, productdescription, productimage, price FROM producten");
     $statement->execute();
     $data = $statement->fetchAll();
 

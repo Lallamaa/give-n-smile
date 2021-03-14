@@ -25,16 +25,8 @@
 
 	$sql = "SELECT * FROM events";
 	$event = mysqli_query($conn, $sql);
-/* 	$events = mysqli_fetch_assoc($event);
-	while($events) {
-		echo $event['event_img'];
-	} */
-	
-
-	// if (isset($_POST[addCart])) {
 
 
-	// }
 ?>
 
 <script>
@@ -140,8 +132,8 @@ $(".progress-bar").animate({
 			<div class="row">
 				<?php 
 					while($row = mysqli_fetch_assoc($event)) {
-						$file = "data:image/png;base64,";
-						$image = $file.base64_encode($row['event_img']);
+						// $file = "data:image/png;base64,";
+						// $image = $file.base64_encode($row['event_img']);
 						// echo $image;
 				?>
 					<div class="col-sm-6 col-lg-4 mb-4">
@@ -151,17 +143,22 @@ $(".progress-bar").animate({
 								<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 									<div class="carousel-inner browse-image" style=" width:100%; height: 250px !important;">
 										<div class="carousel-item active">
-										<img class="img-fluid d-block w-100 rounded" src="<?= $image ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">										
-										</div>
-										<!-- <img src="data:image/png;base64,<?php //echo base64_encode(file_get_contents("IMAGE URL HERE")) ?>"> -->
-										<!-- <span class="prod-img"><p>Product Image:</p></span><p><?php //echo '<img src="data:image/jpeg;base64, '.base64_decode($row['file']).'"/>'?></p> -->
+										<!-- </div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100 rounded" src="data:image/jpeg;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
-										<!-- <img src="data:image/jpeg;base64,'.base64_encode($row['images'] ).'" class="img-thumbnail" /> -->
+
+										<div id="images-list carousel-item active"></div>
+
+										<?php 
+											$output .= '<div class="carousel-item">
+											<img class="img-fluid d-block w-100 rounded" src="data:image/png;base64,'.base64_encode($row['event_img']).'" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+											</div>';
+
+											echo $output;
+										?>
 
 										</div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100 rounded" src="data:image/png;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+ -->
 										</div>
 									</div>
 									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -188,19 +185,34 @@ $(".progress-bar").animate({
 										</div>
 									</div>
 									<div><br>
-										<div class="card-title"><a href="org_profile.php"><?=$row['event_organizer']; ?></a></div>
+										<div class="card-title"><a href="org_profile.php"><?=$row['organizer_name']; ?></a></div>
 										<div class="card-subtitle text-muted"><i class="fas fa-map-marker-alt pr-1"></i><small><?= $row['event_area']; ?></small></div>
 										<div class="card-body">
-											<a href="payment.php?donateEventId=<?= $row['event_id'] ?>" class="btn btn-outline-warning">Donate</a>
-											<a href="details.php?loadEventId=<?= $row['event_id']; ?>" class="btn btn-outline-warning">View</a>
+										<?php if(isset($_SESSION['loggedIn'])) { ?>
+											<a href="payment.php?donateventID=<?=$row['event_id']; ?>&userID<?=$_SESSION['user_id']; ?>" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
+											<a href="details.php?loadeventID=<?=$row['event_id']; ?>" class="btn btn-outline-warning">View</a>
+
+											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?=$row['event_name']; ?>">
+											<button class="btn btn-outline-warning add" name="addCart" data-id="<?=$row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" /></button>
+											
+										<?php 
+										}
+										else {
+										?>
+											<a href="login.php?errorlogin" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
+											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?=$row['event_name']; ?>">
+											<button class="btn btn-outline-warning add" name="addCart" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" /></button>
+
+										<?php } ?>
+										<a href="details.php?loadeventID=<?= $row['event_id']; ?>" class="btn btn-outline-warning">View</a>
+
 											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?= $row['event_name']; ?>">
-							
-											<button class="btn btn-outline-warning add" name="addCart" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" onclick="return getEventDataById();"/></button>
+											<button class="btn btn-outline-warning add" name="addCart" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" /></button>
 							
 										</div>
 										<div class="candidate-list-favourite-time">
 											<a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a>
-											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_start']; ?></span>
+											<!-- <span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_start']; ?></span> -->
 											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_end']; ?></span>
 										</div>
 									</div>
@@ -215,9 +227,7 @@ $(".progress-bar").animate({
 			</div>
 		</div>
 	</div>
-
-
-				
+			
 		<div class="row">
 			<div class="col-12 text-center mt-4 mt-sm-5">
 					<ul class="pagination justify-content-center mb-0">
@@ -240,26 +250,103 @@ $(".progress-bar").animate({
 <?php include(ROOT_PATH . "app/includes/footer.php"); ?>
 
 <script>
-$(document).ready(function(){
- $('action').change(function(){
-  if($(this).val() != '')
-  {
-   var action = $(this).attr("id");
-   var query = $(this).val();
-   var result = '';
-   if(action == "state")
-   {
-    result = 'city';
-   }
-   $.ajax({
-    url:"app/includes/state_city.php",
-    method:"POST",
-    data:{action:action, query:query},
-    success:function(data){
-     $('#'+result).html(data);
-    }
-   })
-  }
- });
+$(document).ready(function() {
+         alldeleteBtn = document.querySelectorAll('.delete')
+         alldeleteBtn.forEach(onebyone => {
+            onebyone.addEventListener('click',deleteINsession)
+         })
+
+function deleteINsession(){
+    removable_id = this.id;
+    $.ajax({
+                url:'app/lib/cart.php',
+                method:'POST',
+                dataType:'json',
+                data:{ 
+                      id_to_remove:removable_id,
+                      action:'remove' 
+                },
+                success:function(data){
+                        $('#displayCheckout').html(data);
+           alldeleteBtn = document.querySelectorAll('.delete')
+         alldeleteBtn.forEach(onebyone => {
+            onebyone.addEventListener('click',deleteINsession)
+         })
+                      }
+              }).fail( function(xhr, textStatus, errorThrown) {
+        alert(xhr.responseText);
+    });
+
+}
+
+
+    $('.add').click(function() { 
+        id = $(this).data('id');
+        name = $('#name' + id).val();
+        price = $('#price' + id).val();
+        quantity = $('#quantity' + id).val();
+            $.ajax({
+            url:'cart.php',
+            method:'POST',
+            dataType:'json',
+            data:{
+                    cart_id : id,
+                    cart_name : name,
+                    cart_amount : amount,
+                    action:'add' 
+            },
+            success:function(data){
+                    $('#displayCheckout').html(data);
+                    alldeleteBtn = document.querySelectorAll('.delete')
+        alldeleteBtn.forEach(onebyone => {
+        onebyone.addEventListener('click',deleteINsession)
+        })
+                    }
+            }).fail( function(xhr, textStatus, errorThrown) {
+    alert(xhr.responseText);
 });
+    
+    })
+})
+</script>
+
+// $(document).ready(function(){
+
+//  $('action').change(function(){
+//   if($(this).val() != '')
+//   {
+//    var action = $(this).attr("id");
+//    var query = $(this).val();
+//    var result = '';
+//    if(action == "state")
+//    {
+//     result = 'city';
+//    }
+//    $.ajax({
+//     url:"app/includes/state_city.php",
+//     method:"POST",
+//     data:{action:action, query:query},
+//     success:function(data){
+//      $('#'+result).html(data);
+//     }
+//    })
+//   }
+//  });
+// });
+
+// $(document).ready(function() {
+	
+// 	load_images();
+
+// 	function load_images() {
+
+// 		$.ajax({
+// 			url: "app/lib/fetch_images.php",
+// 			success:function(data) {
+// 				$('#images_list').html(data);
+// 			}
+// 		});
+// 	}
+// });
+
 </script>

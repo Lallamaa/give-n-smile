@@ -34,66 +34,7 @@
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <script src="<?= BASE_URL;?>>app/jvs/script.js"></script>
 
-<script>
-$(document).ready(function() {
-         alldeleteBtn = document.querySelectorAll('.delete')
-         alldeleteBtn.forEach(onebyone => {
-            onebyone.addEventListener('click',deleteINsession)
-         })
 
-function deleteINsession(){
-    removable_id = this.id;
-    $.ajax({
-                url:'app/lib/cart.php',
-                method:'POST',
-                dataType:'json',
-                data:{ 
-                      id_to_remove:removable_id,
-                      action:'remove' 
-                },
-                success:function(data){
-                        $('#displayCheckout').html(data);
-           alldeleteBtn = document.querySelectorAll('.delete')
-         alldeleteBtn.forEach(onebyone => {
-            onebyone.addEventListener('click',deleteINsession)
-         })
-                      }
-              }).fail( function(xhr, textStatus, errorThrown) {
-        alert(xhr.responseText);
-    });
-
-}
-
-
-        $('.add').click(function() { 
-            id = $(this).data('id');
-            name = $('#name' + id).val();
-            price = $('#price' + id).val();
-            quantity = $('#quantity' + id).val();
-              $.ajax({
-                url:'cart.php',
-                method:'POST',
-                dataType:'json',
-                data:{
-                      cart_id : id,
-                      cart_name : name,
-                      cart_amount : amount,
-                      action:'add' 
-                },
-                success:function(data){
-                        $('#displayCheckout').html(data);
-                        alldeleteBtn = document.querySelectorAll('.delete')
-         alldeleteBtn.forEach(onebyone => {
-            onebyone.addEventListener('click',deleteINsession)
-         })
-                      }
-              }).fail( function(xhr, textStatus, errorThrown) {
-        alert(xhr.responseText);
-    });
-        
-        })
-    })
-</script>
 </head>
 <body>
 <header>
@@ -123,58 +64,105 @@ function deleteINsession(){
                  <!---For checking if login then don't show login button on header--->
             <?php
                 if(isset($_SESSION['loggedIn'])){
-            ?>  <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
-                <li class="nav-item"><a class="nav-link" href="user/us_profile.php" name="profile">Profile</a></li> 
+            ?>  
+                <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
                 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16">
-                    <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                    </svg></a>
+                <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+                </ul>
+
+                <div class="btn-group">
+                <!-- <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown"> -->
+                    <button class="btn btn-primary-outline dropdown-toggle mr-2" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <!-- <span class="badge badge-pill red">1</span> -->
+                        <i class="fas fa-shopping-cart pl-0"></i>
+                    </button>
                     <ul class="dropdown-menu dropdown-cart" role="menu">
                         <?php 
-                        if(!empty($_SESSION['cart'])) {
-
-                            $outputCart = '';
-                            $outputCart .= '
-                                <li>
-                                    <span class="item">
-                                        ass="item-left">
-                                            <img src="'.$value['e_image'].'" alt="" />
-                                            <span class="item-info">
-                                                <span>'.$value['e_name'].'/span>
-                                                <span>RM '.number_format($value['e_amount'], 2).'</span>
-                                            </span>
-                                        </span>
-                                        <span class="item-right">
-                                            <button class="btn btn-xs btn-danger pull-right delete">x</button>
-                                        </span>
-                                    </span>
-                                </li>';
+                        if(!empty($_SESSION['cart'])){
+                            $outputTable = '';
+                            $total = 0;
+                            $outputTable .= '<table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <td col-span="2">Name</td>
+                                                        <td>Action</td>
+                                                    </tr>
+                                                </thead>';
+                            
+                            foreach($_SESSION['cart'] as $key => $value){
+                                $outputTable .= '<tr>
+                                                    <td>'.$value['e_image'].'</td>
+                                                    <td>'.$value['e_name'].'</td>
+                                                    <td><button id='.$value['e_id'].' class="btn btn-danger delete">Delete</button></td>
+                                                </tr>';  
+                                $total = $total + ($value['p_price'] * $value['p_quantity']);
                             }
-                        }
+                            $outputTable .= '</table>';
+                            $outputTable .= '<div class="text-center">
+                                                <b>Total: ".$total."</b>
+                                            </div>';
+                            echo $outputTable;
+                        
+                       
+                        } else {
+                                $outputTable = '';
+                                $total = 0;
+                                $outputTable .= "<table class='table table-bordered'>
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Price</td>
+                                                            <td>Action</td>
+                                                        </tr>
+                                                    </thead>";
+                                
+                                foreach($_SESSION['cart'] as $key => $value){
+                                    $outputTable .= "<tr>
+                                                        <td>".$value['p_name']."</td>
+                                                        <td>".($value['p_price'] * $value['p_quantity']) ."</td>
+                                                        <td><button id=".$value['p_id']." class='btn btn-danger delete'>Delete</button></td>
+                                                    </tr>";  
+                                    $total = $total + ($value['p_price'] * $value['p_quantity']);
+                                }
+                                $outputTable .= "</table>";
+                                $outputTable .= "<div class='text-center'>
+                                                    <b>Total: ".$total."</b>
+                                                </div>";
+                                echo $outputTable;
+                            }
+                
+                        
                         ?>
-                        <li class="divider"></li>
-                        <li><a class="text-center" href="<?= BASE_URL; ?>payment.php">View Cart</a></li>
-                    </ul>
-                    </li>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-
-                <?php
-                //else{
-                    ?> 
-                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
-                    <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a></li>
+                        <!-- <li class="divider"></li>
+                        <li><a class="text-center" href="<?= BASE_URL; ?>payment.php">View Cart</a></li> -->
+                </div>
+                <!-- Make this btn-group for dropdownMenuButton2 at header2.php By V-->
+        <div class="btn-group"> 
+            <button class="btn btn-primary-outline mr-5" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
+				<li><a class="nav-link" href="'. BASE_URL . 'user/us_profile.php">Account</a></li>
+                <li><a class="nav-link" href="'. BASE_URL . 'muser/us_editprofile.php">Setting</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>
+            </ul>
+        </div>
                     
-                <?php // } ?>
+        <?php
+            } else{
+        ?>    
+                <li><a class="nav-link ml-auto" href="<?php echo BASE_URL; ?>login.php">Log In</a> </li>
+                <li><a class="nav-link ml-auto" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a> </li>
+
+            </ul>
+        <?php } ?>
              
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>     TODO: direct to user/org profile base on login
                 </li> -->
-            </ul>
+
             <!-- <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -182,39 +170,41 @@ function deleteINsession(){
             </div>
         </div>
        
-        <!-- Make this btn-group for dropdownMenuButton2 at header2.php By V-->
-        <div class="btn-group"> 
-            <button class="btn btn-primary-outline dropdown-toggle mr-5" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
-            </button>
-            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-						<?php if(isset($_SESSION['loggedIn'])) {		                
-							echo  '<li><a class="nav-link" href="'. BASE_URL . 'user/us_profile.php">Account</a></li>
-										 <li><a class="nav-link" href="'. BASE_URL . 'muser/us_editprofile.php">Setting</a></li>
-										 <li><hr class="dropdown-divider"></li>
-										 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>';
+        
 
-						 } else if(isset($_SESSION['loggedIn'])) {	
-							echo  '<li><a class="nav-link" href="'. BASE_URL . 'organization/org_profile.php">Account</a></li>
-										 <li><a class="nav-link" href="'. BASE_URL . 'organization/org_edit.php">Setting</a></li>
-										 <li><hr class="dropdown-divider"></li>
-										 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout="1"><i class="fa fa-power-off"></i>Logout</a></li>';
-
-						 }
-						
-						?>                          
-            </ul>
-        </div>
+        </div><!-- /.navbar-collapse -->
 
     </nav>
     <!--End of NavBar-->
 </header>
-<?php
-// if($_SESSION['teacher'])
-// 	{
-// 		header("Location: hallecturer.php");
-// 	}
-// 	if($_SESSION['student'])
-// 	{
-// 		header("Location: halstudent.php");
-// 	}
+
+<script>
+$(document).ready(function() {
+    alldeleteBtn = document.querySelectorAll('.delete')
+    alldeleteBtn.forEach(onebyone => {
+    onebyone.addEventListener('click',deleteINsession)
+})
+
+function deleteINsession(){
+    removable_id = this.id;
+    $.ajax({
+                url:'cart.php',
+                method:'POST',
+                dataType:'json',
+                data:{ 
+                    id_to_remove:removable_id,
+                    action:'remove' 
+                },
+                success:function(data){
+                                $('#displayCheckout').html(data);
+            alldeleteBtn = document.querySelectorAll('.delete')
+        alldeleteBtn.forEach(onebyone => {
+                onebyone.addEventListener('click',deleteINsession)
+        })
+                }
+            }).fail( function(xhr, textStatus, errorThrown) {
+        alert(xhr.responseText);
+    });
+
+}
+</script>

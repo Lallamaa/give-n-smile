@@ -17,15 +17,11 @@ if($statement->execute())
  foreach($result as $row)
  {
   $output .= '
-  <div class="col-md-2" style="margin-bottom:16px;">
-   <img src="data:image/jpeg;base64,'.base64_encode($row['images'] ).'" class="img-thumbnail" />
-  </div>
-  ';
+  <div class="carousel-item">
+    <img src="data:image/png;base64,'.base64_encode($row['event_img']).'" class="img-thumbnail" />
+  </div>';
  }
+ echo $output;
 }
-
-$output .= '</div>';
-
-echo $output;
 
 ?>

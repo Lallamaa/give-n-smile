@@ -115,7 +115,8 @@ if(isset($_SESSION['loggedIn'])) {
               <div>
                 <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
               </div>
-              <input type="hidden" class="form-control" name="user" value="<?php echo $_SESSION['loggedIn']->user_id; ?>"/>
+              <input type="hidden" class="form-control" name="user" value="<?php echo $_SESSION['loggedIn']->user_name; ?>"/>
+              <input type="hidden" class="form-control" name="userID" value="<?php echo $_SESSION['loggedIn']->user_id; ?>"/>
 
             </div>
           </div>

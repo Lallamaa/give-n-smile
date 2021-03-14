@@ -11,13 +11,25 @@
     $eventID = $_GET['loadEventId'];
 
     $sql = "SELECT * FROM events WHERE event_id='$eventID'";
-    
+    $query = mysqli_query($conn, $sql);
     
   }
 ?>
 
+<style>
+.side-block {
+  margin-bottom: 20px;
+}
+
+.event-title {
+  font-size: 50px;
+}
+</style>
+
 <div class="container">
   <div class="row">
+  <?php while($row = mysqli_fetch_array($query)) { ?>
+
     <div class="col-lg-8 col-md-8 col-sm-12">
       <div class="card">
         <div class="card-body">
@@ -30,7 +42,7 @@
             <div class="carousel-inner">
               <div class="carousel-item active">
               <?php //if (isset($_SESSION['event'])) { ?>
-                <img src="<?php //BASE_URL; ?>app/image/jumbo_6.jpg<?php //$row['event_img']; ?>" class="d-block w-100" alt="..." />
+                <img src="<?php //BASE_URL; ?>app/image/jumbo_6.jpg<?php $row['event_img']; ?>" class="d-block w-100" alt="..." />
                 <div class="carousel-caption d-none d-md-block">
                   <h5>First slide label</h5>
                   <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -63,11 +75,11 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="col-lg-4 col-md-4 col-sm-12 side-block">
       <div class="card">
         <div class="card-body">
           <div class="organizer-name">
-            SAMPLE ORGANIZER NAME
+            <?= $row['organizer_name']; ?>
           </div>
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui"
           <div class="col feature social">
@@ -117,10 +129,10 @@
       <div class="card">
         <div class="card-body">
           <div class="event-title">
-              SAMPLE EVENT TITLE
+            <?= $row['event_name']; ?>
           </div>
           <div class="event-content">
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            <?= $row['event_desc']; ?>
           </div>
           <!-- display comments  --> 
           <div class="card">
@@ -193,6 +205,8 @@
         </div>
       </div>
     </div>      
+  <?php } ?>
   </div>
 </div>
+
 <?php include(ROOT_PATH . "app/includes/footer.php"); ?>
