@@ -30,6 +30,11 @@
 		echo $event['event_img'];
 	} */
 	
+
+	// if (isset($_POST[addCart])) {
+
+
+	// }
 ?>
 
 <script>
@@ -113,10 +118,11 @@ $(".progress-bar").animate({
                           <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                             <select class="form-control search-slt" id="exampleFormControlSelect1">
                                 <option>Select Category</option>
-																<?php while($row = mysqli_fetch_array($category)) 
+																<?php while($rows = mysqli_fetch_array($category)) 
 																	{
-																		echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
-																	} ?>
+																		echo '<option value="'.$rows['cat_name'].'">'.$rows['cat_name'].'</option>';
+																	} 
+																?>
 
                             </select>
                         </div>
@@ -134,6 +140,9 @@ $(".progress-bar").animate({
 			<div class="row">
 				<?php 
 					while($row = mysqli_fetch_assoc($event)) {
+						$file = "data:image/png;base64,";
+						$image = $file.base64_encode($row['event_img']);
+						// echo $image;
 				?>
 					<div class="col-sm-6 col-lg-4 mb-4">
 						<div class="card-body">
@@ -142,13 +151,17 @@ $(".progress-bar").animate({
 								<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 									<div class="carousel-inner browse-image" style=" width:100%; height: 250px !important;">
 										<div class="carousel-item active">
-										<img class="img-fluid d-block w-100 rounded" src="app/image/event/<?= $row['event_img']; ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+										<img class="img-fluid d-block w-100 rounded" src="<?= $image ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">										
+										</div>
+										<!-- <img src="data:image/png;base64,<?php //echo base64_encode(file_get_contents("IMAGE URL HERE")) ?>"> -->
+										<!-- <span class="prod-img"><p>Product Image:</p></span><p><?php //echo '<img src="data:image/jpeg;base64, '.base64_decode($row['file']).'"/>'?></p> -->
+										<div class="carousel-item">
+										<img class="img-fluid d-block w-100 rounded" src="data:image/jpeg;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+										<!-- <img src="data:image/jpeg;base64,'.base64_encode($row['images'] ).'" class="img-thumbnail" /> -->
+
 										</div>
 										<div class="carousel-item">
-										<img class="img-fluid d-block w-100 rounded" src="app/image/event/<?= $row['event_img']; ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
-										</div>
-										<div class="carousel-item">
-										<img class="img-fluid d-block w-100 rounded" src="app/image/event/<?= $row['event_img']; ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+										<img class="img-fluid d-block w-100 rounded" src="data:image/png;base64,<?= base64_encode($row['event_img']); ?>" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
 										</div>
 									</div>
 									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -178,11 +191,11 @@ $(".progress-bar").animate({
 										<div class="card-title"><a href="org_profile.php"><?=$row['event_organizer']; ?></a></div>
 										<div class="card-subtitle text-muted"><i class="fas fa-map-marker-alt pr-1"></i><small><?= $row['event_area']; ?></small></div>
 										<div class="card-body">
-											<a href="payment.php" class="btn btn-outline-warning">Donate</a>
-											<a href="details.php" class="btn btn-outline-warning">View</a>
+											<a href="payment.php?donateEventId=<?= $row['event_id'] ?>" class="btn btn-outline-warning">Donate</a>
+											<a href="details.php?loadEventId=<?= $row['event_id']; ?>" class="btn btn-outline-warning">View</a>
 											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?= $row['event_name']; ?>">
 							
-											<button class="btn btn-outline-warning add" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25"/></button>
+											<button class="btn btn-outline-warning add" name="addCart" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" onclick="return getEventDataById();"/></button>
 							
 										</div>
 										<div class="candidate-list-favourite-time">

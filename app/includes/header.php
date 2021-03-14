@@ -1,5 +1,5 @@
 <?php 	
-		include(ROOT_PATH . "app/database/connect.php");
+    include(ROOT_PATH . "app/database/connect.php");    
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-    <script src="<?php echo BASE_URL;?>>app/jvs/script.js"></script>
+    <script src="<?= BASE_URL;?>>app/jvs/script.js"></script>
 
 <script>
 $(document).ready(function() {
@@ -137,17 +137,16 @@ function deleteINsession(){
                         <?php 
                         if(!empty($_SESSION['cart'])) {
 
-                            foreach($_SESSION['cart'] as $key => $value) {
-                                $outputCart = '';
-                                $outputCart .= '
+                            $outputCart = '';
+                            $outputCart .= '
                                 <li>
-                                <span class="item">
-                                    <span class="item-left">
-                                        <img src="'.$value[e_image].'" alt="" />
-                                        <span class="item-info">
-                                            <span>'.$value[e_name].'/span>
-                                            <span>RM '.number_format($value[e_amount], 2).'</span>
-                                        </span>
+                                    <span class="item">
+                                        ass="item-left">
+                                            <img src="'.$value['e_image'].'" alt="" />
+                                            <span class="item-info">
+                                                <span>'.$value['e_name'].'/span>
+                                                <span>RM '.number_format($value['e_amount'], 2).'</span>
+                                            </span>
                                         </span>
                                         <span class="item-right">
                                             <button class="btn btn-xs btn-danger pull-right delete">x</button>
@@ -165,11 +164,12 @@ function deleteINsession(){
             </div><!-- /.navbar-collapse -->
 
                 <?php
-                }else{
-                    ?> <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
+                //else{
+                    ?> 
+                    <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li> 
                     <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>pre-register.php">Sign Up</a></li>
-                    <?php
-                } ?>
+                    
+                <?php // } ?>
              
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="profile.php">Profile</a>     TODO: direct to user/org profile base on login
