@@ -2,6 +2,8 @@
 session_start();
 require '../database/connect.php';
 
+
+
 define('KB', 1024);
 define('MB', 1048576);
 define('GB', 1073741824);
@@ -24,20 +26,20 @@ if (isset($_POST['create-btn'])) {
     $status = '-1';
     $type = 'fundraise';
 
-    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
+    // $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
 
-    $allowed_image_extension = array('jpg', 'jpeg', 'png', 'gif');
+    // $allowed_image_extension = array('jpg', 'jpeg', 'png', 'gif');
     // echo '<script src="app/jvs/app.js"></script>';
-    // $file = $_GET['CLOUDINARY_URL'];
+    
 
-
-    if (($_FILES["image"]["size"] > 5000000)) { //if error, file more than 1MB
-      echo '<div class="container style=background-color: ;">
-              <div class="alert alert-danger words" role="alert">
-                  Opps, looks like your file is more than 1MB, make sure your file is 1MB or less to submit.
-              </div>
-          </div>
-        <a href="../../create_events.php"><button class="btn btn-light btn-md rounded-pill add-backbtn">Retry</button></a> ';
+    // $file = cloudinary_url($files['image']['public_id']);
+    // if (($_FILES["image"]["size"] > 5000000)) { //if error, file more than 1MB
+    //   echo '<div class="container style=background-color: ;">
+    //           <div class="alert alert-danger words" role="alert">
+    //               Opps, looks like your file is more than 1MB, make sure your file is 1MB or less to submit.
+    //           </div>
+    //       </div>
+    //     <a href="../../create_events.php"><button class="btn btn-light btn-md rounded-pill add-backbtn">Retry</button></a> ';
 
     // $file = $_FILES[image][tmp_name];
     // $image_file = addslashes(file_get_contents($_FILES['image']['tmp_name']))
@@ -52,41 +54,124 @@ if (isset($_POST['create-btn'])) {
     //     }
     //   }
         
+    // } else {
+
+    
+$fileName = $_FILES['image']['name'];
+$fileTmpName = $_FILES['image']['tmp_name'];
+$fileSize = $_FILES['image']['size'];
+$fileType = $_FILES['image']['type'];
+$fileError = $_FILES['image']['error'];
+
+$fileExt = explode('.', $fileName);
+$fileActualExt = strtolower(end($fileExt));
+
+$allowed = array('jpg', 'jpeg', 'png', 'svg');
+
+if(in_array($fileActualExt, $allowed)){
+
+    if($fileError === 0){
+
+        $fileNameNew = uniqid('', true).".".$fileActualExt;
+
+        /* $fileDestination = "upload/".$fileNameNew; */
+        echo $fileTmpName;
+        /* move_uploaded_file($fileTmpName, $fileDestination); */
+
+        echo "File uploaded";
+
+    }else{
+
+        echo "There was an error uploading your file";
+
+    }
+
+  }else{
+
+      echo "You cannot upload files of this type!";
+
+  }
+
+  if (is_file('../../vendor/autoload.php') && is_readable(__DIR__ . '../../vendor/autoload.php')) {
+      require_once '../../vendor/autoload.php';
+      echo 'not here';
+  } else {
+      // Fallback to legacy autoloader
+      require_once '../../vendor/autoload.php';
+      require_once '../../vendor/cloudinary/cloudinary_php/src/Cloudinary.php';
+      echo 'here';
+  }
+
+  // if (file_exists('settings.php')) {
+  //     include './settings.php';
+  // }
+
+  $sample_paths = array(
+      'pizza' => getcwd() . DIRECTORY_SEPARATOR . 'pizza.jpg',
+      'lake' => getcwd() . DIRECTORY_SEPARATOR . 'lake.jpg',
+      'couple' => $fileTmpName,
+  );
+
+
+  $default_upload_options = array('tags' => 'basic_sample');
+  $eager_params = array('width' => 200, 'height' => 150, 'crop' => 'scale');
+  $files = array();
+
+
+      global $files, $sample_paths, $default_upload_options, $eager_params;
+
+    echo "uploading";
+
+    Cloudinary::config(array(
+      'cloud_name' => 'lallama-a',
+      'api_key' => '446819694666293',
+      'api_secret' => 'LU8PzPt541g8shBJAGyuJ155ZVI'
+    ));
+
+    # In the two following examples, the file is fetched from a remote URL and stored in Cloudinary.
+    # This allows you to apply the same transformations, and serve those using Cloudinary's CDN layer.
+    $files['remote'] = \Cloudinary\Uploader::upload(
+        $sample_paths['couple'],
+        $default_upload_options
+    );
+
+    
+    $image =  cloudinary_url($files['remote']['public_id']);
+  
+
+  if (empty($name) || empty($start) || empty($end) || empty($amount) || empty($ecategory)) {
+
+    $_SESSION['ERRORS']['error'] = 'Required fields cannot be empty, try again';
+    header("Location: ../../create_event.php?require");
+    exit();
+
+  } else {
+    $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_img, event_status, event_type, category, organizer_name, organizer_id, event_area)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+    // $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_status, event_type, category, event_organizer, event_area)
+            // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+    //move_uploaded_file($_FILES['image']['tmp_name'][$i], 'app/image/event/'.$file);
+
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../../create_event.php?SQLerror");
+        exit();
     } 
-
-        if (empty($name) || empty($start) || empty($end) || empty($amount) || empty($ecategory)) {
-
-          $_SESSION['ERRORS']['error'] = 'Required fields cannot be empty, try again';
-          header("Location: ../../create_event.php?require");
-          exit();
+    else {
+      mysqli_stmt_bind_param($stmt, "ssssssssssss", $name, $start, $end, $amount, $desc, $image, $status, $type, $ecategory, $user, $userID, $area);
+      // mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $status, $type, $ecategory, $user, $area);
+      mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
         
-        } else {
-          $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_img, event_status, event_type, category, organizer_name, organizer_id, event_area)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-
-          // $sql = "INSERT INTO events (event_name, event_start, event_end, event_amount, event_desc, event_status, event_type, category, event_organizer, event_area)
-                  // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-
-          //move_uploaded_file($_FILES['image']['tmp_name'][$i], 'app/image/event/'.$file);
-
-          $stmt = mysqli_stmt_init($conn);
-          if (!mysqli_stmt_prepare($stmt, $sql)) {
-              header("Location: ../../create_event.php?SQLerror");
-              exit();
-          } 
-          else {
-            mysqli_stmt_bind_param($stmt, "ssssssssssss", $name, $start, $end, $amount, $desc, $file, $status, $type, $ecategory, $user, $userID, $area);
-            // mysqli_stmt_bind_param($stmt, "sssssssssss", $name, $start, $end, $amount, $desc, $status, $type, $ecategory, $user, $area);
-            mysqli_stmt_execute($stmt);
-              mysqli_stmt_store_result($stmt);
-              
-              $_SESSION['STATUS']['eventstatus'] = 'Campaign Created';
-              header('Location: ../../index.php?createsuccess');
-              exit();
-          }     
-        }
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn); 
+        $_SESSION['STATUS']['eventstatus'] = 'Campaign Created';
+        header('Location: ../../index.php?createsuccess');
+        exit();
+    }     
+  }
+  mysqli_stmt_close($stmt);
+  mysqli_close($conn); 
 
       
       // else {

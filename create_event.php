@@ -13,7 +13,7 @@
 <?php 
 
 
-$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
+$queryy = "SELECT `cat_event` FROM category ORDER BY `cat_event` ASC";
 $category = mysqli_query($conn, $queryy);
 
 if(isset($_SESSION['loggedIn'])) {
@@ -67,7 +67,7 @@ if(isset($_SESSION['loggedIn'])) {
                     <?php 
                     while($row = mysqli_fetch_array($category)) 
                       {
-                        echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
+                        echo '<option value="'.$row['cat_event'].'">'.$row['cat_event'].'</option>';
                       } 
                     ?>
                 </select>
@@ -102,6 +102,7 @@ if(isset($_SESSION['loggedIn'])) {
                 <div class="form-group">
                   <label class="control-label">Description Images</label><br>
                   <input type="file" id="file-upload" class="form-control" require  name="image" accept=".jpg, .jpeg, .png, .gif"/>
+
                   <!-- <img src="app/image/default.jpg" id="img-preview" style="width:200px; height:200px;">
 
                   <input type="button" class="btn btn-primary nextBtn btn-lg pull-right" name="add-image-btn" value="ADD"></input>
@@ -135,7 +136,7 @@ if(isset($_SESSION['loggedIn'])) {
 </div>    
 
 </div>
-<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <?php include(ROOT_PATH . 'app/includes/footer.php'); ?>
 

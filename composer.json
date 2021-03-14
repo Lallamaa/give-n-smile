@@ -1,3 +1,6 @@
 {
   
+    "require": {
+        "cloudinary/cloudinary_php": "1.20"
+    }
 }

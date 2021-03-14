@@ -33,36 +33,36 @@
 					else{
 						$msg = "Login Failed! Wrong email or password.";
 					}
-				}
+				
 			}
+		}
 
+// //org-site
+// if(isset($_POST['loginbtn'])){
+// 	$org_email = $_POST['email'];
+// 	$org_pass = $_POST['password'];
+		
+// 	//filter variable for security
+// 	$org_email = strip_tags(mysqli_real_escape_string($conn, trim($org_email)));
+// 	$org_pass = strip_tags(mysqli_real_escape_string($conn, trim($org_pass)));
 
-			// //org-site
-			// if(isset($_POST['loginbtn'])){
-			// 	$org_email = $_POST['email'];
-			// 	$org_pass = $_POST['password'];
-					
-			// 	//filter variable for security
-			// 	$org_email = strip_tags(mysqli_real_escape_string($conn, trim($org_email)));
-			// 	$org_pass = strip_tags(mysqli_real_escape_string($conn, trim($org_pass)));
-	
-			// 		//query
-			// 		$query2 = "SELECT * FROM organization WHERE org_email='".$org_email."'";
-			// 		$tbl2 = mysqli_query($conn, $query2);
-					
-			// 		$excution = $conn->query($query2);
-			// 		$data = $excution->fetch_object();
-	
-			// 		if(mysqli_num_rows($tbl2)>0){	//verify password now after verify email
-			// 			$row2 = mysqli_fetch_array($tbl2);
-			// 			$password_hash = $row2['org_password'];
-			// 			if(password_verify($org_pass, $password_hash)){
-			// 				$msg = "Login successfully!";
-			// 				$_SESSION['loggedIn'] = $data;
-			// 				header("location: ../../index.php?loginsuccess");   //having problem on redirecting to index(automatically)
-			// 			}
-			// 			else{
-			// 				$msg = "Login Failed! Wrong email or password.";
-			// 			}
-			// 		}
-			// 	}
+// 		//query
+// 		$query2 = "SELECT * FROM organization WHERE org_email='".$org_email."'";
+// 		$tbl2 = mysqli_query($conn, $query2);
+		
+// 		$excution = $conn->query($query2);
+// 		$data = $excution->fetch_object();
+
+// 		if(mysqli_num_rows($tbl2)>0){	//verify password now after verify email
+// 			$row2 = mysqli_fetch_array($tbl2);
+// 			$password_hash = $row2['org_password'];
+// 			if(password_verify($org_pass, $password_hash)){
+// 				$msg = "Login successfully!";
+// 				$_SESSION['loggedIn'] = $data;
+// 				header("location: ../../index.php?loginsuccess");   //having problem on redirecting to index(automatically)
+// 			}
+// 			else{
+// 				$msg = "Login Failed! Wrong email or password.";
+// 			}
+// 		}
+// 	}

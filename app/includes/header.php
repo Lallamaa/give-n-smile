@@ -34,7 +34,6 @@
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <script src="<?= BASE_URL;?>>app/jvs/script.js"></script>
 
-
 </head>
 <body>
 <header>
@@ -70,67 +69,71 @@
                 <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
                 </ul>
 
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                
+
                 <div class="btn-group">
                 <!-- <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown"> -->
-                    <button class="btn btn-primary-outline dropdown-toggle mr-2" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <a href="<?= BASE_URL; ?>cart.php?userID=<?= $_SESSION['user_id']; ?> " class="btn btn-primary-outline dropdown-toggle mr-2" type="button" data-toggle="dropdown" aria-expanded="false">
                         <!-- <span class="badge badge-pill red">1</span> -->
                         <i class="fas fa-shopping-cart pl-0"></i>
-                    </button>
+                    </a>
                     <ul class="dropdown-menu dropdown-cart" role="menu">
                         <?php 
-                        if(!empty($_SESSION['cart'])){
-                            $outputTable = '';
-                            $total = 0;
-                            $outputTable .= '<table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <td col-span="2">Name</td>
-                                                        <td>Action</td>
-                                                    </tr>
-                                                </thead>';
+                        // if(!empty($_SESSION['cart'])){
+                        //     $outputTable = '';
+                        //     $total = 0;
+                        //     $outputTable .= '<table class="table table-bordered">
+                        //                         <thead>
+                        //                             <tr>
+                        //                                 <td col-span="2">Name</td>
+                        //                                 <td>Action</td>
+                        //                             </tr>
+                        //                         </thead>';
                             
-                            foreach($_SESSION['cart'] as $key => $value){
-                                $outputTable .= '<tr>
-                                                    <td>'.$value['e_image'].'</td>
-                                                    <td>'.$value['e_name'].'</td>
-                                                    <td><button id='.$value['e_id'].' class="btn btn-danger delete">Delete</button></td>
-                                                </tr>';  
-                                $total = $total + ($value['p_price'] * $value['p_quantity']);
-                            }
-                            $outputTable .= '</table>';
-                            $outputTable .= '<div class="text-center">
-                                                <b>Total: ".$total."</b>
-                                            </div>';
-                            echo $outputTable;
+                        //     foreach($_SESSION['cart'] as $key => $value){
+                        //         $outputTable .= '<tr>
+                        //                             <td>'.$value['e_image'].'</td>
+                        //                             <td>'.$value['e_name'].'</td>
+                        //                             <td><button id='.$value['e_id'].' class="btn btn-danger delete">Delete</button></td>
+                        //                         </tr>';  
+                        //         $total = $total + ($value['p_price'] * $value['p_quantity']);
+                        //     }
+                        //     $outputTable .= '</table>';
+                        //     $outputTable .= '<div class="text-center">
+                        //                         <b>Total: ".$total."</b>
+                        //                     </div>';
+                        //     echo $outputTable;
                         
                        
-                        } else {
-                                $outputTable = '';
-                                $total = 0;
-                                $outputTable .= "<table class='table table-bordered'>
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                            <td>Price</td>
-                                                            <td>Action</td>
-                                                        </tr>
-                                                    </thead>";
+                        // } else {
+                        //         $outputTable = '';
+                        //         $total = 0;
+                        //         $outputTable .= "<table class='table table-bordered'>
+                        //                             <thead>
+                        //                                 <tr>
+                        //                                     <td>Name</td>
+                        //                                     <td>Price</td>
+                        //                                     <td>Action</td>
+                        //                                 </tr>
+                        //                             </thead>";
                                 
-                                foreach($_SESSION['cart'] as $key => $value){
-                                    $outputTable .= "<tr>
-                                                        <td>".$value['p_name']."</td>
-                                                        <td>".($value['p_price'] * $value['p_quantity']) ."</td>
-                                                        <td><button id=".$value['p_id']." class='btn btn-danger delete'>Delete</button></td>
-                                                    </tr>";  
-                                    $total = $total + ($value['p_price'] * $value['p_quantity']);
-                                }
-                                $outputTable .= "</table>";
-                                $outputTable .= "<div class='text-center'>
-                                                    <b>Total: ".$total."</b>
-                                                </div>";
-                                echo $outputTable;
-                            }
+                        //         foreach($_SESSION['cart'] as $key => $value){
+                        //             $outputTable .= "<tr>
+                        //                                 <td>".$value['p_name']."</td>
+                        //                                 <td>".($value['p_price'] * $value['p_quantity']) ."</td>
+                        //                                 <td><button id=".$value['p_id']." class='btn btn-danger delete'>Delete</button></td>
+                        //                             </tr>";  
+                        //             $total = $total + ($value['p_price'] * $value['p_quantity']);
+                        //         }
+                        //         $outputTable .= "</table>";
+                        //         $outputTable .= "<div class='text-center'>
+                        //                             <b>Total: ".$total."</b>
+                        //                         </div>";
+                        //         echo $outputTable;
+                        //     }
                 
                         
                         ?>
@@ -143,8 +146,8 @@
                 <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
             </button>
             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
-				<li><a class="nav-link" href="'. BASE_URL . 'user/us_profile.php">Account</a></li>
-                <li><a class="nav-link" href="'. BASE_URL . 'muser/us_editprofile.php">Setting</a></li>
+				<li><a class="nav-link" href="<?= BASE_URL; ?>user/us_profile.php">Account</a></li>
+                <li><a class="nav-link" href="<?= BASE_URL; ?>muser/us_editprofile.php">Setting</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>
             </ul>

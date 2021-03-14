@@ -20,7 +20,7 @@
 	$state.= '<option value="'. $row["state"].'">'.$row["state"].'</option>';
 	}
 
-	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
+	$queryy = "SELECT `cat_event` FROM category ORDER BY `cat_event` ASC";
 	$category = mysqli_query($conn, $queryy);
 
 	$sql = "SELECT * FROM events";
@@ -127,40 +127,33 @@ $(".progress-bar").animate({
         </form>
     </div>
 	</section>
+
+	
 	<div class="card">
 		<div class="card-body">
 			<div class="row">
 				<?php 
 					while($row = mysqli_fetch_assoc($event)) {
-						// $file = "data:image/png;base64,";
-						// $image = $file.base64_encode($row['event_img']);
-						// echo $image;
 				?>
-					<div class="col-sm-6 col-lg-4 mb-4">
-						<div class="card-body">
-							<div class="candidate-list candidate-grid">
-								<div class="candidate-list-image">
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<div class="card-body">
+						<div class="candidate-list candidate-grid">
+							<div class="candidate-list-image">
 								<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 									<div class="carousel-inner browse-image" style=" width:100%; height: 250px !important;">
 										<div class="carousel-item active">
-										<!-- </div>
-										<div class="carousel-item">
-
-										<div id="images-list carousel-item active"></div>
-
+									
 										<?php 
-											$output .= '<div class="carousel-item">
-											<img class="img-fluid d-block w-100 rounded" src="data:image/png;base64,'.base64_encode($row['event_img']).'" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+											echo '
+											<div class="carousel-item">
+												<img class="img-fluid d-block w-100 rounded" src="'.$row["event_img"].'" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
 											</div>';
-
-											echo $output;
 										?>
 
 										</div>
-										<div class="carousel-item">
- -->
-										</div>
-									</div>
+										<div class="carousel-item"> -->
+										</div>	<!--End of carousel-item active -->
+									</div>		<!--End of carousel-inner browse-image -->
 									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
 										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 										<span class="visually-hidden">Previous</span>
@@ -170,64 +163,68 @@ $(".progress-bar").animate({
 										<span class="visually-hidden">Next</span>
 									</a>
 									</div>
+									<!-- Progress-bar -->
 									<div class="tile-progress tile-primary active progress">									
 										<div class="tile-progressbar progress-bar">
 											<span data-fill="90%" style="width: 90%;"></span>
-										</div>
+										</div>	
 										<div class="text-right">RM <?= number_format($row['event_amount'], 2); ?></div>										
-									</div>
-								
-								<div class="candidate-list-details">
-									<div class="candidate-list-info">
-										<div class="candidate-list-title">
-											<h5 class="card-title"><?= $row['event_name']; ?></h5>
-											<p class="card-text"><?= substr($row['event_desc'], 0, 200); ?> "...".'</p>
-										</div>
-									</div>
-									<div><br>
-										<div class="card-title"><a href="org_profile.php"><?=$row['organizer_name']; ?></a></div>
-										<div class="card-subtitle text-muted"><i class="fas fa-map-marker-alt pr-1"></i><small><?= $row['event_area']; ?></small></div>
-										<div class="card-body">
-										<?php if(isset($_SESSION['loggedIn'])) { ?>
-											<a href="payment.php?donateventID=<?=$row['event_id']; ?>&userID<?=$_SESSION['user_id']; ?>" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
-											<a href="details.php?loadeventID=<?=$row['event_id']; ?>" class="btn btn-outline-warning">View</a>
+									</div>	
+									<!--End of progress-bar -->
 
-											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?=$row['event_name']; ?>">
-											<button class="btn btn-outline-warning add" name="addCart" data-id="<?=$row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" /></button>
+									<!--Event Details -->
+									<div class="candidate-list-details">
+										<div class="candidate-list-info">
+											<div class="candidate-list-title">
+												<h5 class="card-title"><?= $row['event_name']; ?></h5>
+												<p class="card-text"><?= substr($row['event_desc'], 0, 200); ?> "...".'</p>
+											</div>
+										</div>
+									<div><br>
+
+									<div class="card-title"><a href="org_profile.php"><?=$row['organizer_name']; ?></a></div>
+									<div class="card-subtitle text-muted"><i class="fas fa-map-marker-alt pr-1"></i><small><?= $row['event_area']; ?></small></div>
+									<div class="card-body">
+										
+										<?php if(isset($_SESSION['loggedIn'])) { 
 											
-										<?php 
+											echo '<a href="payment.php?donateventID='. $row['event_id'] .'&userID'. $_SESSION['loggedIn']->user_id .'" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
+											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>
+
+											<input type="hidden" id="name'. $row['event_id'] .'" value="'. $row['event_name'] .'">
+											<button class="btn btn-outline-warning add" name="addCart" data-id="'. $row['event_id'] .'"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></button>';
+
 										}
 										else {
+											echo '<a href="login.php?errorlogin" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
+											<input type="hidden" id="name'. $row['event_id'] .'" value="'. $row['event_name'] .'">
+											<button class="btn btn-outline-warning add" name="addCart" data-id="'. $row['event_id'] .'"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></button>';
+
+										} 
+										
 										?>
-											<a href="login.php?errorlogin" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
-											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?=$row['event_name']; ?>">
-											<button class="btn btn-outline-warning add" name="addCart" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" /></button>
-
-										<?php } ?>
-										<a href="details.php?loadeventID=<?= $row['event_id']; ?>" class="btn btn-outline-warning">View</a>
-
-											<input type="hidden" id="name<?=$row['event_id']; ?>" value="<?= $row['event_name']; ?>">
-											<button class="btn btn-outline-warning add" name="addCart" data-id="<?= $row['event_id']; ?>"><img class="cart-icon" src="<?php echo BASE_URL;?>app/image/icon/cart2.png" width="25" height="25" /></button>
 							
-										</div>
-										<div class="candidate-list-favourite-time">
-											<a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a>
-											<!-- <span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_start']; ?></span> -->
-											<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_end']; ?></span>
-										</div>
+									</div>
+									<div class="candidate-list-favourite-time">
+										<a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a>
+										<!-- <span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_start']; ?></span> -->
+										<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_end']; ?></span>
+									</div>
+
+									<!--End of Event Details -->
 									</div>
 								</div>
 							</div>
 						</div>
-					</div> 			
-				</div>
-			<?php
-				}
-			?>
+					</div>
+				</div> 			
+				<?php
+					}	
+				?>
 			</div>
 		</div>
 	</div>
-			
+
 		<div class="row">
 			<div class="col-12 text-center mt-4 mt-sm-5">
 					<ul class="pagination justify-content-center mb-0">
