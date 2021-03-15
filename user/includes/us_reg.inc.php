@@ -51,12 +51,13 @@ if (isset($_POST['registerbtn'])) {
         $_SESSION['ERRORS']['formerror'] = 'Required fields cannot be empty, try again';
         header("Location: ../us_register.php?require");
         exit();
-    } else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
+    } //else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 
-        $_SESSION['ERRORS']['usernameerror'] = 'Invalid username';
-        header("Location: ../us_register.php?invalidname");
-        exit();
-    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // $_SESSION['ERRORS']['usernameerror'] = 'Invalid username';
+        // header("Location: ../us_register.php?invalidname");
+        // exit();
+    //} 
+    else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         $_SESSION['ERRORS']['emailerror'] = 'Invalid email';
         header("Location: ../us_register.php");

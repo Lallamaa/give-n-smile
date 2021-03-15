@@ -14,10 +14,8 @@
     if(isset($_POST['update']))
     {
         $user_name=$_POST['user_name'];
-        $password=$_POST['password'];
         $user_email=$_POST['user_email'];
         $user_phone=$_POST['user_phone'];
-        $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
         
 
         $filedir = "app/image/profile/";
@@ -32,7 +30,7 @@
                     if(move_uploaded_file($_FILES["user_img"]["name"], $targetFilePath)){
 
                         //upload image
-                        $query = mysqli_query($conn,"update users SET user_name='$user_name', password='$hashedPwd', user_email='$user_email', user_phone='$user_phone', user_img='".pathName."' where user_id='$user_id'");
+                        $query = mysqli_query($conn,"update users SET user_name='$user_name', user_email='$user_email', user_phone='$user_phone', user_img='".pathName."' where user_id='$user_id'");
                         if($query){
                             echo "<script>alert('Your profile has been update successfully!');</script>";
                         }
@@ -41,6 +39,15 @@
                         }
                     }
                 }
+            }
+            else{
+                $query = mysqli_query($conn,"update users SET user_name='$user_name',  user_email='$user_email', user_phone='$user_phone' where user_id='$user_id'");
+                        if($query){
+                            echo "<script>alert('Your profile has been update successfully!');</script>";
+                        }
+                        else{
+                            echo "<script>alert('Your profile failed to update. Please try again');</script>";
+                        }
             }
         
 
@@ -117,14 +124,6 @@
                                 placeholder="Enter Username"
                     />
                 </div>
-
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" class="form-control"
-                            placeholder="Enter a new password"
-                    />
-                </div>
-
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" name="user_email" class="form-control"

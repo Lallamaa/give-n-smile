@@ -33,7 +33,7 @@
                     <!-- <img src="<?php echo 'images/' . $organization['profile_image'] ?>" class="rounded-circle" width="150" alt=""> -->
                     <div class="mt-3">
                       <a href="org_edit.php"></br>Click to Update Profile</a>
-                      <h6><?php  echo  session_value("org_name");  ?></h6>
+                      <h6><?php  echo  $rows['org_name'];  ?></h6>
                     </div>
                   </div>
                 </div>
@@ -42,19 +42,19 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
-                    <span class="text-secondary"><?php  echo  $rows['org_weblink'];  ?></span>
+                    <a href="<?php  echo$rows['org_weblink']; ?>"><?php  echo$rows['org_weblink']; ?> </a>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
-                    <span class="text-secondary"><?php  echo  $rows['org_fblink'];  ?></span>
+                    <a href="<?php  echo$rows['org_fblink']; ?>"><?php  echo$rows['org_fblink']; ?> </a>
                   </li>
                 </ul>
               </div>
               <div class="card mt-3">
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0">Bio</h6>
-                    <span class="text-secondary"><?php  echo  $rows['org_bio'];  ?></span>
+                  <li class="list-group-item">
+                    <h6 class="mb-5">Bio</h6>
+                    <div class="align-left"><?php  echo$rows['org_bio'];  ?></div>
                   </li>
                 </ul>
               </div>
@@ -67,7 +67,7 @@
                 <h6 class="mb-0">Organization Name</h6>
               </div>
               <div class="col-sm-6 text-secondary">
-              <?php echo $_SESSION['org_name']; ?>
+              <?php  echo  $rows['org_name'];  ?>
               </div>
                   </div>
                 </div>
@@ -80,11 +80,11 @@
                       <h6 class="d-flex align-items-center mb-3">
                         <i class="material-icons text-info mr-2">Organization Category</i><?php  echo  $rows['org_category'];  ?></h6>
                         <h6 class="d-flex align-items-center mb-3">
-                        <i class="material-icons text-info mr-2">Extra weblink</i><?php  echo  $rows['org_xtralink'];  ?></h6> 
+                        <i class="material-icons text-info mr-2">Extra weblink</i><a href="<?php  echo$rows['org_xtralink']; ?>"><?php  echo$rows['org_xtralink']; ?> </a></h6> 
                         <h6 class="d-flex align-items-center mb-3">
                         <i class="material-icons text-info mr-2">Contact No.</i><?php  echo  $rows['org_contact'];  ?></h6> 
                         <h6 class="d-flex align-items-center mb-3">
-                        <i class="material-icons text-info mr-2">Location</i><?php  echo  $rows['org_address'];  ?><?php  echo  $rows['org_zipcode'];  ?><?php  echo  $rows['org_state'];  ?><?php  echo  $rows['org_city'];  ?></h6> 
+                        <i class="material-icons text-info mr-2">Location</i><?php  echo  $rows['org_address'];  ?> <?php  echo  $rows['org_zipcode'];  ?><?php  echo  $rows['org_state'];  ?><?php  echo  $rows['org_city'];  ?></h6> 
                     </form>
                     </div>
                   </div>
@@ -129,4 +129,4 @@
 </div>
 </div>
 
-<?php include(ROOT_PATH . "app/includes/footer.php"); ?>t
+<?php include(ROOT_PATH . "app/includes/footer.php"); ?>
