@@ -64,7 +64,7 @@
 						$password_hash = $row2['org_password'];
 						if(password_verify($org_pass, $password_hash)){
 							$msg = "Login successfully!";
-							$_SESSION['org_loggedIn'] = $data;
+							$_SESSION['orgLoggedIn'] = $data;
 							$_SESSION['org_id']=$row2['org_id'];
 							$_SESSION['org_name']=$row2['org_name'];
 							header("location: ../../index.php?loginsuccess");   //having problem on redirecting to index(automatically)

@@ -128,7 +128,6 @@ $(".progress-bar").animate({
 																		echo '<option value="'.$rows['cat_name'].'">'.$rows['cat_name'].'</option>';
 																	} 
 																?>
-
                             </select>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -167,14 +166,7 @@ $(".progress-bar").animate({
 										<div> -->
 										</div>	<!--End of carousel-item active -->
 									</div>		<!--End of carousel-inner browse-image -->
-									<!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-										<span class="visually-hidden">Previous</span>
-									</a>
-									<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-										<span class="carousel-control-next-icon" aria-hidden="true"></span>
-										<span class="visually-hidden">Next</span>
-									</a> -->
+								
 									</div>
 									<!-- Progress-bar -->
 									<div class="tile-progress tile-primary active progress">									
@@ -202,18 +194,17 @@ $(".progress-bar").animate({
 										<?php if(isset($_SESSION['loggedIn'])) { 
 											
 											echo '
-											<a href="cart.php?donate&donateventID='. $row['event_id'] .'&userID'. $_SESSION['loggedIn']->user_id .'" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
-											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>
 												<input type="hidden" id="name'. $row['event_id'] .'" name="userID" " value="'. $_SESSION['loggedIn']->user_id .'">
 												<input type="hidden" id="name'. $row['event_id'] .'" name="eventID" " value="'. $row['event_id'] .'">
-												<a href="'. BASE_URL .'cart.php?add&addToCart&id='. $row['event_id'] .'" class="btn btn-outline-warning"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></a>';
-											
+												<a href="'. BASE_URL .'cart.php?add&addToCart&id='. $row['event_id'] .'" class="btn btn-outline-warning"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /> Donate</a>
+												<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
+
 											// action="'. BASE_URL .'app/lib/cart-action.php"
 										}
 										else {
-											echo '<a href="login.php?errorlogin" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
-											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>
-											<a href="login.php?errorlogin" class="btn btn-outline-warning add" name="addCart" ><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></a>';
+											echo '
+											<a href="login.php?errorlogin" class="btn btn-outline-warning add" name="addCart" ><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /> Donate</a>
+											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
 
 										} 
 										
@@ -319,44 +310,5 @@ function deleteINsession(){
     
     })
 })
-
-// $(document).ready(function(){
-
-//  $('action').change(function(){
-//   if($(this).val() != '')
-//   {
-//    var action = $(this).attr("id");
-//    var query = $(this).val();
-//    var result = '';
-//    if(action == "state")
-//    {
-//     result = 'city';
-//    }
-//    $.ajax({
-//     url:"app/includes/state_city.php",
-//     method:"POST",
-//     data:{action:action, query:query},
-//     success:function(data){
-//      $('#'+result).html(data);
-//     }
-//    })
-//   }
-//  });
-// });
-
-// $(document).ready(function() {
-	
-// 	load_images();
-
-// 	function load_images() {
-
-// 		$.ajax({
-// 			url: "app/lib/fetch_images.php",
-// 			success:function(data) {
-// 				$('#images_list').html(data);
-// 			}
-// 		});
-// 	}
-// });
 
 </script>

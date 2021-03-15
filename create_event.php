@@ -16,10 +16,13 @@
 $queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 $category = mysqli_query($conn, $queryy);
 
-if(isset($_SESSION['loggedIn'])) {
+if (isset($_SESSION['loggedIn'])) {
 
   $id = $_SESSION['loggedIn']->user_id; 
 
+} else if (isset($_SESSION['orgLoggedIn'])) {
+
+  $id = $_SESSION['orgLoggedIn']->org_id; 
 
 } else {
   echo "Please log in to your account";

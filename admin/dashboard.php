@@ -1,4 +1,5 @@
 <?php
+  include('../app/database/connect.php');
   include('includes/top.inc.php'); 
 
   ?>

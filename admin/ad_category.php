@@ -1,6 +1,7 @@
 <?php
   include('../app/database/connect.php');
   include('includes/top.inc.php'); 
+  include(ROOT_PATH . 'admin/includes/function.php');
 
 
   if(isset($_GET['type']) && $_GET['type']!='') {

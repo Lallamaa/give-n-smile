@@ -13,26 +13,11 @@
     $sql = "SELECT * FROM events WHERE event_id='$eventID';";
     $query = mysqli_query($conn, $sql);
     
+    $donorSql = "SELECT * FROM donation INNER JOIN events ON donation.do_event_id=events.event_id WHERE donation.do_event_id='$eventID'";
+    $donorQuery = mysqli_query($conn, $donorSql);
   }
 ?>
 
-<style>
-.side-block {
-  margin-bottom: 20px;
-}
-
-.event-title {
-  font-size: 50px;
-}
-
-.image-preview {
-  margin-bottom: 5%;
-}
-.comment-card {
-
-  margin-top: 10%;
-}
-</style>
 
 <div class="container">
   <div class="row">
@@ -42,28 +27,14 @@
       <div class="card image-preview">
         <div class="card-body">
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <!-- <ol class="carousel-indicators">
-              <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-              <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-              <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-            </ol> -->
             <div class="carousel-inner ">
               <div class="carousel-item active">
-              <?php //if (isset($_SESSION['event'])) { ?>
                 <img src="<?php echo $row['event_img']; ?>" class="d-block w-100" alt="..." />
                 <!-- <div class="carousel-caption d-none d-md-block">
                   
                 </div> -->
               </div>
             </div>
-            <!-- <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </a> -->
           </div> <!-- End of Carousel -->
         </div>
       </div>
@@ -72,13 +43,12 @@
       <div class="card">
         <div class="card-body">
           <div class="organizer-name">
-            <?= $row['organizer_name']; ?>
+            <h4><b><?= $row['organizer_name']; ?></b></h4>
           </div>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui"
-          <div class="col feature social">
-						<a href="#"><i class="icon ion-social-facebook"></i></a>
-						<a href="#"><i class="icon ion-social-twitter"></i></a>
-						<a href="#"><i class="icon ion-social-instagram"></i></a>
+            <?= $row['event_desc']; ?>
+          <div class="col feature social text-right">
+						<a href="#"><i class="bi bi-facebook"></i></a>
+						<a href="#"><i class="bi bi-life-preserver"></i></a>
 					</div>
         </div>
       </div>
@@ -88,29 +58,24 @@
       <div class="card">
         <div class="card-body">
           <div class="donor-dp">
-            <h3>DONOR HISTORY</h3>
+            <h3>Donor History</h3>
           </div>
           <div class="tab-pane fade show active" style="font-size:14px;">
             <table class="table" cellspacing="0" >
               <thead>
                 <tr>
                   <th>Donor</th>
-                   <th>Amount Donoation</th>
+                   <th>Amount Donation</th>
                 </tr>                                                       
                </thead>
                <tbody>
-                <tr>
-                  <td>Doe</td>
-                  <td>RM20</td>
-                </tr>
-                <tr>                        
-                  <td>Moe</td>
-                  <td>RM50</td>
-                </tr>
-                <tr>
-                  <td>Dooley</td>
-                  <td>RM100</td>
-                </tr>
+              <?php while ($result = mysqli_fetch_assoc($donorQuery)) {
+                      echo ' <tr>
+                              <td>'. $result["do_user_name"] .'</td>
+                              <td>RM '. number_format($result["do_amount"], 2) .'</td>
+                            </tr>';
+                    }
+              ?>
                 </tbody>
                 </table>
            </div>                     
@@ -128,7 +93,7 @@
             <?= $row['event_desc']; ?>
           </div>
           <!-- display comments  --> 
-          <div class="card comment-card">
+          <!-- <div class="card comment-card">
             <div class="card-body">
               <div class="comment-title">
                     COMMENTS
@@ -189,7 +154,7 @@
                 <a href="# " class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
             </div>
         </div>
-</div>
+</div> -->
               </div>
             </div>
           </div>

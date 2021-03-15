@@ -44,7 +44,6 @@
 $total = 0.00;
 
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <style>
 .cart-container {
   margin: 10%;
@@ -91,7 +90,7 @@ body {
                   <h2><i class="bi bi-cart-check"></i> <b>Shopping Cart</b></h2>
                 </div>
                 <div class="col-lg-5 col-xs-6 continue-shop-btn">
-                  <a href="browse.php" type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom:4px; word-wrap:break-word;">
+                  <a href="browse.php" type="button" class="btn btn-warning btn-sm btn-block " style="margin-bottom:4px; word-wrap:break-word;">
                   <i class="bi bi-arrow-left-circle"></i> Continue shopping
                   </a>
                 </div>
@@ -100,7 +99,18 @@ body {
           </div>
           <div class="panel-body">
           <form class="form-auth" action="app/lib/cartAction.php" method="post" enctype="multipart/form-data">
+          
+          <?php if(empty($query)) {  ?>
+              <div class="row">
+                <div class="cart-empty">
+                  <h5> Your Cart Is Empty~ </h5>
+                </div>
+              </div>
+              <hr/>
+          <?php } ?>
+          
           <?php
+          
           while ($row = mysqli_fetch_assoc($query)) {  ?>
 
             <div class="row">
@@ -128,22 +138,15 @@ body {
               <input type="hidden" id="amountArr" name="cartIDArr" value="" >
               <input type="hidden" id="amountArr" name="eventIDArr" value="" > -->
 
+              
             <?php 
-            
-
-              $total += $row['cart_amount'];
+          
+                $total += $row['cart_amount'];
               }
             ?>
             </div>
 
-            <?php if($row = mysqli_fetch_array($query) <= 0) {  ?>
-              <div class="row">
-                <div class="cart-empty">
-                  <h5> Your Cart Is Empty~ </h5>
-                </div>
-              </div>
-              <hr/>
-          <?php } ?>
+            
 
           <div class="row">
               <div class="text-center">
@@ -151,7 +154,7 @@ body {
                   <h6 class="text-right">Added items?</h6>
                 </div>
                 <div class="col-xs-3 d-grid d-md-flex justify-content-md-end">
-                  <button type="submit" class="btn btn-sm btn-light justify-content-md-end" name="update-cart-btn">
+                  <button type="submit" class="btn btn-sm btn-success justify-content-md-end" name="update-cart-btn">
                     Update cart
                   </button>
                 </div>

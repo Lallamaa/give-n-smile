@@ -1,7 +1,5 @@
 <?php
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/function.php');
-?>
+  include('../app/lib/path.php');?>
 
 <!DOCTYPE html>
 <html lang='en'>
