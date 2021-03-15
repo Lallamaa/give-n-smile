@@ -20,7 +20,7 @@
 	$state.= '<option value="'. $row["state"].'">'.$row["state"].'</option>';
 	}
 
-	$queryy = "SELECT `cat_event` FROM category ORDER BY `cat_event` ASC";
+	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 	$category = mysqli_query($conn, $queryy);
 
 	$sql = "SELECT * FROM events";

@@ -1,5 +1,5 @@
 <?php
-  include('includes/top.inc.php'); 
+  include('../app/database/connect.php');
 
     $msg = '';
 
@@ -19,6 +19,9 @@
             $msg = "Incorrect login details!";
         }
     }
+
+    include('includes/top.inc.php'); 
+
 ?>
 
 <!DOCTYPE html>

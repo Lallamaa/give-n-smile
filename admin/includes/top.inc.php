@@ -1,7 +1,6 @@
 <?php
   include('../app/lib/path.php');
-  include(ROOT_PATH . 'app/database/connect.php');
-  include(ROOT_PATH . 'app/lib/function.php');
+  include(ROOT_PATH . 'admin/includes/function.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +21,8 @@
   <!-- <link rel="stylesheet" href="../css/query.css">     -->
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>app/css/style.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>admin/includes/admin-style.css">
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>  
   <script src="<?php echo BASE_URL;?>jvs/script.js"></script> 
@@ -36,7 +36,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo BASE_URL; ?>index.php"><img src="<?php echo BASE_URL; ?>app/image/logo.png" alt="" width="100" height="50" class="d-inline-block align-top"></a>
+            <a class="navbar-brand" href="<?php echo BASE_URL; ?>admin/admin.php"><img src="<?php echo BASE_URL; ?>app/image/logo.png" alt="" width="100" height="50" class="d-inline-block align-top"></a>
             
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -72,19 +72,19 @@
         <!-- Main Menu -->
         <div class="side-menu-container">
           <ul class="nav navbar-nav">
-            <li class="active"><a class="glyphicon glyphicon-dashboard" href="dashboard.php"> Dashboard </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_category.php"> Manage Category </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_fund.php"> Manage Event </a></li>
+            <li><a href="ad_category.php" class="dash">Manage Category</a></li>
+            <li><a href="ad_event.php" class="dash">Manage Event</a></li>
             <!-- <li><a class="glyphicon glyphicon-dashboard" href="ad_donation.php"> Manage Donation </a></li> -->
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_user.php"> User Management </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_org.php"> Organization Managemnet </a></li>
+            <li><a href="ad_user.php" class="dash">User Management</a></li>
+            <li><a href="ad_org.php" class="dash">Organization Managemnet</a></li>
             <!-- <li><a class="glyphicon glyphicon-dashboard" href="ad_emergency.php"> Emergency Event </a></li> -->
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_feedback.php"> Feedbacks </a></li>
+            <li><a href="ad_feedback.php" class="dash">Feedbacks</a></li>
             <!-- <li><a href="ad_fb.php">Settings</a></li> -->
-            <li><a class="glyphicon glyphicon-dashboard" href="logout.php"> Logout </a></li>
+            <li><a href="logout.php" class="dash">Logout</a></li>
           </ul>
         </div><!-- .navbar-collapse// -->
       </nav>
     </div>
   </div>  		
   </div>
+

@@ -1,18 +1,22 @@
 <?php
+  include('../app/database/connect.php');
   include('includes/top.inc.php'); 
   
   if (isset($_GET['type']) && $_GET['type']!='') {
-    $type=get_safe_value($_GET['type']);
+    
+    $type=get_safe_value($conn, $_GET['type']);
+
     if ($type == 'status') {
-      $operation=get_safe_value($conn, $_GET['event_id']);
-      if($operation=='approve') {
-        $staus='1';
-      } else if ($operation=='reject') {
-        $status='0';
+
+      $operation=get_safe_value($conn, $_GET['operation']);
+      $id=get_safe_value($conn, $_GET['id']);
+
+      if($operation=='active') {
+        $status='1';
       } else {
-        $status='-1';
+        $status='0';
       }
-      $update_status="update fundraise set fund_status='$status' where fund_id='$id'";
+      $update_status="update events set event_status='$status' where event_id='$id'";
       mysqli_query($conn, $update_status);
     }
   }
@@ -37,12 +41,10 @@
               <th scope="col">End-Date</th>
               <th scope="col">Target Fund Amount (RM)</th>
               <th scope="col">Funded Amount (RM)</th>
-              <th scope="col">Status</th>
               <th scope="col">Area (optional)</th>
               <th scope="col">Category</th>
               <th scope="col">Organizer</th>
               <th scope="col">Organizer ID</th>
-              <th scope="col">Description</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -57,24 +59,19 @@
               <td><?php echo $row['event_end']?></td>
               <td><?php echo $row['event_amount']?></td>
               <td><?php echo $row['event_fund']?></td>
-              <td><?php echo $row['event_status']?></td>
               <td><?php echo $row['event_area']?></td>
               <td><?php echo $row['category']?></td>
               <td><?php echo $row['organizer_name']?></td>
               <td><?php echo $row['organizer_id']?></td>
-              <td><?php echo $row['event_desc']?></td>
               <td><?php 
-                if($row['event_status']==1) {
-                  echo "<span><a href='?type=status&operation=approve&id=".$row['event_id']. 
-                  "'>Approve</a></span>'";
-                } else if ($row['event_status']==0){
-                  echo "<span><a href='?type=status&operation=reject&id=".$row['event_id']. 
-                  "'>Reject</a></span>'";            
-                } else {
-                  echo "<span><a href='?type=status&operation=pending&id=".$row['event_id']. 
-                  "'>Pending</a></span>'"; 
-                }
+
+                if($row['event_status']==1){
+									echo "<span class='badge badge-complete'><a href='?type=status&operation=dective&id=".$row['event_id']."'>Approve</a></span>&nbsp;";
+								} else {
+									echo "<span class='badge badge-pending'><a href='?type=status&operation=active&id=".$row['event_id']."'>Pending</a></span>&nbsp;";
+								} 
               ?>
+              
               </td>      
             </tr>
             <?php } ?>

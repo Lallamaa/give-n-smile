@@ -1,12 +1,15 @@
 <?php
+  include('../app/database/connect.php');
   include('includes/top.inc.php'); 
   
   if (isset($_GET['type']) && $_GET['type']!='') {
-    $type=get_safe_value($_GET['type']);
+    $type=get_safe_value($conn, $_GET['type']);
     if ($type == 'status') {
-      $operation=get_safe_value($conn, $_GET['user_id']);
+      $operation=get_safe_value($conn, $_GET['operation']);
+      $id=get_safe_value($conn, $_GET['id']);
+
       if($operation=='active') {
-        $staus='1';
+        $status='1';
       } else {
         $status='0';
       }
@@ -15,7 +18,7 @@
     }
 
     if ($type == 'delete') {
-      $id=get_safe_value($conn, $_GET['user_id']);
+      $id=get_safe_value($conn, $_GET['id']);
       $delete_sql="delete from users where user_id='$id'";
       mysqli_query($conn, $delete_sql);
     }
@@ -41,6 +44,7 @@ $res=mysqli_query($conn, $sql);
             <th scope="col">Email</th>
             <th scope="col">Phone No.</th>
             <th scope="col">Status</th>
+            <th scope="col">Ban</th>
             <th scope="col">Send Email</th>
           </tr>
         </thead>
@@ -54,13 +58,18 @@ $res=mysqli_query($conn, $sql);
             <td><?php echo $row['user_phone']?></td>
             <td><?php 
               if($row['user_status']==1) {
-                echo "<span><a href='?type=status&operation=active&id=".$row['user_id']. 
-                "'>Active</a></span>'";
+                echo "<span class='badge badge-complete'><a href='?type=status&operation=dective&id=".$row['user_id']. 
+                "'>Active</a></span>";
               } else {
-                echo "<span><a href='?type=status&operation=deactive&id=".$row['user_id']. 
-                "'>Deactive</a></span>'";            
+                echo "<span class='badge badge-pending'><a href='?type=status&operation=active&id=".$row['user_id']. 
+                "'>Deactive</a></span>";            
               }
             ?>
+            </td>
+            <td>
+              <?php
+								echo "<span class='badge badge-delete'><a href='?type=delete&id=".$row['user_id']."'>Delete</a></span>";
+                ?>
             </td>
             <td>
               <?php

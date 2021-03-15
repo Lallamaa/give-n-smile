@@ -47,14 +47,20 @@ $total = 0.00;
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <style>
 .cart-container {
-
-  background: #e0ba91;
   margin: 10%;
   margin-top: 5%;
   padding: 5%;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background: inherit;
+  overflow: hidden;
 
 }
+body {
 
+  background-attachment: fixed; 
+
+}
 .continue-shop-btn {
   float: right;
 }
@@ -194,36 +200,6 @@ $total = 0.00;
 // document.getElementById("eventID").value = eventArr;
         
 
-
-
-
-
-
-
-
-// $(document).ready(function(){
-
-//  $('action').change(function(){
-//   if($(this).val() != '')
-//   {
-//    var action = $(this).attr("id");
-//    var query = $(this).val();
-//    var result = '';
-//    if(action == "state")
-//    {
-//     result = 'city';
-//    }
-//    $.ajax({
-//     url:"app/includes/state_city.php",
-//     method:"POST",
-//     data:{action:action, query:query},
-//     success:function(data){
-//      $('#'+result).html(data);
-//     }
-//    })
-//   }
-//  });
-// });
 
 </script>
 
