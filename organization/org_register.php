@@ -63,7 +63,7 @@
 				<br> -->
 				<label class="form-label">Password</label>
 				<input  type="password" 
-								name="org_pass" 
+								name="org_password" 
 								class="form-control" 
 								aria-describedby="passwordHelpBlock" 
 								required

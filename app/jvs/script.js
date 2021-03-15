@@ -189,5 +189,28 @@ $.ajax({
  })
 })
 
+//country javascript
+// $(document).ready(function(){
+//   $('select#org_state').on('change', function(){
+//       var state = $(this).val();
+//       if(state){
+//           $.ajax({
+//               type:'POST',
+//               url:'org_edit.php',
+//               data:{org_state:state},
+//               success:function(response){
+//                 console.log(response);
+//               }
+              
+//           }).done(function(data){
+//             $("#org_city").html(data);
+//           }); 
+//       }
+//   });
+  
+// });
+
+
+
 //payment javascript
 

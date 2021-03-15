@@ -9,7 +9,13 @@
     $query = "SELECT * FROM organization WHERE org_id='$_POST[org_id]'";
     $execution = $conn->$query($query);
     $data = $execution->fetch_object();
+
+    // $query2 = "SELECT * FROM state_city WHERE status=1 ORDER BY country_name ASC";
+    // $address = $conn->$query2($query2);
+    
+    
   }
+
 
   if(isset($_POST['update']))
     {
@@ -43,6 +49,27 @@
     $result = mysqli_fetch_assoc($sql);
     // $_SESSION['org_name'] = $org_name;
 ?>
+<script>
+$(document).ready(function(){
+  $('select#org_state').on('change', function(){
+      var state = $(this).val();
+      if(state){
+          $.ajax({
+              type:'POST',
+              url:'state.php',
+              data:{org_state:state},
+              success:function(response){
+                console.log(response);
+              }
+              
+          }).done(function(data){
+            $("#org_city").html(data);
+          }); 
+      }
+  });
+  
+});
+</script>
 
 <div align="center">
     <h2>Your Profile</h2>
@@ -99,22 +126,24 @@
                       <label for="floatingInputGrid">Address</label>
                     </div>
                     <div class="form-floating">
-                      <select class="form-select" id="floatingSelectGrid" name="org_state" aria-label="Floating label select example">
-                        <option selected>State</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                      <select id="org_state" name="org_state" class="form-select" id="floatingSelectGrid" name="org_state" aria-label="Floating label select example">
+                        <option value=" " selected>State</option>
+                        
+                        <?php $address = mysqli_query($conn, "SELECT state FROM state_city GROUP BY state");
+                              //$address = $conn->$query2($query2); 
+                              while ($state=mysqli_fetch_assoc($address)){
+                                ?> <option value="<?php echo $state['state']; ?>"><?php echo $state['state']; ?></option>
+                              <?php } 
+
+                        ?>
                       </select>            
                       <label for="floatingInputGrid">State</label>
                     </div>
-                    <div class="form-floating">
-                      <select class="form-select" id="floatingSelectGrid" name="org_city"aria-label="Floating label select example">
-                        <option selected>City</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <div class="form-floating" id="org_city">
+                      <!-- <select id="org_city" name="org_city" class="form-select" id="floatingSelectGrid" name="org_city" aria-label="Floating label select example">
+                        <option value=" " selected>City</option>
                       </select>            
-                      <label for="floatingInputGrid">City</label>
+                      <label for="floatingInputGrid">City</label> -->
                     </div>
                     <div class="form-floating">
                       <input type="text" class="form-control" id="floatingInputGrid" name="org_zipcode" maxlength="5" value="<?php echo $result['org_zipcode'];?>"> 

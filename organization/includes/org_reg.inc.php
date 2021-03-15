@@ -31,7 +31,7 @@ if (isset($_POST['registerbtn'])) {
   	$org_name = $_POST['org_name'];
   	//$org_category = $_POST['org_category'];
     $user_type = $_POST['user_type'];
-  	$prepassword = $_POST['org_pass'];
+  	$prepassword = $_POST['org_password'];
   	$conpassword = $_POST['confirmpassword']; 
     $org_email = $_POST['org_email'];
     $org_img = $_POST['org_img'];
@@ -79,9 +79,8 @@ if (isset($_POST['registerbtn'])) {
         */
         
 
-        $sql = "insert into organization (org_name, user_type, org_password, org_email, org_img)
-        values (?,?,?,?,?)";
-        echo '1';
+        $sql = "insert into organization(org_name, user_type, org_password, org_email, org_img) values (?,?,?,?,?)";
+        //echo '1';
         
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -91,7 +90,7 @@ if (isset($_POST['registerbtn'])) {
         } 
         else {
             $hashedPwd = password_hash($prepassword, PASSWORD_DEFAULT);
-            mysqli_stmt_bind_param($stmt, "sssssss", $org_name, $user_type, $hashedPwd, $org_email, $org_img);
+            mysqli_stmt_bind_param($stmt, "sssss", $org_name, $user_type, $hashedPwd, $org_email, $org_img);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
 
