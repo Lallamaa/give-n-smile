@@ -53,7 +53,7 @@
               <div class="card mt-3">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
-                    <h6 class="mb-5">Bio</h6>
+                    <h6 class="mb-5">Mission</h6>
                     <div class="align-left"><?php  echo$rows['org_bio'];  ?></div>
                   </li>
                 </ul>
@@ -84,7 +84,7 @@
                         <h6 class="d-flex align-items-center mb-3">
                         <i class="material-icons text-info mr-2">Contact No.</i><?php  echo  $rows['org_contact'];  ?></h6> 
                         <h6 class="d-flex align-items-center mb-3">
-                        <i class="material-icons text-info mr-2">Location</i><?php  echo  $rows['org_address'];  ?> <?php  echo  $rows['org_zipcode'];  ?><?php  echo  $rows['org_state'];  ?><?php  echo  $rows['org_city'];  ?></h6> 
+                        <i class="material-icons text-info mr-2">Location</i><?php  echo  $rows['org_address'];  ?> <?php  echo  $rows['org_zipcode'];  ?> <?php  echo  $rows['org_city'];  ?>, <?php  echo  $rows['org_state'];  ?></h6> 
                     </form>
                     </div>
                   </div>

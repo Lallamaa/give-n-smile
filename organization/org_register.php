@@ -3,7 +3,7 @@
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
 
-	$queryy = "SELECT `cat_organization` FROM category ORDER BY `cat_organization` ASC";
+	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 	$category = mysqli_query($conn, $queryy);
 
 	$sql = "SELECT * FROM events";
@@ -49,7 +49,7 @@
 					?>
 				</sub>
 				<br>
-				<!-- <label> Organization Category </label>
+				<label> Organization Category </label>
 				<div class="col-lg-3 col-md-3 col-sm-12 p-0">
 					<select class="form-control search-slt" id="exampleFormControlSelect1" name="org_category">
 						<option>Select Category</option>
@@ -60,7 +60,7 @@
 														?>
 					</select>
 				</div>
-				<br> -->
+				<br>
 				<label class="form-label">Password</label>
 				<input  type="password" 
 								name="org_password" 

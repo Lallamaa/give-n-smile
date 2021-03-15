@@ -33,9 +33,8 @@
         $org_bio=$_POST['org_bio'];
         //$org_img=$_POST['org_img'];
 
-        $query = mysqli_query($conn,"update organization SET org_name='$org_name',org_bio='$org_bio',org_email='$org_email',org_address='$org_address',org_zipcode='$org_zipcode',org_contact='$org_contact', org_weblink='$org_weblink', org_fblink='$org_fblink', org_xtralink='$org_xtralink' where org_id='$org_id'");
+        $query = mysqli_query($conn,"update organization SET org_name='$org_name',org_bio='$org_bio',org_email='$org_email',org_address='$org_address',org_zipcode='$org_zipcode',org_contact='$org_contact', org_weblink='$org_weblink', org_fblink='$org_fblink', org_xtralink='$org_xtralink', org_state='$org_state',org_city='$org_city' where org_id='$org_id'");
         
-        //  org_state='$org_state', org_city='$org_city',   
                         if($query){
                             echo "<script>alert('Your profile has been update successfully!');</script>";
                         }
@@ -49,27 +48,7 @@
     $result = mysqli_fetch_assoc($sql);
     // $_SESSION['org_name'] = $org_name;
 ?>
-<script>
-$(document).ready(function(){
-  $('select#org_state').on('change', function(){
-      var state = $(this).val();
-      if(state){
-          $.ajax({
-              type:'POST',
-              url:'state.php',
-              data:{org_state:state},
-              success:function(response){
-                console.log(response);
-              }
-              
-          }).done(function(data){
-            $("#org_city").html(data);
-          }); 
-      }
-  });
-  
-});
-</script>
+
 
 <div align="center">
     <h2>Your Profile</h2>
@@ -105,45 +84,23 @@ $(document).ready(function(){
                     <div class="form-floating">
                       <textarea class="form-control" id="floatingInputGrid" name="org_bio" placeholder="description"><?php echo $result['org_bio'];?>
                       </textarea>
-                      <label for="floatingInputGrid">Bio</label>
+                      <label for="floatingInputGrid">Mission</label>
                     </div>
                     <div class="form-floating">
                       <input type="email" name="org_email" class="form-control" id="floatingInputGrid" value="<?php echo $result['org_email'];?>">
                       <label for="floatingInputGrid">Email</label>
                     </div>
                     <div class="form-floating">
-                    <div class="form-floating">
-                      <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                        <option selected>Category</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                      <label for="floatingSelectGrid">Works with selects</label>
-                    </div>
-                    <div class="form-floating">
                       <input type="text" class="form-control" name="org_address" id="floatingInputGrid"  value="<?php echo $result['org_address'];?>">
                       <label for="floatingInputGrid">Address</label>
                     </div>
                     <div class="form-floating">
-                      <select id="org_state" name="org_state" class="form-select" id="floatingSelectGrid" name="org_state" aria-label="Floating label select example">
-                        <option value=" " selected>State</option>
-                        
-                        <?php $address = mysqli_query($conn, "SELECT state FROM state_city GROUP BY state");
-                              //$address = $conn->$query2($query2); 
-                              while ($state=mysqli_fetch_assoc($address)){
-                                ?> <option value="<?php echo $state['state']; ?>"><?php echo $state['state']; ?></option>
-                              <?php } 
-
-                        ?>
-                      </select>            
+                      <input type="text" class="form-control" name="org_state" id="floatingInputGrid"  value="<?php echo $result['org_state'];?>">
                       <label for="floatingInputGrid">State</label>
                     </div>
-                    <div class="form-floating" id="org_city">
-                      <!-- <select id="org_city" name="org_city" class="form-select" id="floatingSelectGrid" name="org_city" aria-label="Floating label select example">
-                        <option value=" " selected>City</option>
-                      </select>            
-                      <label for="floatingInputGrid">City</label> -->
+                    <div class="form-floating">
+                      <input type="text" class="form-control" name="org_city" id="floatingInputGrid"  value="<?php echo $result['org_city'];?>">
+                      <label for="floatingInputGrid">City</label>
                     </div>
                     <div class="form-floating">
                       <input type="text" class="form-control" id="floatingInputGrid" name="org_zipcode" maxlength="5" value="<?php echo $result['org_zipcode'];?>"> 
