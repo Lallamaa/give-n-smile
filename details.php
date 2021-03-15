@@ -3,14 +3,14 @@
   include('app/lib/path.php');
   include(ROOT_PATH . 'app/includes/header.php');
 
-  $query = "SELECT * FROM events";
-  $event = mysqli_query($conn, $query);
+  // $query = "SELECT * FROM events";
+  // $event = mysqli_query($conn, $query);
 
-  if (isset($_GET['loadEventId'])) {
+  if (isset($_GET['loadeventID'])) {
 
-    $eventID = $_GET['loadEventId'];
+    $eventID = $_GET['loadeventID'];
 
-    $sql = "SELECT * FROM events WHERE event_id='$eventID'";
+    $sql = "SELECT * FROM events WHERE event_id='$eventID';";
     $query = mysqli_query($conn, $sql);
     
   }
@@ -28,7 +28,7 @@
 
 <div class="container">
   <div class="row">
-  <?php while($row = mysqli_fetch_array($query)) { ?>
+  <?php while($row = mysqli_fetch_assoc($query)) { ?>
 
     <div class="col-lg-8 col-md-8 col-sm-12">
       <div class="card">
