@@ -11,11 +11,11 @@
 
     if (isset($_GET['add'])) {
 
-      $eventID = $_GET['addToCart'];
+      $eventID = $_GET['id'];
       $donate = '10';
       $status = '1';
 
-      $checksql = "SELECT user_id, event_id FROM cart WHERE user_id='$userID' AND event_id='$eventID'";
+      $checksql = "SELECT `user_id`, `event_id` FROM cart WHERE `user_id`='$userID' AND `event_id`='$eventID'";
       $checkquery = mysqli_query($conn, $checksql);
 
       if (mysqli_fetch_assoc($checkquery) > 0) {
@@ -23,40 +23,22 @@
         echo "Item Already Added!";
 
       } else {
+
         $insertsql = "INSERT INTO cart (`user_id`, `event_id`, `cart_amount`, `status`) VALUES ('$userID', '$eventID', '$donate', '$status');";
         $insertquery = mysqli_query($conn, $insertsql);
       }
-  
-     
-    
-    } 
-    else if (isset($_GET['donate'])) {
-      $eventID = $_GET['donateventID'];
-      $donate = '10';
-      $status = '1';
-      
-      $checksql = "SELECT user_id, event_id FROM cart WHERE user_id='$userID' AND event_id='$eventID'";
-      $checkquery = mysqli_query($conn, $checksql);
-
-      if (mysqli_fetch_assoc($checkquery) > 0) {
-
-        echo "Item Already Added!";
-
-      } else {
-        $insertsql = "INSERT INTO cart (`user_id`, `event_id`, `cart_amount`, `status`) VALUES ('$userID', '$eventID', '$donate', '$status');";
-        $insertquery = mysqli_query($conn, $insertsql);
-      }
-  
-      
-    }
   
       $sql = "SELECT * FROM cart INNER JOIN events ON cart.event_id = events.event_id WHERE cart.user_id='$userID' AND cart.status=1";
       $query = mysqli_query($conn, $sql);
+    
+    } 
 
-
-
+   else {
+  
     $sql = "SELECT * FROM cart INNER JOIN events ON cart.event_id = events.event_id WHERE cart.user_id='$userID' AND cart.status=1";
     $query = mysqli_query($conn, $sql);
+
+  } 
 }
 
 $total = 0.00;
@@ -65,14 +47,20 @@ $total = 0.00;
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 <style>
 .cart-container {
-
-  background: rgb(138, 110, 77);
   margin: 10%;
   margin-top: 5%;
   padding: 5%;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background: inherit;
+  overflow: hidden;
 
 }
+body {
 
+  background-attachment: fixed; 
+
+}
 .continue-shop-btn {
   float: right;
 }
@@ -99,11 +87,11 @@ $total = 0.00;
           <div class="panel-heading">
             <div class="panel-title">
               <div class="row">
-                <div class="col-lg-6 col-xs-6 float-left">
+                <div class="col-lg-7 col-xs-6 float-left" >
                   <h2><i class="bi bi-cart-check"></i> <b>Shopping Cart</b></h2>
                 </div>
-                <div class="col-lg-6 col-xs-6 continue-shop-btn">
-                  <a href="browse.php" type="button" class="btn btn-primary btn-sm btn-block">
+                <div class="col-lg-5 col-xs-6 continue-shop-btn">
+                  <a href="browse.php" type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom:4px; word-wrap:break-word;">
                   <i class="bi bi-arrow-left-circle"></i> Continue shopping
                   </a>
                 </div>
@@ -144,17 +132,17 @@ $total = 0.00;
             
 
               $total += $row['cart_amount'];
-              $i++;
               }
             ?>
             </div>
 
-            <?php if(is_null($query)) {  ?>
+            <?php if($row = mysqli_fetch_array($query) <= 0) {  ?>
               <div class="row">
                 <div class="cart-empty">
-                  <h3> Your Cart Is Empty~ </h3>
+                  <h5> Your Cart Is Empty~ </h5>
                 </div>
               </div>
+              <hr/>
           <?php } ?>
 
           <div class="row">
@@ -212,36 +200,6 @@ $total = 0.00;
 // document.getElementById("eventID").value = eventArr;
         
 
-
-
-
-
-
-
-
-// $(document).ready(function(){
-
-//  $('action').change(function(){
-//   if($(this).val() != '')
-//   {
-//    var action = $(this).attr("id");
-//    var query = $(this).val();
-//    var result = '';
-//    if(action == "state")
-//    {
-//     result = 'city';
-//    }
-//    $.ajax({
-//     url:"app/includes/state_city.php",
-//     method:"POST",
-//     data:{action:action, query:query},
-//     success:function(data){
-//      $('#'+result).html(data);
-//     }
-//    })
-//   }
-//  });
-// });
 
 </script>
 

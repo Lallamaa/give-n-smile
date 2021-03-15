@@ -1,7 +1,5 @@
 <?php
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
-  include(ROOT_PATH . 'app/lib/function.php');
+  include('../app/database/connect.php');
 
     $msg = '';
 
@@ -21,6 +19,9 @@
             $msg = "Incorrect login details!";
         }
     }
+
+    include('includes/top.inc.php'); 
+
 ?>
 
 <!DOCTYPE html>

@@ -13,11 +13,11 @@
 <?php 
 
 
-$queryy = "SELECT `cat_event` FROM category ORDER BY `cat_event` ASC";
+$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 $category = mysqli_query($conn, $queryy);
 
 if(isset($_SESSION['loggedIn'])) {
-  
+
   $id = $_SESSION['loggedIn']->user_id; 
 
 
@@ -66,7 +66,7 @@ if(isset($_SESSION['loggedIn'])) {
                 <?php 
                 while($row = mysqli_fetch_array($category)) 
                   {
-                    echo '<option value="'.$row['cat_event'].'">'.$row['cat_event'].'</option>';
+                    echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
                   } 
                 ?>
             </select>

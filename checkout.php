@@ -82,7 +82,7 @@
               <h3> Step 1</h3>
               <div class="form-group">
                 <label class="control-label">First Name</label>
-                <input  maxlength="100" type="text" class="form-control" placeholder="Enter First Name"  />
+                <input  maxlength="100" type="text" class="form-control" placeholder="Enter First Name" />
               </div>
               <div class="form-group">
                 <label class="control-label">Last Name</label>
@@ -90,7 +90,7 @@
               </div>
               <div class="form-group">
                 <label class="control-label">Email</label>
-                <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email" />
+                <input maxlength="100" type="email" required="required" class="form-control" placeholder="Enter Email" />
               </div>
             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
           </div>
@@ -106,20 +106,20 @@
               </div>
               <div class="form-group">
                 <label class="control-label">Card Number</label>
-                <input maxlength="12" type="text" required="required" class="form-control" placeholder="Enter Card Number"  />
+                <input maxlength="12" type="number" required="required" class="form-control" placeholder="Enter Card Number" />
               </div>
               <div class='form-row'>
             <div class='col-xs-4 form-group cvc required'>
               <label class='control-label'>CVC</label>
-              <input autocomplete='off' class='form-control card-cvc' placeholder="ex. 167" size="3" maxlength="3" type="text">
+              <input autocomplete='off' class='form-control card-cvc' placeholder="ex. 167" size="3" maxlength="3" type="number">
             </div>
             <div class='col-xs-4 form-group expiration required'>
               <label class='control-label'>Expiration</label>
-              <input class='form-control card-expiry-month' placeholder='MM' maxlength="2" size="2" type="text">
+              <input class='form-control card-expiry-month' placeholder='MM' maxlength="2" size="2" type="number">
             </div>
             <div class='col-xs-4 form-group expiration required'>
               <label class='control-label'> </label>
-              <input class='form-control card-expiry-year' placeholder='YY' maxlength="2" size="2" type='text'>
+              <input class='form-control card-expiry-year' placeholder='YY' maxlength="2" size="2" type='number'>
             </div>
           </div>
             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
@@ -131,7 +131,7 @@
         <div class="col-xs-6 col-md-offset-3">
           <div class="col-md-12">
             <h3> Step 3</h3>
-            <button class="btn btn-success btn-lg pull-right" id="create" type="submit" name="create-btn">Submit</button>
+            <button class="btn btn-success btn-lg pull-right" id="create" type="submit" name="donate-btn">Submit</button>
           </div>
         </div>
       </div>

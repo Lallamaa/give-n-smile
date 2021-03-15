@@ -1,6 +1,6 @@
 <?php
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
+  include('includes/top.inc.php'); 
+
   ?>
 
   <div class="col-md-10 content">
