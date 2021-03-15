@@ -200,13 +200,17 @@ $(".progress-bar").animate({
 												<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
 
 											// action="'. BASE_URL .'app/lib/cart-action.php"
+										}else if(isset($_SESSION['orgLoggedIn'])){
+											echo'
+												<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning btn-block">View</a>';
 										}
 										else {
 											echo '
 											<a href="login.php?errorlogin" class="btn btn-outline-warning add" name="addCart" ><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /> Donate</a>
 											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
 
-										} 
+										}
+									
 										
 										?>
 							

@@ -100,7 +100,9 @@
                     
         <?php
             } 
-            else if(isset($_SESSION['org_loggedIn'])){
+            else if(isset($_SESSION['orgLoggedIn'])){
+                    $_SESSION['orgLoggedIn']->org_name; 
+                    $_SESSION['orgLoggedIn']->org_id;
                 ?>
                     <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
                 </ul>

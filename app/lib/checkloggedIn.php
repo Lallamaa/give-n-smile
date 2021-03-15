@@ -28,15 +28,23 @@ require ROOT_PATH . 'app/database/connect.php';
 
 if(isset($_POST["startFundraiseBtn"]))
 {
-  echo "no button infomation";
   if(isset($_SESSION['loggedIn'])) {
     $id = $_SESSION['loggedIn']->user_id; 
-    echo "Youre Logged In!";
+    echo "You're Logged In!";
     echo $_SESSION['loggedIn']->user_name;
     echo $id;
     header('Location: ../../create_event.php');
 
-  } else {
+  }else if (isset($_SESSION['orgLoggedIn'])) {
+
+    $id = $_SESSION['orgLoggedIn']->org_id; 
+    $_SESSION['orgLoggedIn']->org_id; 
+    $_SESSION['orgLoggedIn']->org_name;
+    header('Location: ../../create_event.php');
+    
+  } 
+  
+  else {
     echo "Please log in to your account";
     header('Location: ../../login.php?errorlogin');
     // alertFunction("Please login to your account");

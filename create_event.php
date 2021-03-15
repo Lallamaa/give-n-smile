@@ -20,6 +20,7 @@ if (isset($_SESSION['loggedIn'])) {
 
   $id = $_SESSION['loggedIn']->user_id; 
 
+
 } else if (isset($_SESSION['orgLoggedIn'])) {
 
   $id = $_SESSION['orgLoggedIn']->org_id; 

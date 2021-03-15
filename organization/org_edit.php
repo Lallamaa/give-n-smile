@@ -2,17 +2,13 @@
   SESSION_START();
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
-  include(ROOT_PATH . "app/database/connect.php");
+  //include(ROOT_PATH . "app/database/connect.php");
   $org_id=$_SESSION['org_id'];
 
   if (isset($_POST['org_id'])) {
     $query = "SELECT * FROM organization WHERE org_id='$_POST[org_id]'";
     $execution = $conn->$query($query);
     $data = $execution->fetch_object();
-
-    // $query2 = "SELECT * FROM state_city WHERE status=1 ORDER BY country_name ASC";
-    // $address = $conn->$query2($query2);
-    
     
   }
 

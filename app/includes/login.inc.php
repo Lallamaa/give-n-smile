@@ -32,6 +32,7 @@
 						$_SESSION['user_name']=$row['user_name'];
 
 						header("location: ../../index.php?loginsuccess");   
+						header("refresh:0.5; url=../../login.php");
 					}
 					else{
 						
@@ -67,7 +68,8 @@
 							$_SESSION['orgLoggedIn'] = $data;
 							$_SESSION['org_id']=$row2['org_id'];
 							$_SESSION['org_name']=$row2['org_name'];
-							header("location: ../../index.php?loginsuccess");   //having problem on redirecting to index(automatically)
+							header("location: ../../index.php?loginsuccess");
+							header("refresh:0.5; url=../../login.php");   //having problem on redirecting to index(automatically)
 						}
 						else{
 							echo "<script>alert('Login Failed! Wrong email or password.');</script>";
