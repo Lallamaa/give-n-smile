@@ -2,6 +2,17 @@
   SESSION_START();
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
+  include(ROOT_PATH . "app/database/connect.php");
+  $org_id=$_SESSION['org_id'];
+
+  if (isset($_POST['org_id'])) {
+    $query = "SELECT * FROM organization WHERE org_id='$_POST[org_id]'";
+    $execution = $conn->$query($query);
+    $data = $execution->fetch_object();
+  }
+
+  // $_SESSION['org_name'] = $org_name;
+
 ?>
 
 <div align="center">
@@ -12,7 +23,19 @@
   </form>
 </div>
 
-	<div class="container">
+<?php
+    $sql = mysqli_query($conn,"SELECT * FROM organization WHERE org_id='$org_id'");
+    $result = mysqli_fetch_assoc($sql);
+
+
+    if(isset($_POST['update']))
+    {
+        $user_name=$_POST['user_name'];
+    }
+
+?>
+
+<div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
@@ -23,12 +46,11 @@
               <div class="mt-3">
                 <form method="POST" action="" enctype="multipart/form-data">
                   <div>
-                    <label for="floatingInputGrid"><?php echo $_SESSION['organization']->org_name; ?></label>
-                    <input type="text" class="form-control" required value="">
+                    <label for="floatingInputGrid"><?php echo $result['org_name'];?>
                   </div>
                   <div>
                     <label for="floatingInputGrid">Bio</label>
-                    <textarea class="form-control" required placeholder="Description">Hello there</textarea>
+                    <textarea class="form-control" value="<?php echo $result['org_bio'];?>" placeholder="Description">Hello there</textarea>
                   </div>        
                 </form>      
               </div>
@@ -44,12 +66,12 @@
                 <div class="row g-2">
                   <div class="col-md col-sm-3" >
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingInputGrid" required value=" ">
+                      <input type="text" class="form-control" id="floatingInputGrid" name="org_name" value="<?php echo $result['org_name'];?>">
                       <label for="floatingInputGrid">Organization Name</label>
                     </div>
                     <div class="form-floating">
-                      <input type="email" class="form-control" id="floatingInputGrid" value="mdo@example.com">
-                      <label for="floatingInputGrid">Email address</label>
+                      <input type="email" name="org_email" class="form-control" id="floatingInputGrid" value="<?php echo $result['org_email'];?>">
+                      <label for="floatingInputGrid">Email</label>
                     </div>
                     <div class="form-floating">
                     <div class="form-floating">
@@ -62,7 +84,7 @@
                       <label for="floatingSelectGrid">Works with selects</label>
                     </div>
                     <div class="form-floating">
-                      <input type="email" class="form-control" id="floatingInputGrid" value="mdo@example.com">
+                      <input type="text" class="form-control" id="floatingInputGrid"  value="<?php echo $result['org_address'];?>">
                       <label for="floatingInputGrid">Address</label>
                     </div>
                     <div class="form-floating">
@@ -84,22 +106,22 @@
                       <label for="floatingInputGrid">City</label>
                     </div>
                     <div class="form-floating">
-                      <input type="number" class="form-control" id="floatingInputGrid" maxlength="5" value="00000">
+                      <input type="number" class="form-control" id="floatingInputGrid" maxlength="5" value="<?php echo $result['org_zipcode'];?>"> 
                       <label for="floatingInputGrid">Zipcode</label>
                     </div>
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingInputGrid" value="(+60)">
+                      <input type="text" class="form-control" id="floatingInputGrid" value="(+60)<?php echo $result['org_contact'];?>">
                       <label for="floatingInputGrid">Contact</label>
                     </div>
                     <div class="form-floating">
-                      <input type="url" class="form-control" id="floatingInputGrid" placeholder="give-n-smile.com">
+                      <input type="url" class="form-control" id="floatingInputGrid" placeholder="ex. www.give-n-smile.com" name="org_weblink" value="<?php echo $result['org_weblink'];?>">
                       <label for="floatingInputGrid">Website Link</label>
                     </div>
                     <div class="form-floating">
                       <input type="url" class="form-control" id="floatingInputGrid" placeholder="facebook.com">
                       <label for="floatingInputGrid">Facebook Link</label>
                     </div>
-                    <div class="form-floating">
+                    <!-- <div class="form-floating">
                       <select class="form-select" id="inputGroupSelect01">
                         <option selected>Option</option>
                         <option value="1">One</option>
@@ -107,14 +129,14 @@
                         <option value="3">Three</option>
                       </select>
                       <label for="floatingInputGrid">Social Media Link</label>
-                    </div>
+                    </div> -->
                     <div class="form-floating">
                       <input type="password" class="form-control" id="floatingInputGrid" value="***********">
                       <label for="floatingInputGrid">Password</label>
                     </div>
                 </div><br>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button class="btn btn-primary me-md-2" type="button">Update</button>
+                  <button class="btn btn-primary me-md-2" type="button" name="update" id="update">Update</button>
                 </div>
               </form>
             </div>
@@ -126,5 +148,3 @@
 </div>
 
 <?php include(ROOT_PATH . "app/includes/footer.php"); ?>
-</body>
-</html>
