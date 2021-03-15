@@ -3,13 +3,15 @@
   include('app/lib/path.php');
   include(ROOT_PATH . 'app/includes/header.php');
 
+
+
   if (isset($_SESSION['loggedIn'])) {
 
     $userID = $_SESSION['loggedIn']->user_id;
 
-    if (isset($_GET['action'])) {
+    if (isset($_GET['add'])) {
 
-      $eventID = $_GET['id'];
+      $eventID = $_GET['addToCart'];
       $donate = '10';
       $status = '1';
 
@@ -25,17 +27,36 @@
         $insertquery = mysqli_query($conn, $insertsql);
       }
   
-      $sql = "SELECT * FROM cart INNER JOIN events ON cart.event_id = events.event_id WHERE cart.user_id='$userID'";
-      $query = mysqli_query($conn, $sql);
+     
     
     } 
+    else if (isset($_GET['donate'])) {
+      $eventID = $_GET['donateventID'];
+      $donate = '10';
+      $status = '1';
+      
+      $checksql = "SELECT user_id, event_id FROM cart WHERE user_id='$userID' AND event_id='$eventID'";
+      $checkquery = mysqli_query($conn, $checksql);
 
-   else {
+      if (mysqli_fetch_assoc($checkquery) > 0) {
+
+        echo "Item Already Added!";
+
+      } else {
+        $insertsql = "INSERT INTO cart (`user_id`, `event_id`, `cart_amount`, `status`) VALUES ('$userID', '$eventID', '$donate', '$status');";
+        $insertquery = mysqli_query($conn, $insertsql);
+      }
   
-    $sql = "SELECT * FROM cart INNER JOIN events ON cart.event_id = events.event_id WHERE cart.user_id='$userID'";
-    $query = mysqli_query($conn, $sql);
+      
+    }
+  
+      $sql = "SELECT * FROM cart INNER JOIN events ON cart.event_id = events.event_id WHERE cart.user_id='$userID' AND cart.status=1";
+      $query = mysqli_query($conn, $sql);
 
-  }
+
+
+    $sql = "SELECT * FROM cart INNER JOIN events ON cart.event_id = events.event_id WHERE cart.user_id='$userID' AND cart.status=1";
+    $query = mysqli_query($conn, $sql);
 }
 
 $total = 0.00;
@@ -79,7 +100,7 @@ $total = 0.00;
             <div class="panel-title">
               <div class="row">
                 <div class="col-lg-6 col-xs-6 float-left">
-                  <h3><i class="bi bi-cart-check"></i> <b>Shopping Cart</b></h3>
+                  <h2><i class="bi bi-cart-check"></i> <b>Shopping Cart</b></h2>
                 </div>
                 <div class="col-lg-6 col-xs-6 continue-shop-btn">
                   <a href="browse.php" type="button" class="btn btn-primary btn-sm btn-block">
@@ -91,7 +112,8 @@ $total = 0.00;
           </div>
           <div class="panel-body">
           <form class="form-auth" action="app/lib/cartAction.php" method="post" enctype="multipart/form-data">
-          <?php while ($row = mysqli_fetch_assoc($query)) {  ?>
+          <?php
+          while ($row = mysqli_fetch_assoc($query)) {  ?>
 
             <div class="row">
               <div class="col-lg-4 col-sm-12">
@@ -102,7 +124,7 @@ $total = 0.00;
                 <br>
                 <div class="input-group mb-3">
                   <span class="grid-3 grid-md-2 input-group-text"><b>RM</b></span>
-                  <input type="text" class="form-control input-sm" name="amount<?php echo $row['cart_id']; ?>" value="<?php echo number_format($row['cart_amount'], 2); ?>" placeholder="<?php echo number_format($row['cart_amount'], 2); ?>" require>
+                  <input type="text" id="amount" class="form-control input-sm" name="amount<?php echo $row['cart_id']; ?>" value="<?php echo number_format($row['cart_amount'], 2); ?>" placeholder="<?php echo number_format($row['cart_amount'], 2); ?>" require>
                 </div>
               </div>
               <div class="col-lg-2 col-xs-12">
@@ -112,14 +134,17 @@ $total = 0.00;
               </div>
             </div>
               <hr>
-              <input type="hidden" name="cartID<?php echo $row['cart_id']; ?>" value="<?php echo $row['cart_id']; ?>" >
-              <input type="hidden" name="eventID<?php echo $row['event_id']; ?>" value="<?php echo $row['event_id']; ?>" >
-              
+              <input type="hidden" id="cartID" name="cartID<?php echo $row['cart_id']; ?>" value="<?php echo $row['cart_id']; ?>" >
+              <input type="hidden" id="eventID" name="eventID<?php echo $row['event_id']; ?>" value="<?php echo $row['event_id']; ?>" >
+              <!-- <input type="hidden" id="amountArr" name="amountArr" value="" >
+              <input type="hidden" id="amountArr" name="cartIDArr" value="" >
+              <input type="hidden" id="amountArr" name="eventIDArr" value="" > -->
+
             <?php 
             
 
               $total += $row['cart_amount'];
-
+              $i++;
               }
             ?>
             </div>
@@ -163,4 +188,60 @@ $total = 0.00;
   </div>
 </div>
 <?php include(ROOT_PATH . 'app/includes/footer.php'); ?>
+
+<script>
+
+// var amountArr = $('#amount').map(function(){ 
+//                     return this.value; 
+//                 }).get();
+
+// document.getElementById("amount").value = amountArr;
+
+
+// var cartArr = $('#cartID').map(function(){ 
+//                 return this.value; 
+//             }).get();                
+
+// document.getElementById("cartID").value = cartArr;
+
+
+// var eventArr = $('#eventID').map(function(){ 
+//                     return this.value; 
+//                 }).get();
+
+// document.getElementById("eventID").value = eventArr;
+        
+
+
+
+
+
+
+
+
+// $(document).ready(function(){
+
+//  $('action').change(function(){
+//   if($(this).val() != '')
+//   {
+//    var action = $(this).attr("id");
+//    var query = $(this).val();
+//    var result = '';
+//    if(action == "state")
+//    {
+//     result = 'city';
+//    }
+//    $.ajax({
+//     url:"app/includes/state_city.php",
+//     method:"POST",
+//     data:{action:action, query:query},
+//     success:function(data){
+//      $('#'+result).html(data);
+//     }
+//    })
+//   }
+//  });
+// });
+
+</script>
 

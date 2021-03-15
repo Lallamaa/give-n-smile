@@ -24,6 +24,14 @@
 .event-title {
   font-size: 50px;
 }
+
+.image-preview {
+  margin-bottom: 5%;
+}
+.comment-card {
+
+  margin-top: 10%;
+}
 </style>
 
 <div class="container">
@@ -31,46 +39,31 @@
   <?php while($row = mysqli_fetch_assoc($query)) { ?>
 
     <div class="col-lg-8 col-md-8 col-sm-12">
-      <div class="card">
+      <div class="card image-preview">
         <div class="card-body">
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
+            <!-- <ol class="carousel-indicators">
               <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
               <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
               <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
+            </ol> -->
+            <div class="carousel-inner ">
               <div class="carousel-item active">
               <?php //if (isset($_SESSION['event'])) { ?>
-                <img src="<?php //BASE_URL; ?>app/image/jumbo_6.jpg<?php $row['event_img']; ?>" class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="app/image/jumbo_7.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-              <img src="app/image/jumbo_8.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
+                <img src="<?php echo $row['event_img']; ?>" class="d-block w-100" alt="..." />
+                <!-- <div class="carousel-caption d-none d-md-block">
+                  
+                </div> -->
               </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+            <!-- <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
-            </a>
+            </a> -->
           </div> <!-- End of Carousel -->
         </div>
       </div>
@@ -95,7 +88,7 @@
       <div class="card">
         <div class="card-body">
           <div class="donor-dp">
-            DONOR HISTORY
+            <h3>DONOR HISTORY</h3>
           </div>
           <div class="tab-pane fade show active" style="font-size:14px;">
             <table class="table" cellspacing="0" >
@@ -135,13 +128,12 @@
             <?= $row['event_desc']; ?>
           </div>
           <!-- display comments  --> 
-          <div class="card">
+          <div class="card comment-card">
             <div class="card-body">
               <div class="comment-title">
                     COMMENTS
               </div>
-              <div class="event-content">
-              <div class="container">
+  <div class="event-content">
     <div class="row">
         <div class="panel panel-default widget">
             <div class="panel-body">
@@ -197,7 +189,6 @@
                 <a href="# " class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
             </div>
         </div>
-    </div>
 </div>
               </div>
             </div>

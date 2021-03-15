@@ -3,7 +3,7 @@
 	include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php");
 
-	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
+	$queryy = "SELECT `cat_organization` FROM category ORDER BY `cat_organization` ASC";
 	$category = mysqli_query($conn, $queryy);
 
 	$sql = "SELECT * FROM events";

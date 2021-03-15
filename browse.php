@@ -167,21 +167,21 @@ $(".progress-bar").animate({
 										<div> -->
 										</div>	<!--End of carousel-item active -->
 									</div>		<!--End of carousel-inner browse-image -->
-									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+									<!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
 										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 										<span class="visually-hidden">Previous</span>
 									</a>
 									<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
 										<span class="carousel-control-next-icon" aria-hidden="true"></span>
 										<span class="visually-hidden">Next</span>
-									</a>
+									</a> -->
 									</div>
 									<!-- Progress-bar -->
 									<div class="tile-progress tile-primary active progress">									
 										<div class="tile-progressbar progress-bar">
-											<span data-fill="90%" style="width: 90%;"></span>
+											<span data-fill="60%" style="width: 100%;"></span>
 										</div>	
-										<div class="text-right">RM <?= number_format($row['event_amount'], 2); ?></div>										
+										<div class="text-right">RM <?= number_format(($row['event_amount'] - $row['event_fund']), 2); ?></div>										
 									</div>	
 									<!--End of progress-bar -->
 
@@ -202,11 +202,11 @@ $(".progress-bar").animate({
 										<?php if(isset($_SESSION['loggedIn'])) { 
 											
 											echo '
-											<a href="payment.php?donateventID='. $row['event_id'] .'&userID'. $_SESSION['loggedIn']->user_id .'" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
+											<a href="cart.php?donate&donateventID='. $row['event_id'] .'&userID'. $_SESSION['loggedIn']->user_id .'" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
 											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>
 												<input type="hidden" id="name'. $row['event_id'] .'" name="userID" " value="'. $_SESSION['loggedIn']->user_id .'">
 												<input type="hidden" id="name'. $row['event_id'] .'" name="eventID" " value="'. $row['event_id'] .'">
-												<a href="'. BASE_URL .'cart.php?action=addToCart&id='. $row['event_id'] .'" class="btn btn-outline-warning"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></a>';
+												<a href="'. BASE_URL .'cart.php?add&addToCart&id='. $row['event_id'] .'" class="btn btn-outline-warning"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></a>';
 											
 											// action="'. BASE_URL .'app/lib/cart-action.php"
 										}

@@ -17,10 +17,9 @@ $queryy = "SELECT `cat_event` FROM category ORDER BY `cat_event` ASC";
 $category = mysqli_query($conn, $queryy);
 
 if(isset($_SESSION['loggedIn'])) {
+  
   $id = $_SESSION['loggedIn']->user_id; 
-  echo "Youre Logged In!"; 
-  echo $_SESSION['loggedIn']->user_name;
-  echo $id;
+
 
 } else {
   echo "Please log in to your account";
@@ -81,7 +80,7 @@ if(isset($_SESSION['loggedIn'])) {
             </div>
             <div class="form-group">
               <label class="control-label">Description</label>
-              <textarea required="required" class="form-control" placeholder="Describe your campsign details here.."  name="desc"></textarea>
+              <textarea required="required" class="form-control event-textarea" placeholder="Describe your campsign details here.."  name="desc" style="height: 300px !important;"></textarea>
             </div>
             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
           </div>

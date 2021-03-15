@@ -75,7 +75,7 @@
         </div>
       </div>
 
-   <form role="form" action="" method="post">
+   <form role="form" action="app/lib/checkoutAction.php" method="post">
         <div class="row setup-content" id="step-1">
           <div class="col-xs-6 col-md-offset-3">
             <div class="col-md-12">
@@ -91,14 +91,6 @@
               <div class="form-group">
                 <label class="control-label">Email</label>
                 <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Email" />
-              </div>
-              <div class="form-group">
-                <label class="control-label">Phone Number(+60)</label>
-                <input maxlength="9" type="text" required="required" class="form-control" placeholder="Enter phone number" />
-              </div>
-              <div class="form-group">
-                <label class="control-label">Address</label>
-                <textarea required="required" class="form-control" placeholder="Enter address" ></textarea>
               </div>
             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
           </div>
@@ -132,9 +124,7 @@
           </div>
             <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
           </div>
-          <!-- <input type="hidden" class="form-control" name="user" value="<?php //echo $_SESSION['loggedIn']->user_name; ?>"/>
-          <input type="hidden" class="form-control" name="userID" value="<?php //echo $_SESSION['loggedIn']->user_id; ?>"/> -->
-
+          
         </div>
       </div>
       <div class="row setup-content" id="step-3">
