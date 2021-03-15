@@ -12,7 +12,7 @@
             <div class="d-flex flex-column align-items-center text-center">
               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
               <div class="mt-3">
-                <h4><?php echo $_SESSION['user_name']; ?></h4>
+                <h4><?php echo $_SESSION['loggedIn']->user_name; ?></h4>
               </div>
             </div>
           </div>
@@ -26,7 +26,7 @@
                 <h6 class="mb-0">Welcome Back!</h6>
               </div>
               <div class="col-sm-6 text-secondary">
-              <?php echo $_SESSION['user_name']; ?>
+              <?php echo $_SESSION['loggedIn']->user_name; ?>
               </div>
             </div>       
           </div>

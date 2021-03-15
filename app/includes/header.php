@@ -76,69 +76,12 @@
                 <div class="btn-group">
                 <!-- <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown"> -->
-                    <a href="<?= BASE_URL; ?>cart.php?userID=<?= $_SESSION['user_id']; ?> " class="btn btn-primary-outline dropdown-toggle mr-2" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <a href="<?= BASE_URL; ?>cart.php?view" class="btn btn-primary-outline dropdown-toggle mr-2" type="button" data-toggle="dropdown" aria-expanded="false">
                         <!-- <span class="badge badge-pill red">1</span> -->
                         <i class="fas fa-shopping-cart pl-0"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-cart" role="menu">
-                        <?php 
-                        // if(!empty($_SESSION['cart'])){
-                        //     $outputTable = '';
-                        //     $total = 0;
-                        //     $outputTable .= '<table class="table table-bordered">
-                        //                         <thead>
-                        //                             <tr>
-                        //                                 <td col-span="2">Name</td>
-                        //                                 <td>Action</td>
-                        //                             </tr>
-                        //                         </thead>';
-                            
-                        //     foreach($_SESSION['cart'] as $key => $value){
-                        //         $outputTable .= '<tr>
-                        //                             <td>'.$value['e_image'].'</td>
-                        //                             <td>'.$value['e_name'].'</td>
-                        //                             <td><button id='.$value['e_id'].' class="btn btn-danger delete">Delete</button></td>
-                        //                         </tr>';  
-                        //         $total = $total + ($value['p_price'] * $value['p_quantity']);
-                        //     }
-                        //     $outputTable .= '</table>';
-                        //     $outputTable .= '<div class="text-center">
-                        //                         <b>Total: ".$total."</b>
-                        //                     </div>';
-                        //     echo $outputTable;
-                        
-                       
-                        // } else {
-                        //         $outputTable = '';
-                        //         $total = 0;
-                        //         $outputTable .= "<table class='table table-bordered'>
-                        //                             <thead>
-                        //                                 <tr>
-                        //                                     <td>Name</td>
-                        //                                     <td>Price</td>
-                        //                                     <td>Action</td>
-                        //                                 </tr>
-                        //                             </thead>";
-                                
-                        //         foreach($_SESSION['cart'] as $key => $value){
-                        //             $outputTable .= "<tr>
-                        //                                 <td>".$value['p_name']."</td>
-                        //                                 <td>".($value['p_price'] * $value['p_quantity']) ."</td>
-                        //                                 <td><button id=".$value['p_id']." class='btn btn-danger delete'>Delete</button></td>
-                        //                             </tr>";  
-                        //             $total = $total + ($value['p_price'] * $value['p_quantity']);
-                        //         }
-                        //         $outputTable .= "</table>";
-                        //         $outputTable .= "<div class='text-center'>
-                        //                             <b>Total: ".$total."</b>
-                        //                         </div>";
-                        //         echo $outputTable;
-                        //     }
-                
-                        
-                        ?>
-                        <!-- <li class="divider"></li>
-                        <li><a class="text-center" href="<?= BASE_URL; ?>payment.php">View Cart</a></li> -->
+
                 </div>
                 <!-- Make this btn-group for dropdownMenuButton2 at header2.php By V-->
         <div class="btn-group"> 

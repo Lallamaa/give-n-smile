@@ -80,7 +80,7 @@ if (isset($_POST['registerbtn'])) {
   mysqli_close($conn);
 } 
 else {
-  header('Location: ../index.php')
+  header('Location: ../index.php');
 }
 
 

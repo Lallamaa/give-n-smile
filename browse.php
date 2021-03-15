@@ -27,6 +27,20 @@
 	$event = mysqli_query($conn, $sql);
 
 
+	function addToCart() {
+
+    $userID = $_POST['userID'];
+    $eventID = $_POST['eventID'];
+    $donateAmount = 10;
+    $status = 1;
+
+    $sql = "INSERT INTO cart (`user_id`, `event_id`, `cart_amount`, `status`)
+              VALUES ($userID, $eventID, $donateAmount, $status)";
+    $query = mysqli_query($conn, $sql);
+
+	}
+
+
 ?>
 
 <script>
@@ -41,8 +55,8 @@ $(".progress-bar").animate({
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="#">Home</a></li>
-				<li class="breadcrumb-item"><a href="#">Library</a></li>
-				<li class="breadcrumb-item active" aria-current="page">Data</li>
+				<li class="breadcrumb-item"><a href="#">Donate</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Event</li>
 			</ol>
 		</nav>
 		<div id="carouselExampleDark" class="carousel carousel-dark slide s-slide" data-bs-ride="carousel">
@@ -53,24 +67,23 @@ $(".progress-bar").animate({
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-bs-interval="10000">
-					<img src="app/image/jumbotron/jumbo_1.jpg" class="d-block w-100" alt="..." height="500" width="100%">
+					<img src="app/image/jumbotron/jumbo_8.jpg" class="d-block w-100" alt="..." height="500" width="100%" style="object-fit: cover; !important;">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>First slide label</h5>
-						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
 					</div>
 				</div>
 				<div class="carousel-item" data-bs-interval="2000">
-					<img src="app/image/jumbotron/jumbo_2.jpeg" class="d-block w-100" alt="..." height="500" width="100%">
+					<img src="app/image/jumbotron/jumbo_7.jpg" class="d-block w-100" alt="..." height="500" width="100%" style="object-fit: cover; !important;">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Second slide label</h5>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<img src="app/image/jumbotron/jumbo_3.jpg" class="d-block w-100" alt="..." height="500" width="100%">
+					<img src="app/image/jumbotron/jumbo_5.jpg" class="d-block w-100" alt="..." height="500" width="100%" style="object-fit: cover; !important;">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>Third slide label</h5>
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="app/image/jumbotron/jumbo_6.jpg" class="d-block w-100" alt="..." height="500" width="100%" style="object-fit: cover; !important;">
+					<div class="carousel-caption d-none d-md-block">
 					</div>
 				</div>
 			</div>
@@ -141,17 +154,17 @@ $(".progress-bar").animate({
 							<div class="candidate-list-image">
 								<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 									<div class="carousel-inner browse-image" style=" width:100%; height: 250px !important;">
-										<div class="carousel-item active">
+										<div>
 									
 										<?php 
 											echo '
-											<div class="carousel-item">
-												<img class="img-fluid d-block w-100 rounded" src="'.$row["event_img"].'" alt="" style="height: 100%; width: 100%; object-fit: contain !important;">
+											<div>
+												<img class="img-fluid d-block w-100 rounded" src="'.$row["event_img"].'" alt="" style="height: 250px; width: 100%; object-fit: cover; !important;">
 											</div>';
 										?>
 
 										</div>
-										<div class="carousel-item"> -->
+										<div> -->
 										</div>	<!--End of carousel-item active -->
 									</div>		<!--End of carousel-inner browse-image -->
 									<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -177,7 +190,7 @@ $(".progress-bar").animate({
 										<div class="candidate-list-info">
 											<div class="candidate-list-title">
 												<h5 class="card-title"><?= $row['event_name']; ?></h5>
-												<p class="card-text"><?= substr($row['event_desc'], 0, 200); ?> "...".'</p>
+												<p class="card-text"><?= substr($row['event_desc'], 0, 200); ?> ...... </p>
 											</div>
 										</div>
 									<div><br>
@@ -188,17 +201,19 @@ $(".progress-bar").animate({
 										
 										<?php if(isset($_SESSION['loggedIn'])) { 
 											
-											echo '<a href="payment.php?donateventID='. $row['event_id'] .'&userID'. $_SESSION['loggedIn']->user_id .'" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
+											echo '
+											<a href="payment.php?donateventID='. $row['event_id'] .'&userID'. $_SESSION['loggedIn']->user_id .'" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
 											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>
-
-											<input type="hidden" id="name'. $row['event_id'] .'" value="'. $row['event_name'] .'">
-											<button class="btn btn-outline-warning add" name="addCart" data-id="'. $row['event_id'] .'"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></button>';
-
+												<input type="hidden" id="name'. $row['event_id'] .'" name="userID" " value="'. $_SESSION['loggedIn']->user_id .'">
+												<input type="hidden" id="name'. $row['event_id'] .'" name="eventID" " value="'. $row['event_id'] .'">
+												<a href="'. BASE_URL .'cart.php?action=addToCart&id='. $row['event_id'] .'" class="btn btn-outline-warning"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></a>';
+											
+											// action="'. BASE_URL .'app/lib/cart-action.php"
 										}
 										else {
 											echo '<a href="login.php?errorlogin" class="btn btn-outline-warning" name="donate-btn" type="button">Donate</a>
-											<input type="hidden" id="name'. $row['event_id'] .'" value="'. $row['event_name'] .'">
-											<button class="btn btn-outline-warning add" name="addCart" data-id="'. $row['event_id'] .'"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></button>';
+											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>
+											<a href="login.php?errorlogin" class="btn btn-outline-warning add" name="addCart" ><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /></a>';
 
 										} 
 										
@@ -206,8 +221,7 @@ $(".progress-bar").animate({
 							
 									</div>
 									<div class="candidate-list-favourite-time">
-										<a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a>
-										<!-- <span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_start']; ?></span> -->
+										<!-- <a class="candidate-list-favourite order-2" href="#"><i class="far fa-heart"></i></a> -->
 										<span class="candidate-list-time order-1"><i class="far fa-clock pr-1"></i><?= $row['event_end']; ?></span>
 									</div>
 
@@ -305,7 +319,6 @@ function deleteINsession(){
     
     })
 })
-</script>
 
 // $(document).ready(function(){
 
