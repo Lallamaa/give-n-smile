@@ -26,10 +26,11 @@ while ($row = mysqli_fetch_assoc($query)) {
     $updateFundSql = "UPDATE events SET `event_fund`='$totalFund' WHERE `event_id`='$eventID'";
     $fundSqlQuery = mysqli_query($conn, $updateFundSql);
     
-
     $deleteFromCartSql = "UPDATE cart SET `status`=0 WHERE user_id='$userID'";
     $deleteQuery = mysqli_query($conn, $deleteFromCartSql);
 
+    $insertDonationSql = "INSERT INTO donation (do_event_id, do_user_id, do_amount, do_status) VALUES ('$eventID', '$userID', '$donate', '1');";
+    $insertDonationQuery = mysqli_query($conn, $insertDonationSql);
 }
 
 echo '<script>alert("Successfully Checkout")</script>';

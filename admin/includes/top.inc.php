@@ -22,47 +22,48 @@
   <!-- <link rel="stylesheet" href="../css/query.css">     -->
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>app/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>  
   <script src="<?php echo BASE_URL;?>jvs/script.js"></script> 
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"> Give & Sm:)e </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  
 
-      <form class="navbar-form navbar-left" method="GET" role="search">
-        <div class="form-group">
-          <input type="text" name="search" class="form-control" placeholder="Search">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light pr-5 pl-5" style="padding-left: 3rem!important; padding-right: 3rem!important;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="<?php echo BASE_URL; ?>index.php"><img src="<?php echo BASE_URL; ?>app/image/logo.png" alt="" width="100" height="50" class="d-inline-block align-top"></a>
+            
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="<?php echo BASE_URL; ?>index.php">Visit Site</a>
+                </li>
+              </ul>
+            </div>
+                <!-- Make this btn-group for dropdownMenuButton2 at header2.php By V-->
+        <div class="btn-group"> 
+            <button class="btn btn-primary-outline mr-5" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<?php echo BASE_URL; ?>app/image/icon/account.png" width="30" height="30" class="d-inline-block align-top">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
+                <li><a class="nav-link" href="<?= BASE_URL; ?>user/us_profile.php">Account</a></li>
+                <li><a class="nav-link" href="<?= BASE_URL; ?>muser/us_editprofile.php">Setting</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="nav-link" name="logout" href="'. BASE_URL .'index.php?logout=“1"><i class="fa fa-power-off"></i>Logout</a></li>
+            </ul>
         </div>
-        <button type="submit" class="btn btn-outline-success"><i class="glyphicon glyphicon-search"></i></button>
-      </form>  <!--End form//-->
+      </div><!-- /.navbar-collapse -->
+  </nav>
+  <!--End of NavBar-->
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo BASE_URL ?>/index.php" target="_blank">Visit Site</a></li>
-        <li class="dropdown ">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            Account
-          <ul class="user-menu dropdown-menu" role="menu">
-            <li class="dropdown-header">SETTINGS</li>
-            <li><a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i>Logout</a></li>
-            <li><a href="#">Logout</a></li>
-          </ul>
-        </li>   <!--End li//-->
-      </ul>   <!--End ul//-->
-    </div>  <!-- .navbar-collapse// -->
-  </div>  <!-- .container-fluid// -->
-</nav>  <!-- nav//-->  
 <div class="container-fluid main-container">
-        <div class="col-md-2 sidebar">
-          <div class="row">
+  <div class="col-md-2 sidebar">
+    <div class="row">
     <!-- uncomment code for absolute positioning tweek see top comment in css -->
     <div class="absolute-wrapper"> </div>
     <!-- Menu -->
@@ -73,12 +74,11 @@
           <ul class="nav navbar-nav">
             <li class="active"><a class="glyphicon glyphicon-dashboard" href="dashboard.php"> Dashboard </a></li>
             <li><a class="glyphicon glyphicon-dashboard" href="ad_category.php"> Manage Category </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_camp.php"> Manage Campaign </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_fund.php"> Manage Fundraise </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_donation.php"> Manage Donation </a></li>
+            <li><a class="glyphicon glyphicon-dashboard" href="ad_fund.php"> Manage Event </a></li>
+            <!-- <li><a class="glyphicon glyphicon-dashboard" href="ad_donation.php"> Manage Donation </a></li> -->
             <li><a class="glyphicon glyphicon-dashboard" href="ad_user.php"> User Management </a></li>
             <li><a class="glyphicon glyphicon-dashboard" href="ad_org.php"> Organization Managemnet </a></li>
-            <li><a class="glyphicon glyphicon-dashboard" href="ad_emergency.php"> Emergency Event </a></li>
+            <!-- <li><a class="glyphicon glyphicon-dashboard" href="ad_emergency.php"> Emergency Event </a></li> -->
             <li><a class="glyphicon glyphicon-dashboard" href="ad_feedback.php"> Feedbacks </a></li>
             <!-- <li><a href="ad_fb.php">Settings</a></li> -->
             <li><a class="glyphicon glyphicon-dashboard" href="logout.php"> Logout </a></li>

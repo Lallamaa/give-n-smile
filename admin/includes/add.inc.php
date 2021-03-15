@@ -1,4 +1,5 @@
 <?php
+  include('../../app/database/connect.php');
 
   // $categories='';
   // $msg='';
@@ -96,10 +97,10 @@
       if (isset($_GET['id']) && $_GET['id']!='') {
         mysqli_query($conn, "UPDATE category set `name`='$categories' where id='$id'");
       } else {
-        mysqli_query($conn, "INSERT into category (name, status) values ('$categories', '1')");
+        mysqli_query($conn, "INSERT into category (cat_name) values ('$categories')");
       }
     }
-    header('Location: ad_category.php');
+    header('Location: ../ad_category.php');
     // ob_end_flush();
 
     die();

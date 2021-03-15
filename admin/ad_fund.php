@@ -1,10 +1,10 @@
 <?php
-  include('./includes/top.inc.php');
+  include('includes/top.inc.php'); 
   
   if (isset($_GET['type']) && $_GET['type']!='') {
     $type=get_safe_value($_GET['type']);
     if ($type == 'status') {
-      $operation=get_safe_value($conn, $_GET['fund_id']);
+      $operation=get_safe_value($conn, $_GET['event_id']);
       if($operation=='approve') {
         $staus='1';
       } else if ($operation=='reject') {
@@ -17,7 +17,7 @@
     }
   }
   
-  $sql="select * from fundraise order by fund_id asc";
+  $sql="SELECT * FROM events ORDER BY event_id ASC";
   $res=mysqli_query($conn, $sql);
 ?>
 
@@ -31,33 +31,47 @@
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Fund Amount</th>
-              <th scope="col">Description</th>
               <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Start-Date</th>
+              <th scope="col">End-Date</th>
+              <th scope="col">Target Fund Amount (RM)</th>
+              <th scope="col">Funded Amount (RM)</th>
               <th scope="col">Status</th>
+              <th scope="col">Area (optional)</th>
+              <th scope="col">Category</th>
+              <th scope="col">Organizer</th>
+              <th scope="col">Organizer ID</th>
+              <th scope="col">Description</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <?php
             while ($row=mysqli_fetch_assoc($res)) { ?>
             <tr>
-              <td scope="row"><?php echo $row['fund_id']?></td>
-              <td><?php echo $row['fund_name']?></td>
-              <td><?php echo $row['fund_date']?></td>
-              <td><?php echo $row['fund_amount']?></td>
-              <td><?php echo $row['fund_desc']?></td>
-              <td><?php echo $row['fund_image']?></td>
+              <td scope="row"><?php echo $row['event_id']?></td>
+              <td><img src="<?php echo $row['event_img']?>" height="100" width="100"  style="object-fit: cover; !important;"></td>
+              <td><?php echo $row['event_name']?></td>
+              <td><?php echo $row['event_start']?></td>
+              <td><?php echo $row['event_end']?></td>
+              <td><?php echo $row['event_amount']?></td>
+              <td><?php echo $row['event_fund']?></td>
+              <td><?php echo $row['event_status']?></td>
+              <td><?php echo $row['event_area']?></td>
+              <td><?php echo $row['category']?></td>
+              <td><?php echo $row['organizer_name']?></td>
+              <td><?php echo $row['organizer_id']?></td>
+              <td><?php echo $row['event_desc']?></td>
               <td><?php 
-                if($row['fund_status']==1) {
-                  echo "<span><a href='?type=status&operation=approve&id=".$row['fund_id']. 
+                if($row['event_status']==1) {
+                  echo "<span><a href='?type=status&operation=approve&id=".$row['event_id']. 
                   "'>Approve</a></span>'";
-                } else if ($row['fund_status']==0){
-                  echo "<span><a href='?type=status&operation=reject&id=".$row['fund_id']. 
+                } else if ($row['event_status']==0){
+                  echo "<span><a href='?type=status&operation=reject&id=".$row['event_id']. 
                   "'>Reject</a></span>'";            
                 } else {
-                  echo "<span><a href='?type=status&operation=pending&id=".$row['fund_id']. 
+                  echo "<span><a href='?type=status&operation=pending&id=".$row['event_id']. 
                   "'>Pending</a></span>'"; 
                 }
               ?>

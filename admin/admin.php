@@ -1,7 +1,5 @@
 <?php
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
-  include(ROOT_PATH . 'app/lib/function.php');
+  include('includes/top.inc.php'); 
 
     $msg = '';
 

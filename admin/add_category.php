@@ -1,7 +1,5 @@
 <?php 
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/add.inc.php');
-  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
+  include('includes/top.inc.php'); 
 
 ?>
 <div class="col-md-10 content">
@@ -11,7 +9,7 @@
       </div>
       <div class="panel-body">
 
-        <form method="post">
+        <form method="post" action="includes/add.inc.php">
           <div class="form-group">  
             <label for="category" class="form-control-label" >INSERT CATEGORY </label>
             <input type="text" name="catName" placeholder="Enter category name" class="form-control" required /> <br>

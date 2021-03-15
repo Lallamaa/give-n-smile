@@ -1,6 +1,5 @@
 <?php
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/top.inc.php'); 
+  include('includes/top.inc.php'); 
 
     if (isset($_GET['type']) && $_GET['type']!='') {
       $type=get_safe_value($_GET['type']);
@@ -34,7 +33,7 @@
         <a class="box-link" href="add_category.php"><span class='align-end p-2 glyphicon glyphicon-plus'></span></a>
       </div>
       
-      <div class="panel-body">
+      <div class="panel-body ad-category">
         <table class="table table-striped">
           <thead>
             <tr>

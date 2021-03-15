@@ -1,6 +1,6 @@
 <?php
-  include('../app/lib/path.php');
-  include(ROOT_PATH . 'admin/includes/top.inc.php');   
+  include('includes/top.inc.php'); 
+
   
   if (isset($_GET['type']) && $_GET['type']!='') {
     $type=get_safe_value($_GET['type']);
@@ -52,7 +52,7 @@ $res=mysqli_query($conn, $sql);
             <td scope="row"><?php echo $row['org_id']?></td>
             <td><?php echo $row['org_name']?></td>
             <td><?php echo $row['org_email']?></td>
-            <td><?php echo $row['org_phone']?></td>
+            <td><?php echo $row['org_contact']?></td>
             <td><?php 
               if($row['org_status']==1) {
                 echo "<span><a href='?type=status&operation=active&id=".$row['org_id']. 

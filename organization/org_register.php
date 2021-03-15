@@ -55,7 +55,7 @@
 						<option>Select Category</option>
 														<?php while($row = mysqli_fetch_array($category)) 
 															{
-																echo '<option value="'.$row['cat_event'].'">'.$row['cat_event'].'</option>';
+																echo '<option value="'.$row['cat_name'].'">'.$row['cat_name'].'</option>';
 															} 
 														?>
 					</select>
