@@ -39,7 +39,7 @@
 				}
 				echo "<script>alert('Login Failed! Wrong email or password.');</script>";
 			}
-		}
+		
 
 // //org-site
 // if(isset($_POST['loginbtn'])){

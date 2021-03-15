@@ -63,7 +63,9 @@
                  <!---For checking if login then don't show login button on header--->
             <?php
                 if(isset($_SESSION['loggedIn'])){
-            ?>  
+                    $_SESSION['user_name']; 
+                    $_SESSION['user_id'];
+                    ?>  
                 <li class="nav-item"><a class="nav-link" href="logout.php" name="logout">Logout</a></li> 
                 
                 <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
