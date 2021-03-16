@@ -6,9 +6,9 @@
   // $query = "SELECT * FROM events";
   // $event = mysqli_query($conn, $query);
 
-  if (isset($_GET['loadeventID'])) {
+  if (isset($_GET['eventID'])) {
 
-    $eventID = $_GET['loadeventID'];
+    $eventID = $_GET['eventID'];
 
     $sql = "SELECT * FROM events WHERE event_id='$eventID';";
     $query = mysqli_query($conn, $sql);

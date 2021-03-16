@@ -4,12 +4,6 @@
 	include("app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
 
-	// $total_event = "";
-	// $sql = "SELECT 
-	// 				FROM table_name
-	// 				WHERE condition";
-	// $run_sql = mysqli_query($sql);
-
 	$state = '';
 	$city = '';
 
@@ -23,7 +17,7 @@
 	$queryy = "SELECT `cat_name` FROM category ORDER BY `cat_name` ASC";
 	$category = mysqli_query($conn, $queryy);
 
-	$sql = "SELECT * FROM events";
+	$sql = "SELECT * FROM events WHERE event_status=1";
 	$event = mysqli_query($conn, $sql);
 
 
@@ -31,25 +25,14 @@
 
     $userID = $_POST['userID'];
     $eventID = $_POST['eventID'];
-    $donateAmount = 10;
-    $status = 1;
 
-    $sql = "INSERT INTO cart (`user_id`, `event_id`, `cart_amount`, `status`)
-              VALUES ($userID, $eventID, $donateAmount, $status)";
+    $sql = "INSERT INTO cart (`user_id`, `event_id`) VALUES ($userID, $eventID);";
     $query = mysqli_query($conn, $sql);
 
 	}
 
 
 ?>
-
-<script>
-$(".progress-bar").animate({
-    width: "50%"
-}, 2500);
-</script>
-
-
 <div class="container-fluid">
 	<div class="row">
 		<nav aria-label="breadcrumb">
@@ -146,6 +129,7 @@ $(".progress-bar").animate({
 			<div class="row">
 				<?php 
 					while($row = mysqli_fetch_assoc($event)) {
+						if (($row['event_amount'] - $row['event_fund']) >= 0 ) {
 				?>
 				<div class="col-sm-6 col-lg-4 mb-4">
 					<div class="card-body">
@@ -197,7 +181,7 @@ $(".progress-bar").animate({
 												<input type="hidden" id="name'. $row['event_id'] .'" name="userID" " value="'. $_SESSION['loggedIn']->user_id .'">
 												<input type="hidden" id="name'. $row['event_id'] .'" name="eventID" " value="'. $row['event_id'] .'">
 												<a href="'. BASE_URL .'cart.php?add&addToCart&id='. $row['event_id'] .'" class="btn btn-outline-warning"><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /> Donate</a>
-												<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
+												<a href="details.php?eventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
 
 											// action="'. BASE_URL .'app/lib/cart-action.php"
 										}else if(isset($_SESSION['orgLoggedIn'])){
@@ -207,7 +191,7 @@ $(".progress-bar").animate({
 										else {
 											echo '
 											<a href="login.php?errorlogin" class="btn btn-outline-warning add" name="addCart" ><img class="cart-icon" src="'. BASE_URL .'app/image/icon/cart2.png" width="25" height="25" /> Donate</a>
-											<a href="details.php?loadeventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
+											<a href="details.php?eventID='. $row['event_id'] .'" class="btn btn-outline-warning">View</a>';
 
 										}
 									
@@ -228,13 +212,25 @@ $(".progress-bar").animate({
 					</div>
 				</div> 			
 				<?php
-					}	
+						} else {  ?>
+				<div class="col-sm-6 col-lg-4 mb-4">
+					<div class="card-body">
+						<div class="candidate-list candidate-grid">
+							<div class="candidate-list-image">
+								Event
+							</div>
+						</div>
+					</div>
+				</div> 			
+				<?php
+						}
+				}	
 				?>
 			</div>
 		</div>
 	</div>
 
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-12 text-center mt-4 mt-sm-5">
 					<ul class="pagination justify-content-center mb-0">
 						<li class="page-item disabled"> <span class="page-link">Prev</span> </li>
@@ -250,12 +246,16 @@ $(".progress-bar").animate({
 		</div>
 
 	</div>
-</div>
+</div> -->
 
 
 <?php include(ROOT_PATH . "app/includes/footer.php"); ?>
 
 <script>
+$(".progress-bar").animate({
+    width: "50%"
+}, 2500);
+
 $(document).ready(function() {
          alldeleteBtn = document.querySelectorAll('.delete')
          alldeleteBtn.forEach(onebyone => {

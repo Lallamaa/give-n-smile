@@ -3,6 +3,7 @@
     include("../app/lib/path.php"); 
 	include(ROOT_PATH . "app/includes/header.php"); 
     
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 <body>
 <?php
     $user_id = $_SESSION['loggedIn']->user_id;
-    $sql = mysqli_query($conn,"SELECT * FROM users WHERE user_id='$user_id'");
+    $sql = mysqli_query($conn,"SELECT * FROM events WHERE organizer_id = '$user_id'");
     $result = mysqli_fetch_assoc($sql);
 
     ?>
@@ -28,7 +29,7 @@
         <div class="profile-box">
             <div class="form-div col-4 offset-md-4 ">
             <form action="includes/us_edit.inc.php" method="post" enctype="multipart/form-data">
-                <h3 class="text-center mb-3 mt-3">Edit Profile</h3>
+                <h3 class="text-center mb-3 mt-3">Edit Ongoing Event</h3>
                 <?php
                     if(!empty($txt)): ?>
                     <div class="alert <?php echo $txt_class; ?>" role="alert">
@@ -36,18 +37,18 @@
                 </div>
                     <?php endif; ?>
                 <div class="form-group">
-                <label>User Name</label>
-                    <input type="text" name="user_name" class="form-control" require
-                            value="<?php echo $result['user_name'];?>"
-                                placeholder="Enter Username"
+                <label>Event Name</label>
+                    <input type="text" name="eventName" class="form-control" require
+                            value="<?php echo $result['event_name'];?>"
+                                placeholder="Enter Event Name"
                     />
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" name="user_email" class="form-control"
-                     value="<?php echo $result['user_email'];?>"
-                            placeholder="Enter Email"
-                    />
+                  <div>Campaign Date</div>
+                  <label class="control-label">Start</label>
+                  <input type="date" required="required" id="dateIn" placeholder="yyyy-mm-dd" name="start" value="<?php echo $result['event_start'];?>"/><br>
+                  <label class="control-label">End</label>
+                  <input type="date" required="required" id="dateOut" placeholder="yyyy-mm-dd" name="end" value="<?php echo $result['event_end'];?>"/>
                 </div>
                 
                 <div class="form-group">

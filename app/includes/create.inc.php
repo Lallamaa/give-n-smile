@@ -2,8 +2,6 @@
 session_start();
 require '../database/connect.php';
 
-
-
 define('KB', 1024);
 define('MB', 1048576);
 define('GB', 1073741824);
@@ -25,7 +23,9 @@ if (isset($_POST['create-btn'])) {
     $userID = $_POST['userID'];
     $status = '-1';
     $type = 'fundraise';
-        
+    
+    echo $name.$start.$end.$amount.$desc.$area.$ecategory.$user.$userID.$status;
+
     $fileName = $_FILES['image']['name'];
     $fileTmpName = $_FILES['image']['tmp_name'];
     $fileSize = $_FILES['image']['size'];
@@ -37,55 +37,15 @@ if (isset($_POST['create-btn'])) {
 
     $allowed = array('jpg', 'jpeg', 'png', 'svg');
 
-    if(in_array($fileActualExt, $allowed)){
-
-        if($fileError === 0){
-
-            $fileNameNew = uniqid('', true).".".$fileActualExt;
-
-            /* $fileDestination = "upload/".$fileNameNew; */
-            echo $fileTmpName;
-            /* move_uploaded_file($fileTmpName, $fileDestination); */
-
-            echo "File uploaded";
-
-        }else{
-
-            echo "There was an error uploading your file";
-
-        }
-
-      }else{
-
-          echo "You cannot upload files of this type!";
-
-    }
-
-  if (is_file('../../vendor/autoload.php') && is_readable(__DIR__ . '../../vendor/autoload.php')) {
+    if (is_file('../../vendor/autoload.php') && is_readable(__DIR__ . '../../vendor/autoload.php')) {
       require_once '../../vendor/autoload.php';
       echo 'not here';
-  } else {
-      // Fallback to legacy autoloader
-      require_once '../../vendor/autoload.php';
-      require_once '../../vendor/cloudinary/cloudinary_php/src/Cloudinary.php';
-      echo 'here';
-  }
-
-  $sample_paths = array(
-      'pizza' => getcwd() . DIRECTORY_SEPARATOR . 'pizza.jpg',
-      'lake' => getcwd() . DIRECTORY_SEPARATOR . 'lake.jpg',
-      'couple' => $fileTmpName,
-  );
-
-
-  $default_upload_options = array('tags' => 'basic_sample');
-  $eager_params = array('width' => 200, 'height' => 150, 'crop' => 'scale');
-  $files = array();
-
-
-      global $files, $sample_paths, $default_upload_options, $eager_params;
-
-    echo "uploading";
+    } else {
+        // Fallback to legacy autoloader
+        require_once '../../vendor/autoload.php';
+        require_once '../../vendor/cloudinary/cloudinary_php/src/Cloudinary.php';
+        echo 'here';
+    }
 
     Cloudinary::config(array(
       'cloud_name' => 'lallama-a',
@@ -93,15 +53,42 @@ if (isset($_POST['create-btn'])) {
       'api_secret' => 'LU8PzPt541g8shBJAGyuJ155ZVI'
     ));
 
-    # In the two following examples, the file is fetched from a remote URL and stored in Cloudinary.
-    # This allows you to apply the same transformations, and serve those using Cloudinary's CDN layer.
-    $files['remote'] = \Cloudinary\Uploader::upload(
-        $sample_paths['couple'],
-        $default_upload_options
-    );
+    if(isset($_FILES['image']['name'][0])){  
+  
+          $fileName = $_FILES['image']['name'];
+          $fileExt = explode('.', $fileName);
+          $fileActualExt = strtolower(end($fileExt));
+          $fileSize = $_FILES['image']['size'];
+        
+          if(in_array($fileActualExt, $allowed)){
 
-    
-    $image =  cloudinary_url($files['remote']['public_id']);
+              if($fileSize <= 5000000){
+
+                  $fileNameNew = uniqid('', true).".".$fileActualExt;
+
+                  $files['remote'] = \Cloudinary\Uploader::upload(
+                    $_FILES['image']['tmp_name'],
+                   
+               );
+               
+                echo "File uploaded";
+
+              }else{
+
+                  echo "There was an error uploading your file";
+
+              }
+
+            }else{
+
+                echo "You cannot upload files of this type!";
+
+          }
+      }
+    }
+
+
+    $image = cloudinary_url($files['remote']['public_id']);
   
 
   if (empty($name) || empty($start) || empty($end) || empty($amount) || empty($ecategory)) {
@@ -139,7 +126,7 @@ if (isset($_POST['create-btn'])) {
       // }
 
     }
-  }
+
 
 
 

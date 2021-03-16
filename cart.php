@@ -101,14 +101,9 @@ body {
           <form class="form-auth" action="app/lib/cartAction.php" method="post" enctype="multipart/form-data">
           
           <?php if(empty($query)) {  ?>
-              <div class="row">
-                <div class="cart-empty">
-                  <h5> Your Cart Is Empty~ </h5>
-                </div>
-              </div>
-              <hr/>
+              
           <?php } ?>
-          
+
           <?php
           
           while ($row = mysqli_fetch_assoc($query)) {  ?>
@@ -145,9 +140,16 @@ body {
               }
             ?>
             </div>
-
-            
-
+            <?php 
+            if(!$query) {
+              echo '<div class="row">
+                      <div class="cart-empty">
+                        <h5> Your Cart Is Empty~ </h5>
+                      </div>
+                    </div>
+                    <hr/>';
+             }
+            ?>
           <div class="row">
               <div class="text-center">
                 <div class="col-xs-9">

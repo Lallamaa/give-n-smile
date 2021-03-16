@@ -10,6 +10,14 @@
   $sql = mysqli_query($conn,"SELECT * FROM users WHERE user_id='$user_id'");
   $result = mysqli_fetch_assoc($sql);
 
+  $donateQuery = mysqli_query($conn, "SELECT * FROM donation INNER JOIN users ON donation.do_user_id=users.user_id 
+                                WHERE users.user_id='$user_id';");
+
+  $joinEventQuery = mysqli_query($conn, "SELECT * FROM donation INNER JOIN events ON donation.do_event_id=events.event_id 
+  WHERE donation.do_user_id='$user_id';");
+
+  $fundraiseQuery = mysqli_query($conn, "SELECT * FROM `events` WHERE `organizer_id`='$user_id' AND `event_status`=1");
+
 ?>
 <div class="container">
   <div class="main-body">
@@ -17,8 +25,8 @@
       <div class="col-md-4 mb-3">
         <div class="card">
           <div class="card-body">
-            <div class="d-flex flex-column align-items-center text-center">
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+            <div class="d-flex flex-column align-items-center text-center"><br>
+              <img src="<?php echo $result['user_img']; ?>" alt="Admin" class="rounded-circle" width="150"><br>
               <div class="mt-3">
                 <h4><?php echo $result['user_name'];?></h4>
               </div>
@@ -43,98 +51,54 @@
           <div class="col-sm-12 mb-3">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Donation History</i>Sample Campaign Title</h6>
+                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Donation History</i></h6>
                 <small>Donation History</small>
                 <div class="row">
+                <?php while($row = mysqli_fetch_assoc($donateQuery)) { ?>
                 <div class="col-sm-6">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">Donation #1</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Campaign</a>
+                    <?php
+                      if ($result = mysqli_fetch_assoc($joinEventQuery)) { ?>
+                      <h5 class="card-title"><?php echo $result['event_name']; ?></h5>
+                      <p class="card-text"><?php echo substr($result['event_desc'], 0, 150); ?>.....</p>
+                      <a href="details.php?eventID=<?php echo $row['do_event_id']; ?>" class="btn btn-outline-warning">View</a>
+                      <?php } ?>
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Donation #2</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Event</a>
-                    </div>
-                  </div>
-                </div>
-              <!-- </div>
-                <div class="card" style="width: 18rem;">
-                  <img src="<?= BASE_URL; ?>app/image/pic_1.jpeg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                  </ul>
-                  <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
+                <?php } ?>
+          <br>
           <div class="col-sm-12 mb-3">
             <div class="card h-100">
               <div class="card-body">
-                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Organized Fundraise</i>Sample Fundraise Title</h6>
+                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Organized Fundraise</i></h6>
                 <small>Organized Fundraise</small>
                 <div class="row">
+                  <?php while($result = mysqli_fetch_assoc($fundraiseQuery)) { ?>
                   <div class="col-sm-6">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Fundraise #1</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Campaign</a>
+                        <h5 class="card-title"><?php echo $result['event_name']; ?></h5>
+                        <p class="card-text"><?php echo substr($result['event_desc'], 0, 150); ?>....</p>
+                        <a href="details.php?eventID=<?php echo $result['event_id']; ?>" class="btn btn-outline-warning">View</a>
+                        <a href="../app/lib/eventAction.php?action=edit?id=<?php echo $user_id; ?>" class="btn btn-outline-warning">Edit</a>
+                        <a href="../app/lib/eventAction.php?action=delete?id=<?php echo $user_id; ?>" class="btn btn-outline-warning">Delete</a>
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">Fundraise #2</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Event</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- <div class="card" style="width: 18rem;">
-                <img src="<?= BASE_URL; ?>app/image/pic_3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-                <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div>
-              </div>         -->
+                  <?php } ?>               
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+            </div>
+          </div>
 <?php include(ROOT_PATH . "app/includes/footer.php"); ?>
