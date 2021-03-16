@@ -47,6 +47,12 @@ if (isset($_POST['update']))
   $default_upload_options = array('tags' => 'basic_sample');
   $eager_params = array('width' => 200, 'height' => 150, 'crop' => 'scale');
   $files = array();
+  
+  $sample_paths = array(
+    'pizza' => getcwd() . DIRECTORY_SEPARATOR . 'pizza.jpg',
+    'lake' => getcwd() . DIRECTORY_SEPARATOR . 'lake.jpg',
+    'couple' => $fileTmpName,
+);
 
 
     global $files, $sample_paths, $default_upload_options, $eager_params;

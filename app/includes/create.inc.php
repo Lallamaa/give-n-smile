@@ -21,11 +21,9 @@ if (isset($_POST['create-btn'])) {
     $ecategory = $_POST['category'];
     $user = $_POST['user'];
     $userID = $_POST['userID'];
-    $status = '-1';
+    $status = '0';
     $type = 'fundraise';
-    
-    echo $name.$start.$end.$amount.$desc.$area.$ecategory.$user.$userID.$status;
-
+     
     $fileName = $_FILES['image']['name'];
     $fileTmpName = $_FILES['image']['tmp_name'];
     $fileSize = $_FILES['image']['size'];
@@ -35,7 +33,7 @@ if (isset($_POST['create-btn'])) {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png', 'svg');
+    $allowed = array('jpg', 'jpeg', 'png', 'svg', 'gif');
 
     if (is_file('../../vendor/autoload.php') && is_readable(__DIR__ . '../../vendor/autoload.php')) {
       require_once '../../vendor/autoload.php';
@@ -53,7 +51,7 @@ if (isset($_POST['create-btn'])) {
       'api_secret' => 'LU8PzPt541g8shBJAGyuJ155ZVI'
     ));
 
-    if(isset($_FILES['image']['name'][0])){  
+    if(isset($_FILES['image']['name'])){  
   
           $fileName = $_FILES['image']['name'];
           $fileExt = explode('.', $fileName);
